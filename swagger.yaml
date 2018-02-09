@@ -1,0 +1,150 @@
+swagger: '2.0'
+info:
+  title: Pakkasmarja REST API
+  description: REST API for Pakkasmarja
+  version: 0.0.1
+schemes:
+  - https
+basePath: /rest/v1
+consumes:
+  - application/json;charset=utf-8
+produces:
+  - application/json;charset=utf-8
+paths:
+  /contacts:
+    get:
+      operationId: listContacts
+      summary: Lists contacts
+      description: Lists contacts
+      tags:
+        - Contacts
+      responses:
+        '200':
+          description: List of contacts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contact'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /contacts/{id}:
+    get:
+      operationId: findContact
+      summary: Find contact
+      description: Finds contact by id
+      tags:
+        - Contacts
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: contact id
+          type: integer
+      responses:
+        '200':
+          description: A contact
+          schema:
+            $ref: '#/definitions/Contact'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateContact
+      summary: Update contact
+      description: Updates single contact
+      tags:
+        - Contacts
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: contact id
+          type: integer
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      responses:
+        '200':
+          description: Updated contact
+          schema:
+            $ref: '#/definitions/Contact'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+definitions:
+  Contact:
+    type: object
+    properties:
+      id:
+        type: integer
+  InternalServerError:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  Forbidden:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  BadRequest:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  NotImplemented:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  NotFound:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
