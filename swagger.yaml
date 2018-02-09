@@ -107,7 +107,15 @@ definitions:
     type: object
     properties:
       id:
-        type: integer
+        type: string
+        format: uuid
+      status:
+        type: string
+        enum:
+          - approved
+          - onhold
+          - draft
+          - terminated
   InternalServerError:
     type: object
     properties:

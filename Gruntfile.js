@@ -35,6 +35,9 @@ module.exports = function(grunt) {
       'nodejs-generated': [
         'nodejs-generated'
       ],
+      'nodejs-model-generated': [
+        'nodejs-model-generated'
+      ],
       'nodejs-remove-cruft': [
         'nodejs-generated/.swagger-codegen',
         'nodejs-generated/.swagger-codegen-ignore',
@@ -54,17 +57,31 @@ module.exports = function(grunt) {
           '-o nodejs-generated/ ' +
           '-t nodejs-templates ' +
           `--additional-properties useES6=false,usePromises=true,projectName=pakkasmarja-spec`
+      },
+      'nodejs-model-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l javascript ' +
+          '-t nodejs-model-templates ' +
+          '-o nodejs-model-generated/ ' +
+          `--additional-properties useES6=false,usePromises=true,projectName=pakkasmarja-rest-client`
+      },
+      'nodejs-model-move': {
+        command: 'mv nodejs-model-generated/src/model nodejs-generated/'
       }
     },
     "kebabify": {
       "nodejs-services": {
         "folder": "nodejs-generated/service/"
+      },
+      "nodejs-models": {
+        "folder": "nodejs-generated/model/"
       }
     }
   });
   
   grunt.registerTask('download-dependencies', 'if-missing:curl:swagger-codegen');
-  grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'clean:nodejs-remove-cruft', 'kebabify:nodejs-services']);
+  grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated']);
   grunt.registerTask('nodejs', [ 'nodejs-gen', 'shell:nodejs-bump-version', 'shell:nodejs-push', 'shell:nodejs-publish']);
   
   grunt.registerTask('default', ['nodejs']);
