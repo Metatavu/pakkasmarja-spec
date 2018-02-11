@@ -102,6 +102,28 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  /system/shutdown:
+    post:
+      operationId: systemShutdown
+      summary: Shutdown system
+      description: Shuts the system down
+      tags:
+        - System
+      responses:
+        '204':
+          description: Ok
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
 definitions:
   Contact:
     type: object
