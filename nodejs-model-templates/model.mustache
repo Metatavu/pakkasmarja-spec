@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 (function(root, factory) {
   module.exports = factory(require('../model-utils'));
 }(this, function(ApiClient) {
@@ -10,3 +11,4 @@
 {{#models}}{{#model}}
 {{#isEnum}}{{>partial_model_enum_class}}{{/isEnum}}{{^isEnum}}{{>partial_model_generic}}{{/isEnum}}
 {{/model}}{{/models}}
+/* jshint ignore:end */
