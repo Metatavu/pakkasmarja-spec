@@ -102,6 +102,97 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  /contracts:
+    get:
+      operationId: listContracts
+      summary: Lists contracts
+      description: Lists contracts
+      tags:
+        - Contracts
+      responses:
+        '200':
+          description: List of contracts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contract'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /contracts/{id}:
+    get:
+      operationId: findContract
+      summary: Find contract
+      description: Finds contract by id
+      tags:
+        - Contracts
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: contract id
+          type: integer
+      responses:
+        '200':
+          description: A contract
+          schema:
+            $ref: '#/definitions/Contract'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateContract
+      summary: Update contract
+      description: Updates single contract
+      tags:
+        - Contracts
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: contract id
+          type: integer
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Contract'
+      responses:
+        '200':
+          description: Updated contract
+          schema:
+            $ref: '#/definitions/Contract'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   /system/shutdown:
     post:
       operationId: systemShutdown
@@ -163,6 +254,43 @@ definitions:
           - NO
           - EU
       audit:
+        type: string
+  Contract:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      itemGroupId:
+        type: string
+        format: uuid
+      quantity:
+        type: integer
+        format: int64
+      startDate:
+        type: string
+        format: date
+      endDate:
+        type: string
+        format: date
+      signDate:
+        type: string
+        format: date
+      termDate:
+        type: string
+        format: date
+      status:
+        type: string
+        enum: [APPROVED, ON_HOLD, DRAFT, TERMINATED]
+      remarks:
+        type: string
+  ItemGroup:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      name:
         type: string
   Address:
     type: object
