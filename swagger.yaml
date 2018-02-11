@@ -49,7 +49,8 @@ paths:
           required: true
           in: path
           description: contact id
-          type: integer
+          type: string
+          format: uuid
       responses:
         '200':
           description: A contact
@@ -78,7 +79,8 @@ paths:
           required: true
           in: path
           description: contact id
-          type: integer
+          type: string
+          format: uuid
         - name: body
           in: body
           description: Payload
@@ -140,7 +142,8 @@ paths:
           required: true
           in: path
           description: contract id
-          type: integer
+          type: string
+          format: uuid
       responses:
         '200':
           description: A contract
@@ -169,7 +172,8 @@ paths:
           required: true
           in: path
           description: contract id
-          type: integer
+          type: string
+          format: uuid
         - name: body
           in: body
           description: Payload
@@ -181,6 +185,63 @@ paths:
           description: Updated contract
           schema:
             $ref: '#/definitions/Contract'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /itemGroups:
+    get:
+      operationId: listItemGroups
+      summary: Lists itemGroups
+      description: Lists itemGroups
+      tags:
+        - ItemGroups
+      responses:
+        '200':
+          description: List of item groups
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemGroup'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /itemGroups/{id}:
+    get:
+      operationId: findItemGroup
+      summary: Find item group
+      description: Finds item group by id
+      tags:
+        - ItemGroups
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: item group id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: A item group
+          schema:
+            $ref: '#/definitions/ItemGroup'
         '400':
           description: Invalid request was sent to the server
           schema:
