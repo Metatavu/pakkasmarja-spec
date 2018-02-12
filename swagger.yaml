@@ -283,8 +283,6 @@ definitions:
       id:
         type: string
         format: uuid
-      sapId:
-        type: string
       firstName:
         type: string
       lastName:
@@ -326,8 +324,11 @@ definitions:
         type: string
         format: uuid
       quantity:
-        type: integer
-        format: int64
+        type: number
+        format: double
+      delivered:
+        type: number
+        format: double
       startDate:
         type: string
         format: date
@@ -356,9 +357,6 @@ definitions:
   Address:
     type: object
     properties:
-      id:
-        type: integer
-        format: int64
       type: 
         type: string
       streetAddress:
