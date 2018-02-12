@@ -38,7 +38,7 @@
     register(app) {
 {{#operations}}
 {{#operation}}
-      app.{{httpMethod}}(`/rest/v1${this.toPath('{{{path}}}')}`, [ this.restAuth.bind(this) ], this.{{{operationId}}}.bind(this));
+      app.{{httpMethod}}(`/rest/v1${this.toPath('{{{path}}}')}`, [ this.restAuth.bind(this) ], this.catchAsync(this.{{{operationId}}}.bind(this)));
 {{/operation}}
 {{/operations}}
     }
