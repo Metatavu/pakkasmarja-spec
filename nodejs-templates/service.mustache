@@ -35,10 +35,10 @@
     *
     * @param app express object
     **/
-    register(app) {
+    register(app, keycloak) {
 {{#operations}}
 {{#operation}}
-      app.{{httpMethod}}(`/rest/v1${this.toPath('{{{path}}}')}`, [ this.restAuth.bind(this) ], this.catchAsync(this.{{{operationId}}}.bind(this)));
+      app.{{httpMethod}}(`/rest/v1${this.toPath('{{{path}}}')}`, [ keycloak.protect() ], this.catchAsync(this.{{{operationId}}}.bind(this)));
 {{/operation}}
 {{/operations}}
     }
