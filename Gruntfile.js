@@ -82,8 +82,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('download-dependencies', 'if-missing:curl:swagger-codegen');
   grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated']);
-  grunt.registerTask('nodejs', [ 'nodejs-gen', 'shell:nodejs-bump-version', 'shell:nodejs-push', 'shell:nodejs-publish']);
   
-  grunt.registerTask('default', ['nodejs']);
+  grunt.registerTask('default', ['nodejs-gen']);
   
 };
