@@ -239,6 +239,48 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  /contracts/{id}/documents/{type}/signRequests:
+    post:
+      operationId: createContractDocumentSignRequest
+      summary: Requests contract document electronic signing
+      description: Requests contract document electronic signing
+      tags:
+        - Contracts
+      parameters: 
+        - name: id
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+        - name: type
+          required: true
+          in: path
+          description: document type
+          type: string
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/ContractDocumentSignRequest'
+      responses:
+        '200':
+          description: Contract document sign request with redirect url filled
+          schema:
+            $ref: '#/definitions/ContractDocumentSignRequest'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   /itemGroups:
     get:
       operationId: listItemGroups
@@ -366,6 +408,11 @@ definitions:
         enum: [APPROVED, ON_HOLD, DRAFT, TERMINATED]
       remarks:
         type: string
+  ContractDocumentSignRequest:
+    type: object
+    properties:
+      redirectUrl:
+        type: string 
   ItemGroup:
     type: object
     properties:
