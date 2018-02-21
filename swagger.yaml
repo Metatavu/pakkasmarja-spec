@@ -338,6 +338,35 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  '/operations':
+    post:
+      operationId: createOperation
+      summary: Creates new operation
+      description: Creates new operation
+      tags:
+        - Operations
+      parameters:
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Operation'
+      responses:
+        '201':
+          description: Operation created successful  
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   '/operationReports':
     get:
       operationId: listOperationReports
@@ -546,6 +575,11 @@ definitions:
       postalCode:
         type: string
       city:
+        type: string
+  Operation:
+    type: object
+    properties:
+      type:
         type: string
   OperationReport:
     type: object
