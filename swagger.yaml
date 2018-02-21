@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Pakkasmarja REST API
   description: REST API for Pakkasmarja
-  version: 0.0.1
+  version: 0.0.2
 schemes:
   - https
 basePath: /rest/v1
@@ -37,14 +37,14 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /contacts/{id}:
+  '/contacts/{id}':
     get:
       operationId: findContact
       summary: Find contact
       description: Finds contact by id
       tags:
         - Contacts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -74,7 +74,7 @@ paths:
       description: Updates single contact
       tags:
         - Contacts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -130,14 +130,14 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /contracts/{id}:
+  '/contracts/{id}':
     get:
       operationId: findContract
       summary: Find contract
       description: Finds contract by id
       tags:
         - Contracts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -167,7 +167,7 @@ paths:
       description: Updates single contract
       tags:
         - Contracts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -197,14 +197,14 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /contracts/{id}/documents/{type}:
+  '/contracts/{id}/documents/{type}':
     get:
       operationId: getContractDocument
       summary: Returns contract document
       description: Returns contract document by type
       tags:
         - Contracts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -239,14 +239,14 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /contracts/{id}/documents/{type}/signRequests:
+  '/contracts/{id}/documents/{type}/signRequests':
     post:
       operationId: createContractDocumentSignRequest
       summary: Requests contract document electronic signing
       description: Requests contract document electronic signing
       tags:
         - Contracts
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -307,14 +307,14 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /itemGroups/{id}:
+  '/itemGroups/{id}':
     get:
       operationId: findItemGroup
       summary: Find item group
       description: Finds item group by id
       tags:
         - ItemGroups
-      parameters: 
+      parameters:
         - name: id
           required: true
           in: path
@@ -326,6 +326,99 @@ paths:
           description: A item group
           schema:
             $ref: '#/definitions/ItemGroup'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/operationReports':
+    get:
+      operationId: listOperationReports
+      summary: List operation reports
+      description: Lists operation reports
+      tags:
+        - OperationReports
+      parameters:
+        - name: type
+          in: query
+          description: filter by type
+          type: string
+      responses:
+        '200':
+          description: List of operation reports
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OperationReport'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/operationReports/{id}':
+    get:
+      operationId: findOperationReport
+      summary: Find operation report
+      description: Find operation report by id
+      tags:
+        - OperationReports
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: operation report id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: A operation report
+          schema:
+            $ref: '#/definitions/OperationReport'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/operationReports/{id}/items':
+    get:
+      operationId: listOperationReportItems
+      summary: List operation report items
+      description: Lists operation report items
+      tags:
+        - OperationReports
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: operation report id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: A list of operation report items
+          schema:
+            $ref: '#/definitions/OperationReportItem'
         '400':
           description: Invalid request was sent to the server
           schema:
@@ -371,8 +464,8 @@ definitions:
       vatLiable:
         type: string
         enum:
-          - YES
-          - NO
+          - 'YES'
+          - 'NO'
           - EU
       audit:
         type: string
@@ -405,14 +498,18 @@ definitions:
         format: date
       status:
         type: string
-        enum: [APPROVED, ON_HOLD, DRAFT, TERMINATED]
+        enum:
+          - APPROVED
+          - ON_HOLD
+          - DRAFT
+          - TERMINATED
       remarks:
         type: string
   ContractDocumentSignRequest:
     type: object
     properties:
       redirectUrl:
-        type: string 
+        type: string
   ItemGroup:
     type: object
     properties:
@@ -424,13 +521,44 @@ definitions:
   Address:
     type: object
     properties:
-      type: 
+      type:
         type: string
       streetAddress:
         type: string
       postalCode:
         type: string
       city:
+        type: string
+  OperationReport:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      type:
+        type: string
+      started:
+        type: string
+        format: date-time
+      pendingCount:
+        type: integer
+        format: int32
+      failedCount:
+        type: integer
+        format: int32
+      successCount:
+        type: integer
+        format: int32  
+  OperationReportItem:
+    type: object
+    properties:
+      status:
+        type: string
+        enum:
+          - PENDING
+          - FAILURE
+          - SUCCESS
+      message:
         type: string
   InternalServerError:
     type: object
