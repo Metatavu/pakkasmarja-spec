@@ -353,8 +353,10 @@ paths:
           schema:
             $ref: '#/definitions/Operation'
       responses:
-        '201':
-          description: Operation created successful  
+        '200':
+          description: Operation created successful
+          schema:
+            $ref: '#/definitions/Operation'
         '400':
           description: Invalid request was sent to the server
           schema:
@@ -581,6 +583,9 @@ definitions:
     properties:
       type:
         type: string
+      operationReportId:
+        type: string
+        format: uuid
   OperationReport:
     type: object
     properties:
