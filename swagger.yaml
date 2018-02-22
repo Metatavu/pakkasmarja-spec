@@ -524,6 +524,9 @@ definitions:
       id:
         type: string
         format: uuid
+      contactId:
+        type: string
+        format: uuid
       itemGroupId:
         type: string
         format: uuid
