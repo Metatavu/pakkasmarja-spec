@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           '-i ./swagger.yaml ' +
           '-l javascript ' +
           '-o javascript-generated/ ' +
-          `--additional-properties useES6=false,usePromises=true,projectName=soteapi-client,projectVersion=${JAVASCRIPT_VERSION}`
+          `--additional-properties useES6=false,usePromises=true,projectName=pakkasmarja-rest-client,projectVersion=${JAVASCRIPT_VERSION}`
       },
       'javascript-bump-version': {
         command: 'npm version patch',
@@ -112,11 +112,12 @@ module.exports = function(grunt) {
     },
     'javascript-package-update': {
       'javascript-package': {
+        'folder': 'javascript-generated',
         'fields': {
           "author": "Metatavu Oy",
           "repository": {
             "type": "git",
-            "url": "git://github.com/Metatavu/pakkasmarja-berries-client.git"
+            "url": "git://github.com/Metatavu/pakkasmarja-rest-client.git"
           },
           "license": "gpl-3.0"
         }
