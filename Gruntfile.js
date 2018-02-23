@@ -8,6 +8,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   
   const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20180112.231857-20.jar";
+  const JAVASCRIPT_VERSION = require('./javascript-generated/package.json').version;
 
   grunt.registerMultiTask('javascript-package-update', 'Updates package.json -file', function () {
     const packageJson = JSON.parse(fs.readFileSync(`${this.data.folder}/package.json`));
@@ -68,6 +69,37 @@ module.exports = function(grunt) {
       },
       'nodejs-model-move': {
         command: 'mv nodejs-model-generated/src/model nodejs-generated/'
+      },
+      'javascript-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l javascript ' +
+          '-o javascript-generated/ ' +
+          `--additional-properties useES6=false,usePromises=true,projectName=soteapi-client,projectVersion=${JAVASCRIPT_VERSION}`
+      },
+      'javascript-bump-version': {
+        command: 'npm version patch',
+        options: {
+          execOptions: {
+            cwd: 'javascript-generated'
+          }
+        }
+      },
+      'javascript-push': {
+        command : 'git add . && git commit -m "Generated javascript source" ; git push',
+        options: {
+          execOptions: {
+            cwd: 'javascript-generated'
+          }
+        }
+      },
+      'javascript-publish': {
+        command : 'npm publish',
+        options: {
+          execOptions: {
+            cwd: 'javascript-generated'
+          }
+        }
       }
     },
     "kebabify": {
@@ -77,10 +109,24 @@ module.exports = function(grunt) {
       "nodejs-models": {
         "folder": "nodejs-generated/model/"
       }
+    },
+    'javascript-package-update': {
+      'javascript-package': {
+        'fields': {
+          "author": "Metatavu Oy",
+          "repository": {
+            "type": "git",
+            "url": "git://github.com/Metatavu/pakkasmarja-berries-client.git"
+          },
+          "license": "gpl-3.0"
+        }
+      }
     }
   });
   
   grunt.registerTask('download-dependencies', 'if-missing:curl:swagger-codegen');
+  grunt.registerTask('javascript-gen', [ 'download-dependencies', 'shell:javascript-generate', 'javascript-package-update:javascript-package' ]);
+  grunt.registerTask('javascript', [ 'javascript-gen', 'shell:javascript-bump-version', 'shell:javascript-push', 'shell:javascript-publish']);
   grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated']);
   
   grunt.registerTask('default', ['nodejs-gen']);
