@@ -1,4 +1,4 @@
-# SoteapiClient.ContactsApi
+# PakkasmarjaRestClient.ContactsApi
 
 All URIs are relative to *https://localhost/rest/v1*
 
@@ -19,9 +19,9 @@ Finds contact by id
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContactsApi();
+var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 
 var id = "id_example"; // String | contact id
 
@@ -62,9 +62,9 @@ Lists contacts
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContactsApi();
+var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 apiInstance.listContacts().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -99,13 +99,13 @@ Updates single contact
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContactsApi();
+var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 
 var id = "id_example"; // String | contact id
 
-var body = new SoteapiClient.Contact(); // Contact | Payload
+var body = new PakkasmarjaRestClient.Contact(); // Contact | Payload
 
 apiInstance.updateContact(id, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

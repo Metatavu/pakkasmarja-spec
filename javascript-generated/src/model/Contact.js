@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('./Address'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.Contact = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.Address);
+    root.PakkasmarjaRestClient.Contact = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.Address);
   }
 }(this, function(ApiClient, Address) {
   'use strict';
@@ -36,7 +36,7 @@
   /**
    * The Contact model module.
    * @module model/Contact
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

@@ -1,4 +1,4 @@
-# SoteapiClient.ItemGroup
+# PakkasmarjaRestClient.ItemGroup
 
 ## Properties
 Name | Type | Description | Notes

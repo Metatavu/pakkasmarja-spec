@@ -1,4 +1,4 @@
-# SoteapiClient.Contact
+# PakkasmarjaRestClient.Contact
 
 ## Properties
 Name | Type | Description | Notes

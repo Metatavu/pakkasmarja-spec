@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/OperationReport'), require('../model/OperationReportItem'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.OperationReportsApi = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.BadRequest, root.SoteapiClient.Forbidden, root.SoteapiClient.InternalServerError, root.SoteapiClient.OperationReport, root.SoteapiClient.OperationReportItem);
+    root.PakkasmarjaRestClient.OperationReportsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.OperationReport, root.PakkasmarjaRestClient.OperationReportItem);
   }
 }(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, OperationReport, OperationReportItem) {
   'use strict';
@@ -33,7 +33,7 @@
   /**
    * OperationReports service.
    * @module api/OperationReportsApi
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

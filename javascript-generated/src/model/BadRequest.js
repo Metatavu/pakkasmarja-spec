@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.BadRequest = factory(root.SoteapiClient.ApiClient);
+    root.PakkasmarjaRestClient.BadRequest = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -36,7 +36,7 @@
   /**
    * The BadRequest model module.
    * @module model/BadRequest
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

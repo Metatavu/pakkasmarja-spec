@@ -1,4 +1,4 @@
-# SoteapiClient.ItemGroupsApi
+# PakkasmarjaRestClient.ItemGroupsApi
 
 All URIs are relative to *https://localhost/rest/v1*
 
@@ -18,9 +18,9 @@ Finds item group by id
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ItemGroupsApi();
+var apiInstance = new PakkasmarjaRestClient.ItemGroupsApi();
 
 var id = "id_example"; // String | item group id
 
@@ -61,9 +61,9 @@ Lists itemGroups
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ItemGroupsApi();
+var apiInstance = new PakkasmarjaRestClient.ItemGroupsApi();
 apiInstance.listItemGroups().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {

@@ -1,4 +1,4 @@
-# SoteapiClient.OperationsApi
+# PakkasmarjaRestClient.OperationsApi
 
 All URIs are relative to *https://localhost/rest/v1*
 
@@ -17,11 +17,11 @@ Creates new operation
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.OperationsApi();
+var apiInstance = new PakkasmarjaRestClient.OperationsApi();
 
-var body = new SoteapiClient.Operation(); // Operation | Payload
+var body = new PakkasmarjaRestClient.Operation(); // Operation | Payload
 
 apiInstance.createOperation(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

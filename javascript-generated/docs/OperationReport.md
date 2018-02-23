@@ -1,4 +1,4 @@
-# SoteapiClient.OperationReport
+# PakkasmarjaRestClient.OperationReport
 
 ## Properties
 Name | Type | Description | Notes

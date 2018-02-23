@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contact'), require('../model/Forbidden'), require('../model/InternalServerError'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.ContactsApi = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.BadRequest, root.SoteapiClient.Contact, root.SoteapiClient.Forbidden, root.SoteapiClient.InternalServerError);
+    root.PakkasmarjaRestClient.ContactsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contact, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
   }
 }(this, function(ApiClient, BadRequest, Contact, Forbidden, InternalServerError) {
   'use strict';
@@ -33,7 +33,7 @@
   /**
    * Contacts service.
    * @module api/ContactsApi
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

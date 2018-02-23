@@ -1,4 +1,4 @@
-# SoteapiClient.ContractsApi
+# PakkasmarjaRestClient.ContractsApi
 
 All URIs are relative to *https://localhost/rest/v1*
 
@@ -22,15 +22,15 @@ Requests contract document electronic signing
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
 var type = "type_example"; // String | document type
 
-var body = new SoteapiClient.ContractDocumentSignRequest(); // ContractDocumentSignRequest | Payload
+var body = new PakkasmarjaRestClient.ContractDocumentSignRequest(); // ContractDocumentSignRequest | Payload
 
 apiInstance.createContractDocumentSignRequest(id, type, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -71,9 +71,9 @@ Exports contract&#39;s data in specified format
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
@@ -117,9 +117,9 @@ Finds contract by id
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
@@ -160,9 +160,9 @@ Returns contract document by type
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
@@ -209,9 +209,9 @@ Lists contracts
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 apiInstance.listContracts().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -246,13 +246,13 @@ Updates single contract
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.ContractsApi();
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
-var body = new SoteapiClient.Contract(); // Contract | Payload
+var body = new PakkasmarjaRestClient.Contract(); // Contract | Payload
 
 apiInstance.updateContract(id, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

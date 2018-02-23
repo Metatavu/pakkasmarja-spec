@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/Operation'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.OperationsApi = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.BadRequest, root.SoteapiClient.Forbidden, root.SoteapiClient.InternalServerError, root.SoteapiClient.Operation);
+    root.PakkasmarjaRestClient.OperationsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.Operation);
   }
 }(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, Operation) {
   'use strict';
@@ -33,7 +33,7 @@
   /**
    * Operations service.
    * @module api/OperationsApi
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

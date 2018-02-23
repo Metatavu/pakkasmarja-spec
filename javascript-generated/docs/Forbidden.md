@@ -1,4 +1,4 @@
-# SoteapiClient.Forbidden
+# PakkasmarjaRestClient.Forbidden
 
 ## Properties
 Name | Type | Description | Notes

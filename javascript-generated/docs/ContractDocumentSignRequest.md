@@ -1,4 +1,4 @@
-# SoteapiClient.ContractDocumentSignRequest
+# PakkasmarjaRestClient.ContractDocumentSignRequest
 
 ## Properties
 Name | Type | Description | Notes

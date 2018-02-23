@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/ItemGroup'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.ItemGroupsApi = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.BadRequest, root.SoteapiClient.Forbidden, root.SoteapiClient.InternalServerError, root.SoteapiClient.ItemGroup);
+    root.PakkasmarjaRestClient.ItemGroupsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.ItemGroup);
   }
 }(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, ItemGroup) {
   'use strict';
@@ -33,7 +33,7 @@
   /**
    * ItemGroups service.
    * @module api/ItemGroupsApi
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

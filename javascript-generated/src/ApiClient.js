@@ -22,17 +22,17 @@
     module.exports = factory(require('superagent'), require('querystring'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.ApiClient = factory(root.superagent, root.querystring);
+    root.PakkasmarjaRestClient.ApiClient = factory(root.superagent, root.querystring);
   }
 }(this, function(superagent, querystring) {
   'use strict';
 
   /**
    * @module ApiClient
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

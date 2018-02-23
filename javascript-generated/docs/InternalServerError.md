@@ -1,4 +1,4 @@
-# SoteapiClient.InternalServerError
+# PakkasmarjaRestClient.InternalServerError
 
 ## Properties
 Name | Type | Description | Notes

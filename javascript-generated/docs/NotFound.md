@@ -1,4 +1,4 @@
-# SoteapiClient.NotFound
+# PakkasmarjaRestClient.NotFound
 
 ## Properties
 Name | Type | Description | Notes

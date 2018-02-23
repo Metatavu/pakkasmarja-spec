@@ -1,4 +1,4 @@
-# SoteapiClient.NotImplemented
+# PakkasmarjaRestClient.NotImplemented
 
 ## Properties
 Name | Type | Description | Notes

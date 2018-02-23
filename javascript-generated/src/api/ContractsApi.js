@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contract'), require('../model/ContractDocumentSignRequest'), require('../model/Forbidden'), require('../model/InternalServerError'));
   } else {
     // Browser globals (root is window)
-    if (!root.SoteapiClient) {
-      root.SoteapiClient = {};
+    if (!root.PakkasmarjaRestClient) {
+      root.PakkasmarjaRestClient = {};
     }
-    root.SoteapiClient.ContractsApi = factory(root.SoteapiClient.ApiClient, root.SoteapiClient.BadRequest, root.SoteapiClient.Contract, root.SoteapiClient.ContractDocumentSignRequest, root.SoteapiClient.Forbidden, root.SoteapiClient.InternalServerError);
+    root.PakkasmarjaRestClient.ContractsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contract, root.PakkasmarjaRestClient.ContractDocumentSignRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
   }
 }(this, function(ApiClient, BadRequest, Contract, ContractDocumentSignRequest, Forbidden, InternalServerError) {
   'use strict';
@@ -33,7 +33,7 @@
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**

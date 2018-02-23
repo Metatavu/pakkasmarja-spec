@@ -1,4 +1,4 @@
-# SoteapiClient.OperationReportsApi
+# PakkasmarjaRestClient.OperationReportsApi
 
 All URIs are relative to *https://localhost/rest/v1*
 
@@ -19,9 +19,9 @@ Find operation report by id
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.OperationReportsApi();
+var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
 var id = "id_example"; // String | operation report id
 
@@ -62,9 +62,9 @@ Lists operation report items
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.OperationReportsApi();
+var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
 var id = "id_example"; // String | operation report id
 
@@ -105,9 +105,9 @@ Lists operation reports
 
 ### Example
 ```javascript
-var SoteapiClient = require('soteapi-client');
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
 
-var apiInstance = new SoteapiClient.OperationReportsApi();
+var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
 var opts = { 
   'type': "type_example", // String | filter by type

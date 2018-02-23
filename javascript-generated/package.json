@@ -1,6 +1,6 @@
 {
-  "name": "soteapi-client",
-  "version": "0.0.2",
+  "name": "pakkasmarja-rest-client",
+  "version": "0.0.3",
   "description": "REST_API_for_Pakkasmarja",
   "license": "gpl-3.0",
   "main": "src/index.js",
@@ -21,6 +21,6 @@
   "author": "Metatavu Oy",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Metatavu/pakkasmarja-berries-client.git"
+    "url": "git://github.com/Metatavu/pakkasmarja-rest-client.git"
   }
 }

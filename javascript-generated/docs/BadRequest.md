@@ -1,4 +1,4 @@
-# SoteapiClient.BadRequest
+# PakkasmarjaRestClient.BadRequest
 
 ## Properties
 Name | Type | Description | Notes
