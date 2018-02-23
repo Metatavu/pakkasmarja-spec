@@ -1,3 +1,26 @@
 {
-  "version": "0.0.1"
+  "name": "soteapi-client",
+  "version": "0.0.2",
+  "description": "REST_API_for_Pakkasmarja",
+  "license": "gpl-3.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.5.2"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  },
+  "author": "Metatavu Oy",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Metatavu/pakkasmarja-berries-client.git"
+  }
 }

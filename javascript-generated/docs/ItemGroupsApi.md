@@ -1,0 +1,90 @@
+# SoteapiClient.ItemGroupsApi
+
+All URIs are relative to *https://localhost/rest/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**findItemGroup**](ItemGroupsApi.md#findItemGroup) | **GET** /itemGroups/{id} | Find item group
+[**listItemGroups**](ItemGroupsApi.md#listItemGroups) | **GET** /itemGroups | Lists itemGroups
+
+
+<a name="findItemGroup"></a>
+# **findItemGroup**
+> ItemGroup findItemGroup(id)
+
+Find item group
+
+Finds item group by id
+
+### Example
+```javascript
+var SoteapiClient = require('soteapi-client');
+
+var apiInstance = new SoteapiClient.ItemGroupsApi();
+
+var id = "id_example"; // String | item group id
+
+apiInstance.findItemGroup(id).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| item group id | 
+
+### Return type
+
+[**ItemGroup**](ItemGroup.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8
+
+<a name="listItemGroups"></a>
+# **listItemGroups**
+> [ItemGroup] listItemGroups()
+
+Lists itemGroups
+
+Lists itemGroups
+
+### Example
+```javascript
+var SoteapiClient = require('soteapi-client');
+
+var apiInstance = new SoteapiClient.ItemGroupsApi();
+apiInstance.listItemGroups().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[ItemGroup]**](ItemGroup.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8
+
