@@ -542,10 +542,10 @@ definitions:
       itemGroupId:
         type: string
         format: uuid
-      quantity:
+      contractQuantity:
         type: number
         format: double
-      delivered:
+      deliveredQuantity:
         type: number
         format: double
       startDate:
