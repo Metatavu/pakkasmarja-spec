@@ -9,6 +9,7 @@ module.exports = function(grunt) {
   
   const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20180112.231857-20.jar";
   const JAVASCRIPT_VERSION = require('./javascript-generated/package.json').version;
+  const PHP_CLIENT_VERSION = "0.0.4";
 
   grunt.registerMultiTask('javascript-package-update', 'Updates package.json -file', function () {
     const packageJson = JSON.parse(fs.readFileSync(`${this.data.folder}/package.json`));
@@ -100,6 +101,22 @@ module.exports = function(grunt) {
             cwd: 'javascript-generated'
           }
         }
+      },
+      'php-client-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l php ' +
+          '--template-dir php-templates ' +
+          '-o php-generated ' +
+          '--additional-properties packagePath=pakkasmarja-client-php,composerVendorName=metatavu,composerProjectName=pakkasmarja-client-php,variableNamingConvention=camelCase,invokerPackage=Metatavu\\\\Pakkasmarja,apiPackage=Api,modelPackage=Api\\\\Model,artifactVersion=' + PHP_CLIENT_VERSION
+      },
+      'php-client-publish': {
+        command : 'sh git_push.sh',
+        options: {
+          execOptions: {
+            cwd: 'php-generated/pakkasmarja-client-php'
+          }
+        }
       }
     },
     "kebabify": {
@@ -129,6 +146,8 @@ module.exports = function(grunt) {
   grunt.registerTask('javascript-gen', [ 'download-dependencies', 'shell:javascript-generate', 'javascript-package-update:javascript-package' ]);
   grunt.registerTask('javascript', [ 'javascript-gen', 'shell:javascript-bump-version', 'shell:javascript-push', 'shell:javascript-publish']);
   grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated']);
+  grunt.registerTask('php-gen', [ "shell:php-client-generate" ]);
+  grunt.registerTask('php', [ "php-gen", "shell:php-client-publish" ]);
   
   grunt.registerTask('default', ['nodejs-gen']);
   
