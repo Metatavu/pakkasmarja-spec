@@ -20,6 +20,13 @@ Finds contact by id
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 
@@ -45,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -63,6 +70,13 @@ Lists contacts
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 apiInstance.listContacts().then(function(data) {
@@ -82,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -100,6 +114,13 @@ Updates single contact
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContactsApi();
 
@@ -128,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -5,9 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
+**deliveryPlaceId** | **String** |  | [optional] 
 **itemGroupId** | **String** |  | [optional] 
-**quantity** | **Number** |  | [optional] 
-**delivered** | **Number** |  | [optional] 
+**contractQuantity** | **Number** |  | [optional] 
+**deliveredQuantity** | **Number** |  | [optional] 
 **startDate** | **Date** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 **signDate** | **Date** |  | [optional] 
