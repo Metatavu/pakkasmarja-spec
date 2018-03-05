@@ -20,6 +20,13 @@ Find operation report by id
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
@@ -45,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -54,7 +61,7 @@ No authorization required
 
 <a name="listOperationReportItems"></a>
 # **listOperationReportItems**
-> OperationReportItem listOperationReportItems(id)
+> [OperationReportItem] listOperationReportItems(id)
 
 List operation report items
 
@@ -63,6 +70,13 @@ Lists operation report items
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
@@ -84,11 +98,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OperationReportItem**](OperationReportItem.md)
+[**[OperationReportItem]**](OperationReportItem.md)
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -106,6 +120,13 @@ Lists operation reports
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.OperationReportsApi();
 
@@ -140,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

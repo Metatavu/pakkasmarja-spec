@@ -5,7 +5,6 @@ All URIs are relative to *https://localhost/rest/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createContractDocumentSignRequest**](ContractsApi.md#createContractDocumentSignRequest) | **POST** /contracts/{id}/documents/{type}/signRequests | Requests contract document electronic signing
-[**exportContract**](ContractsApi.md#exportContract) | **GET** /contracts/{id}/export | Export contract data
 [**findContract**](ContractsApi.md#findContract) | **GET** /contracts/{id} | Find contract
 [**getContractDocument**](ContractsApi.md#getContractDocument) | **GET** /contracts/{id}/documents/{type} | Returns contract document
 [**listContracts**](ContractsApi.md#listContracts) | **GET** /contracts | Lists contracts
@@ -23,6 +22,13 @@ Requests contract document electronic signing
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
@@ -54,53 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json;charset=utf-8
- - **Accept**: application/json;charset=utf-8
-
-<a name="exportContract"></a>
-# **exportContract**
-> &#39;Blob&#39; exportContract(id, format)
-
-Export contract data
-
-Exports contract&#39;s data in specified format
-
-### Example
-```javascript
-var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
-
-var apiInstance = new PakkasmarjaRestClient.ContractsApi();
-
-var id = "id_example"; // String | contract id
-
-var format = "format_example"; // String | Export format (XLSX)
-
-apiInstance.exportContract(id, format).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| contract id | 
- **format** | **String**| Export format (XLSX) | 
-
-### Return type
-
-**&#39;Blob&#39;**
-
-### Authorization
-
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -109,7 +69,7 @@ No authorization required
 
 <a name="findContract"></a>
 # **findContract**
-> Contract findContract(id)
+> Contract findContract(id, opts)
 
 Find contract
 
@@ -118,12 +78,22 @@ Finds contract by id
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var id = "id_example"; // String | contract id
 
-apiInstance.findContract(id).then(function(data) {
+var opts = { 
+  'accept': "accept_example" // String | Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+};
+apiInstance.findContract(id, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -136,6 +106,7 @@ apiInstance.findContract(id).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| contract id | 
+ **accept** | **String**| Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response | [optional] 
 
 ### Return type
 
@@ -143,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -161,6 +132,13 @@ Returns contract document by type
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
@@ -192,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -201,7 +179,7 @@ No authorization required
 
 <a name="listContracts"></a>
 # **listContracts**
-> [Contract] listContracts()
+> [Contract] listContracts(opts)
 
 Lists contracts
 
@@ -210,9 +188,20 @@ Lists contracts
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
-apiInstance.listContracts().then(function(data) {
+
+var opts = { 
+  'accept': "accept_example" // String | Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+};
+apiInstance.listContracts(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -221,7 +210,10 @@ apiInstance.listContracts().then(function(data) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **String**| Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response | [optional] 
 
 ### Return type
 
@@ -229,7 +221,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -247,6 +239,13 @@ Updates single contract
 ### Example
 ```javascript
 var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
@@ -275,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
