@@ -354,6 +354,118 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  '/itemGroups/{itemGroupId}/documentTemplates':
+    get:
+      operationId: listItemGroupDocumentTemplates
+      summary: List item group document templates
+      description: Lists item group templates
+      tags:
+        - ItemGroups
+      parameters:
+        - name: itemGroupId
+          required: true
+          in: path
+          description: item group id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of item group templates
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/ItemGroupDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/itemGroups/{itemGroupId}/documentTemplates/{id}':
+    get:
+      operationId: findItemGroupDocumentTemplate
+      summary: Find item group document template
+      description: Finds item group template
+      tags:
+        - ItemGroups
+      parameters:
+        - name: itemGroupId
+          required: true
+          in: path
+          description: item group id
+          type: string
+          format: uuid
+        - name: id
+          required: true
+          in: path
+          description: template id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: A item group template
+          schema:
+            $ref: '#/definitions/ItemGroupDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateItemGroupDocumentTemplate
+      summary: Updates item group document template
+      description: Updated item group document template
+      tags:
+        - ItemGroups
+      parameters:
+        - name: itemGroupId
+          required: true
+          in: path
+          description: item group id
+          type: string
+          format: uuid
+        - name: id
+          required: true
+          in: path
+          description: template id
+          type: string
+          format: uuid
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/ItemGroupDocumentTemplate'
+      responses:
+        '200':
+          description: An updated item group document template
+          schema:
+            $ref: '#/definitions/ItemGroupDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   /deliveryPlaces:
     get:
       operationId: listDeliveryPlaces
@@ -634,6 +746,40 @@ definitions:
           - DRAFT
           - TERMINATED
       remarks:
+        type: string
+  ItemGroupDocumentTemplate:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      itemGroupId:
+        type: string
+        format: uuid
+      type:
+        type: string
+      contents:
+        type: string
+      header:
+        type: string
+      footer:
+        type: string
+  ContractDocumentTemplate:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      contractId:
+        type: string
+        format: uuid
+      type:
+        type: string
+      contents:
+        type: string
+      header:
+        type: string
+      footer:
         type: string
   ContractDocumentSignRequest:
     type: object
