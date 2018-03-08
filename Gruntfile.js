@@ -9,7 +9,7 @@ module.exports = function(grunt) {
   
   const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20180112.231857-20.jar";
   const JAVASCRIPT_VERSION = require('./javascript-generated/package.json').version;
-  const PHP_CLIENT_VERSION = "0.0.5";
+  const PHP_CLIENT_VERSION = "0.0.6";
 
   grunt.registerMultiTask('javascript-package-update', 'Updates package.json -file', function () {
     const packageJson = JSON.parse(fs.readFileSync(`${this.data.folder}/package.json`));
