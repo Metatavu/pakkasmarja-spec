@@ -213,6 +213,154 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  '/contracts/{contractId}/documentTemplates':
+    get:
+      operationId: listContractDocumentTemplates
+      summary: List contract document templates
+      description: Lists contract templates
+      tags:
+        - Contracts
+      parameters:
+        - name: contractId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of contract templates
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/ContractDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    post:
+      operationId: createContractDocumentTemplate
+      summary: Create contract document template
+      description: Create new contract document template
+      tags:
+        - Contracts
+      parameters:
+        - name: contractId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/ContractDocumentTemplate'
+      responses:
+        '200':
+          description: Created contract document template
+          schema:
+            $ref: '#/definitions/ContractDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}':
+    get:
+      operationId: findContractDocumentTemplate
+      summary: Find contract document template
+      description: Finds a contract templates
+      tags:
+        - Contracts
+      parameters:
+        - name: contractId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+        - name: contractDocumentTemplateId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Found contract document template
+          schema:
+            $ref: '#/definitions/ContractDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateContractDocumentTemplate
+      summary: Updates contract document template
+      description: Updates a contract templates
+      tags:
+        - Contracts
+      parameters:
+        - name: contractId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+        - name: contractDocumentTemplateId
+          required: true
+          in: path
+          description: contract id
+          type: string
+          format: uuid
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/ContractDocumentTemplate'
+      responses:
+        '200':
+          description: Updated contract document template
+          schema:
+            $ref: '#/definitions/ContractDocumentTemplate'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   '/contracts/{id}/documents/{type}':
     get:
       operationId: getContractDocument
