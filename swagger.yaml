@@ -227,6 +227,11 @@ paths:
           description: contract id
           type: string
           format: uuid
+        - name: type
+          required: false
+          in: query
+          description: Filter results by document template type 
+          type: string
       responses:
         '200':
           description: List of contract templates
