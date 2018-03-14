@@ -123,6 +123,10 @@ paths:
           in: header
           type: string
           description: Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+        - name: listAll 
+          in: query
+          type: boolean
+          description: Returns all contracts instead of just user's own contracts. User must have permission to do this.
       responses:
         '200':
           description: List of contracts.
