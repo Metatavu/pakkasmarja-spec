@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/Forbidden', 'model/InternalServerError'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/Forbidden', 'model/InternalServerError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contract'), require('../model/ContractDocumentSignRequest'), require('../model/Forbidden'), require('../model/InternalServerError'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contract'), require('../model/ContractDocumentSignRequest'), require('../model/ContractDocumentTemplate'), require('../model/Forbidden'), require('../model/InternalServerError'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ContractsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contract, root.PakkasmarjaRestClient.ContractDocumentSignRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
+    root.PakkasmarjaRestClient.ContractsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contract, root.PakkasmarjaRestClient.ContractDocumentSignRequest, root.PakkasmarjaRestClient.ContractDocumentTemplate, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
   }
-}(this, function(ApiClient, BadRequest, Contract, ContractDocumentSignRequest, Forbidden, InternalServerError) {
+}(this, function(ApiClient, BadRequest, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, Forbidden, InternalServerError) {
   'use strict';
 
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.3
+   * @version 0.0.4
    */
 
   /**
@@ -117,6 +117,66 @@
 
 
     /**
+     * Create contract document template
+     * Create new contract document template
+     * @param {String} contractId contract id
+     * @param {module:model/ContractDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ContractDocumentTemplate} and HTTP response
+     */
+    this.createContractDocumentTemplateWithHttpInfo = function(contractId, body) {
+      var postBody = body;
+
+      // verify the required parameter 'contractId' is set
+      if (contractId === undefined || contractId === null) {
+        throw new Error("Missing the required parameter 'contractId' when calling createContractDocumentTemplate");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling createContractDocumentTemplate");
+      }
+
+
+      var pathParams = {
+        'contractId': contractId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = ContractDocumentTemplate;
+
+      return this.apiClient.callApi(
+        '/contracts/{contractId}/documentTemplates', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Create contract document template
+     * Create new contract document template
+     * @param {String} contractId contract id
+     * @param {module:model/ContractDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ContractDocumentTemplate}
+     */
+    this.createContractDocumentTemplate = function(contractId, body) {
+      return this.createContractDocumentTemplateWithHttpInfo(contractId, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Find contract
      * Finds contract by id
      * @param {String} id contract id
@@ -169,6 +229,67 @@
      */
     this.findContract = function(id, opts) {
       return this.findContractWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Find contract document template
+     * Finds a contract templates
+     * @param {String} contractId contract id
+     * @param {String} contractDocumentTemplateId contract id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ContractDocumentTemplate} and HTTP response
+     */
+    this.findContractDocumentTemplateWithHttpInfo = function(contractId, contractDocumentTemplateId) {
+      var postBody = null;
+
+      // verify the required parameter 'contractId' is set
+      if (contractId === undefined || contractId === null) {
+        throw new Error("Missing the required parameter 'contractId' when calling findContractDocumentTemplate");
+      }
+
+      // verify the required parameter 'contractDocumentTemplateId' is set
+      if (contractDocumentTemplateId === undefined || contractDocumentTemplateId === null) {
+        throw new Error("Missing the required parameter 'contractDocumentTemplateId' when calling findContractDocumentTemplate");
+      }
+
+
+      var pathParams = {
+        'contractId': contractId,
+        'contractDocumentTemplateId': contractDocumentTemplateId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = ContractDocumentTemplate;
+
+      return this.apiClient.callApi(
+        '/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Find contract document template
+     * Finds a contract templates
+     * @param {String} contractId contract id
+     * @param {String} contractDocumentTemplateId contract id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ContractDocumentTemplate}
+     */
+    this.findContractDocumentTemplate = function(contractId, contractDocumentTemplateId) {
+      return this.findContractDocumentTemplateWithHttpInfo(contractId, contractDocumentTemplateId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -238,6 +359,65 @@
      */
     this.getContractDocument = function(id, type, format) {
       return this.getContractDocumentWithHttpInfo(id, type, format)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List contract document templates
+     * Lists contract templates
+     * @param {String} contractId contract id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.type Filter results by document template type
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ContractDocumentTemplate>} and HTTP response
+     */
+    this.listContractDocumentTemplatesWithHttpInfo = function(contractId, opts) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'contractId' is set
+      if (contractId === undefined || contractId === null) {
+        throw new Error("Missing the required parameter 'contractId' when calling listContractDocumentTemplates");
+      }
+
+
+      var pathParams = {
+        'contractId': contractId
+      };
+      var queryParams = {
+        'type': opts['type'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = [ContractDocumentTemplate];
+
+      return this.apiClient.callApi(
+        '/contracts/{contractId}/documentTemplates', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * List contract document templates
+     * Lists contract templates
+     * @param {String} contractId contract id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.type Filter results by document template type
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ContractDocumentTemplate>}
+     */
+    this.listContractDocumentTemplates = function(contractId, opts) {
+      return this.listContractDocumentTemplatesWithHttpInfo(contractId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -349,6 +529,74 @@
      */
     this.updateContract = function(id, body) {
       return this.updateContractWithHttpInfo(id, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Updates contract document template
+     * Updates a contract templates
+     * @param {String} contractId contract id
+     * @param {String} contractDocumentTemplateId contract id
+     * @param {module:model/ContractDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ContractDocumentTemplate} and HTTP response
+     */
+    this.updateContractDocumentTemplateWithHttpInfo = function(contractId, contractDocumentTemplateId, body) {
+      var postBody = body;
+
+      // verify the required parameter 'contractId' is set
+      if (contractId === undefined || contractId === null) {
+        throw new Error("Missing the required parameter 'contractId' when calling updateContractDocumentTemplate");
+      }
+
+      // verify the required parameter 'contractDocumentTemplateId' is set
+      if (contractDocumentTemplateId === undefined || contractDocumentTemplateId === null) {
+        throw new Error("Missing the required parameter 'contractDocumentTemplateId' when calling updateContractDocumentTemplate");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateContractDocumentTemplate");
+      }
+
+
+      var pathParams = {
+        'contractId': contractId,
+        'contractDocumentTemplateId': contractDocumentTemplateId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = ContractDocumentTemplate;
+
+      return this.apiClient.callApi(
+        '/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Updates contract document template
+     * Updates a contract templates
+     * @param {String} contractId contract id
+     * @param {String} contractDocumentTemplateId contract id
+     * @param {module:model/ContractDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ContractDocumentTemplate}
+     */
+    this.updateContractDocumentTemplate = function(contractId, contractDocumentTemplateId, body) {
+      return this.updateContractDocumentTemplateWithHttpInfo(contractId, contractDocumentTemplateId, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.InternalServerError = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.DeliveryPlace = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The InternalServerError model module.
-   * @module model/InternalServerError
+   * The DeliveryPlace model module.
+   * @module model/DeliveryPlace
    * @version 0.0.4
    */
 
   /**
-   * Constructs a new <code>InternalServerError</code>.
-   * @alias module:model/InternalServerError
+   * Constructs a new <code>DeliveryPlace</code>.
+   * @alias module:model/DeliveryPlace
    * @class
    */
   var exports = function() {
@@ -52,34 +52,34 @@
   };
 
   /**
-   * Constructs a <code>InternalServerError</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DeliveryPlace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InternalServerError} obj Optional instance to populate.
-   * @return {module:model/InternalServerError} The populated <code>InternalServerError</code> instance.
+   * @param {module:model/DeliveryPlace} obj Optional instance to populate.
+   * @return {module:model/DeliveryPlace} The populated <code>DeliveryPlace</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} code
+   * @member {String} id
    */
-  exports.prototype['code'] = undefined;
+  exports.prototype['id'] = undefined;
   /**
-   * @member {String} message
+   * @member {String} name
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['name'] = undefined;
 
 
 

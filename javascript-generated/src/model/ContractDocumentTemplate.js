@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.OperationReport = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.ContractDocumentTemplate = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The OperationReport model module.
-   * @module model/OperationReport
+   * The ContractDocumentTemplate model module.
+   * @module model/ContractDocumentTemplate
    * @version 0.0.4
    */
 
   /**
-   * Constructs a new <code>OperationReport</code>.
-   * @alias module:model/OperationReport
+   * Constructs a new <code>ContractDocumentTemplate</code>.
+   * @alias module:model/ContractDocumentTemplate
    * @class
    */
   var exports = function() {
@@ -56,11 +56,11 @@
   };
 
   /**
-   * Constructs a <code>OperationReport</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ContractDocumentTemplate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/OperationReport} obj Optional instance to populate.
-   * @return {module:model/OperationReport} The populated <code>OperationReport</code> instance.
+   * @param {module:model/ContractDocumentTemplate} obj Optional instance to populate.
+   * @return {module:model/ContractDocumentTemplate} The populated <code>ContractDocumentTemplate</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -69,20 +69,20 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
+      if (data.hasOwnProperty('contractId')) {
+        obj['contractId'] = ApiClient.convertToType(data['contractId'], 'String');
+      }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('started')) {
-        obj['started'] = ApiClient.convertToType(data['started'], 'Date');
+      if (data.hasOwnProperty('contents')) {
+        obj['contents'] = ApiClient.convertToType(data['contents'], 'String');
       }
-      if (data.hasOwnProperty('pendingCount')) {
-        obj['pendingCount'] = ApiClient.convertToType(data['pendingCount'], 'Number');
+      if (data.hasOwnProperty('header')) {
+        obj['header'] = ApiClient.convertToType(data['header'], 'String');
       }
-      if (data.hasOwnProperty('failedCount')) {
-        obj['failedCount'] = ApiClient.convertToType(data['failedCount'], 'Number');
-      }
-      if (data.hasOwnProperty('successCount')) {
-        obj['successCount'] = ApiClient.convertToType(data['successCount'], 'Number');
+      if (data.hasOwnProperty('footer')) {
+        obj['footer'] = ApiClient.convertToType(data['footer'], 'String');
       }
     }
     return obj;
@@ -93,25 +93,25 @@
    */
   exports.prototype['id'] = undefined;
   /**
+   * @member {String} contractId
+   */
+  exports.prototype['contractId'] = undefined;
+  /**
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * @member {Date} started
+   * @member {String} contents
    */
-  exports.prototype['started'] = undefined;
+  exports.prototype['contents'] = undefined;
   /**
-   * @member {Number} pendingCount
+   * @member {String} header
    */
-  exports.prototype['pendingCount'] = undefined;
+  exports.prototype['header'] = undefined;
   /**
-   * @member {Number} failedCount
+   * @member {String} footer
    */
-  exports.prototype['failedCount'] = undefined;
-  /**
-   * @member {Number} successCount
-   */
-  exports.prototype['successCount'] = undefined;
+  exports.prototype['footer'] = undefined;
 
 
 

@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/ItemGroup'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/ItemGroup'), require('../model/ItemGroupDocumentTemplate'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ItemGroupsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.ItemGroup);
+    root.PakkasmarjaRestClient.ItemGroupsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.ItemGroup, root.PakkasmarjaRestClient.ItemGroupDocumentTemplate);
   }
-}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, ItemGroup) {
+}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate) {
   'use strict';
 
   /**
    * ItemGroups service.
    * @module api/ItemGroupsApi
-   * @version 0.0.3
+   * @version 0.0.4
    */
 
   /**
@@ -102,8 +102,122 @@
 
 
     /**
-     * Lists itemGroups
-     * Lists itemGroups
+     * Find item group document template
+     * Finds item group template
+     * @param {String} itemGroupId item group id
+     * @param {String} id template id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ItemGroupDocumentTemplate} and HTTP response
+     */
+    this.findItemGroupDocumentTemplateWithHttpInfo = function(itemGroupId, id) {
+      var postBody = null;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling findItemGroupDocumentTemplate");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling findItemGroupDocumentTemplate");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = ItemGroupDocumentTemplate;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/documentTemplates/{id}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Find item group document template
+     * Finds item group template
+     * @param {String} itemGroupId item group id
+     * @param {String} id template id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ItemGroupDocumentTemplate}
+     */
+    this.findItemGroupDocumentTemplate = function(itemGroupId, id) {
+      return this.findItemGroupDocumentTemplateWithHttpInfo(itemGroupId, id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List item group document templates
+     * Lists item group templates
+     * @param {String} itemGroupId item group id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ItemGroupDocumentTemplate>} and HTTP response
+     */
+    this.listItemGroupDocumentTemplatesWithHttpInfo = function(itemGroupId) {
+      var postBody = null;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling listItemGroupDocumentTemplates");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = [ItemGroupDocumentTemplate];
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/documentTemplates', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * List item group document templates
+     * Lists item group templates
+     * @param {String} itemGroupId item group id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ItemGroupDocumentTemplate>}
+     */
+    this.listItemGroupDocumentTemplates = function(itemGroupId) {
+      return this.listItemGroupDocumentTemplatesWithHttpInfo(itemGroupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Lists item groups
+     * Lists item groups
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ItemGroup>} and HTTP response
      */
     this.listItemGroupsWithHttpInfo = function() {
@@ -134,12 +248,80 @@
     }
 
     /**
-     * Lists itemGroups
-     * Lists itemGroups
+     * Lists item groups
+     * Lists item groups
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ItemGroup>}
      */
     this.listItemGroups = function() {
       return this.listItemGroupsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Updates item group document template
+     * Updated item group document template
+     * @param {String} itemGroupId item group id
+     * @param {String} id template id
+     * @param {module:model/ItemGroupDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ItemGroupDocumentTemplate} and HTTP response
+     */
+    this.updateItemGroupDocumentTemplateWithHttpInfo = function(itemGroupId, id, body) {
+      var postBody = body;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling updateItemGroupDocumentTemplate");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateItemGroupDocumentTemplate");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateItemGroupDocumentTemplate");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = ItemGroupDocumentTemplate;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/documentTemplates/{id}', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Updates item group document template
+     * Updated item group document template
+     * @param {String} itemGroupId item group id
+     * @param {String} id template id
+     * @param {module:model/ItemGroupDocumentTemplate} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ItemGroupDocumentTemplate}
+     */
+    this.updateItemGroupDocumentTemplate = function(itemGroupId, id, body) {
+      return this.updateItemGroupDocumentTemplateWithHttpInfo(itemGroupId, id, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
