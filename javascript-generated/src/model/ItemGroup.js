@@ -36,7 +36,7 @@
   /**
    * The ItemGroup model module.
    * @module model/ItemGroup
-   * @version 0.0.4
+   * @version 0.0.5
    */
 
   /**
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -68,6 +69,9 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('category')) {
+        obj['category'] = ApiClient.convertToType(data['category'], 'String');
+      }
     }
     return obj;
   }
@@ -80,6 +84,10 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+  /**
+   * @member {String} category
+   */
+  exports.prototype['category'] = undefined;
 
 
 

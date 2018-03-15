@@ -33,7 +33,7 @@
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.4
+   * @version 0.0.5
    */
 
   /**
@@ -429,6 +429,8 @@
      * Lists contracts
      * @param {Object} opts Optional parameters
      * @param {String} opts.accept Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+     * @param {Boolean} opts.listAll Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this.
+     * @param {String} opts.itemGroupCategory Filters results by item group category.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Contract>} and HTTP response
      */
     this.listContractsWithHttpInfo = function(opts) {
@@ -439,6 +441,8 @@
       var pathParams = {
       };
       var queryParams = {
+        'listAll': opts['listAll'],
+        'itemGroupCategory': opts['itemGroupCategory'],
       };
       var collectionQueryParams = {
       };
@@ -465,6 +469,8 @@
      * Lists contracts
      * @param {Object} opts Optional parameters
      * @param {String} opts.accept Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+     * @param {Boolean} opts.listAll Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this.
+     * @param {String} opts.itemGroupCategory Filters results by item group category.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Contract>}
      */
     this.listContracts = function(opts) {

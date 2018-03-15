@@ -363,7 +363,9 @@ bearer.apiKey = 'YOUR API KEY';
 var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 
 var opts = { 
-  'accept': "accept_example" // String | Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+  'accept': "accept_example", // String | Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
+  'listAll': true, // Boolean | Returns all contracts instead of just user's own contracts. User must have permission to do this.
+  'itemGroupCategory': "itemGroupCategory_example" // String | Filters results by item group category.
 };
 apiInstance.listContracts(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -378,6 +380,8 @@ apiInstance.listContracts(opts).then(function(data) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **String**| Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response | [optional] 
+ **listAll** | **Boolean**| Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this. | [optional] 
+ **itemGroupCategory** | **String**| Filters results by item group category. | [optional] 
 
 ### Return type
 
