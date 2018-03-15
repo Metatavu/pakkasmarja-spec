@@ -1,6 +1,6 @@
 {
   "name": "pakkasmarja-rest-client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "REST_API_for_Pakkasmarja",
   "license": "gpl-3.0",
   "main": "src/index.js",
