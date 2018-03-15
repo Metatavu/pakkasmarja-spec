@@ -127,6 +127,10 @@ paths:
           in: query
           type: boolean
           description: Returns all contracts instead of just user's own contracts. User must have permission to do this.
+        - name: itemGroupCategory 
+          in: query
+          type: string
+          description: Filters results by item group category.
       responses:
         '200':
           description: List of contracts.
@@ -950,6 +954,8 @@ definitions:
         type: string
         format: uuid
       name:
+        type: string
+      category:
         type: string
   DeliveryPlace:
     type: object
