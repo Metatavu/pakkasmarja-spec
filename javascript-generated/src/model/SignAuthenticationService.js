@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.NotImplemented = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.SignAuthenticationService = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The NotImplemented model module.
-   * @module model/NotImplemented
+   * The SignAuthenticationService model module.
+   * @module model/SignAuthenticationService
    * @version 0.0.7
    */
 
   /**
-   * Constructs a new <code>NotImplemented</code>.
-   * @alias module:model/NotImplemented
+   * Constructs a new <code>SignAuthenticationService</code>.
+   * @alias module:model/SignAuthenticationService
    * @class
    */
   var exports = function() {
@@ -49,37 +49,45 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>NotImplemented</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SignAuthenticationService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/NotImplemented} obj Optional instance to populate.
-   * @return {module:model/NotImplemented} The populated <code>NotImplemented</code> instance.
+   * @param {module:model/SignAuthenticationService} obj Optional instance to populate.
+   * @return {module:model/SignAuthenticationService} The populated <code>SignAuthenticationService</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+      if (data.hasOwnProperty('identifier')) {
+        obj['identifier'] = ApiClient.convertToType(data['identifier'], 'String');
       }
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('image')) {
+        obj['image'] = ApiClient.convertToType(data['image'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} code
+   * @member {String} identifier
    */
-  exports.prototype['code'] = undefined;
+  exports.prototype['identifier'] = undefined;
   /**
-   * @member {String} message
+   * @member {String} name
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['name'] = undefined;
+  /**
+   * @member {String} image
+   */
+  exports.prototype['image'] = undefined;
 
 
 

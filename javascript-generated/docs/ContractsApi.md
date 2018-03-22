@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createContractDocumentSignRequest"></a>
 # **createContractDocumentSignRequest**
-> ContractDocumentSignRequest createContractDocumentSignRequest(id, type, body)
+> ContractDocumentSignRequest createContractDocumentSignRequest(id, type, ssn, authService, body)
 
 Requests contract document electronic signing
 
@@ -40,9 +40,13 @@ var id = "id_example"; // String | contract id
 
 var type = "type_example"; // String | document type
 
+var ssn = "ssn_example"; // String | Social security number
+
+var authService = "authService_example"; // String | Used auth service name
+
 var body = new PakkasmarjaRestClient.ContractDocumentSignRequest(); // ContractDocumentSignRequest | Payload
 
-apiInstance.createContractDocumentSignRequest(id, type, body).then(function(data) {
+apiInstance.createContractDocumentSignRequest(id, type, ssn, authService, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -56,6 +60,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| contract id | 
  **type** | **String**| document type | 
+ **ssn** | **String**| Social security number | 
+ **authService** | **String**| Used auth service name | 
  **body** | [**ContractDocumentSignRequest**](ContractDocumentSignRequest.md)| Payload | 
 
 ### Return type

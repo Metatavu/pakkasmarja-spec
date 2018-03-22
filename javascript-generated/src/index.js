@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Address', 'model/BadRequest', 'model/Contact', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/DeliveryPlace', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate', 'model/NotFound', 'model/NotImplemented', 'model/Operation', 'model/OperationReport', 'model/OperationReportItem', 'api/ContactsApi', 'api/ContractsApi', 'api/DeliveryPlacesApi', 'api/ItemGroupsApi', 'api/OperationReportsApi', 'api/OperationsApi'], factory);
+    define(['ApiClient', 'model/Address', 'model/BadRequest', 'model/Contact', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/DeliveryPlace', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate', 'model/NotFound', 'model/NotImplemented', 'model/Operation', 'model/OperationReport', 'model/OperationReportItem', 'model/SignAuthenticationService', 'api/ContactsApi', 'api/ContractsApi', 'api/DeliveryPlacesApi', 'api/ItemGroupsApi', 'api/OperationReportsApi', 'api/OperationsApi', 'api/SignAuthenticationServicesApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Address'), require('./model/BadRequest'), require('./model/Contact'), require('./model/Contract'), require('./model/ContractDocumentSignRequest'), require('./model/ContractDocumentTemplate'), require('./model/DeliveryPlace'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/ItemGroup'), require('./model/ItemGroupDocumentTemplate'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Operation'), require('./model/OperationReport'), require('./model/OperationReportItem'), require('./api/ContactsApi'), require('./api/ContractsApi'), require('./api/DeliveryPlacesApi'), require('./api/ItemGroupsApi'), require('./api/OperationReportsApi'), require('./api/OperationsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Address'), require('./model/BadRequest'), require('./model/Contact'), require('./model/Contract'), require('./model/ContractDocumentSignRequest'), require('./model/ContractDocumentTemplate'), require('./model/DeliveryPlace'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/ItemGroup'), require('./model/ItemGroupDocumentTemplate'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Operation'), require('./model/OperationReport'), require('./model/OperationReportItem'), require('./model/SignAuthenticationService'), require('./api/ContactsApi'), require('./api/ContractsApi'), require('./api/DeliveryPlacesApi'), require('./api/ItemGroupsApi'), require('./api/OperationReportsApi'), require('./api/OperationsApi'), require('./api/SignAuthenticationServicesApi'));
   }
-}(function(ApiClient, Address, BadRequest, Contact, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, DeliveryPlace, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate, NotFound, NotImplemented, Operation, OperationReport, OperationReportItem, ContactsApi, ContractsApi, DeliveryPlacesApi, ItemGroupsApi, OperationReportsApi, OperationsApi) {
+}(function(ApiClient, Address, BadRequest, Contact, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, DeliveryPlace, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate, NotFound, NotImplemented, Operation, OperationReport, OperationReportItem, SignAuthenticationService, ContactsApi, ContractsApi, DeliveryPlacesApi, ItemGroupsApi, OperationReportsApi, OperationsApi, SignAuthenticationServicesApi) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.0.6
+   * @version 0.0.7
    */
   var exports = {
     /**
@@ -142,6 +142,11 @@
      */
     OperationReportItem: OperationReportItem,
     /**
+     * The SignAuthenticationService model constructor.
+     * @property {module:model/SignAuthenticationService}
+     */
+    SignAuthenticationService: SignAuthenticationService,
+    /**
      * The ContactsApi service constructor.
      * @property {module:api/ContactsApi}
      */
@@ -170,7 +175,12 @@
      * The OperationsApi service constructor.
      * @property {module:api/OperationsApi}
      */
-    OperationsApi: OperationsApi
+    OperationsApi: OperationsApi,
+    /**
+     * The SignAuthenticationServicesApi service constructor.
+     * @property {module:api/SignAuthenticationServicesApi}
+     */
+    SignAuthenticationServicesApi: SignAuthenticationServicesApi
   };
 
   return exports;

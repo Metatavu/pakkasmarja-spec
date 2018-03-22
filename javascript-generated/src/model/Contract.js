@@ -36,7 +36,7 @@
   /**
    * The Contract model module.
    * @module model/Contract
-   * @version 0.0.6
+   * @version 0.0.7
    */
 
   /**

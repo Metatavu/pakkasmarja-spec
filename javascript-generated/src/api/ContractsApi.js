@@ -33,7 +33,7 @@
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.6
+   * @version 0.0.7
    */
 
   /**
@@ -53,10 +53,12 @@
      * Requests contract document electronic signing
      * @param {String} id contract id
      * @param {String} type document type
+     * @param {String} ssn Social security number
+     * @param {String} authService Used auth service name
      * @param {module:model/ContractDocumentSignRequest} body Payload
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ContractDocumentSignRequest} and HTTP response
      */
-    this.createContractDocumentSignRequestWithHttpInfo = function(id, type, body) {
+    this.createContractDocumentSignRequestWithHttpInfo = function(id, type, ssn, authService, body) {
       var postBody = body;
 
       // verify the required parameter 'id' is set
@@ -67,6 +69,16 @@
       // verify the required parameter 'type' is set
       if (type === undefined || type === null) {
         throw new Error("Missing the required parameter 'type' when calling createContractDocumentSignRequest");
+      }
+
+      // verify the required parameter 'ssn' is set
+      if (ssn === undefined || ssn === null) {
+        throw new Error("Missing the required parameter 'ssn' when calling createContractDocumentSignRequest");
+      }
+
+      // verify the required parameter 'authService' is set
+      if (authService === undefined || authService === null) {
+        throw new Error("Missing the required parameter 'authService' when calling createContractDocumentSignRequest");
       }
 
       // verify the required parameter 'body' is set
@@ -80,6 +92,8 @@
         'type': type
       };
       var queryParams = {
+        'ssn': ssn,
+        'authService': authService,
       };
       var collectionQueryParams = {
       };
@@ -105,11 +119,13 @@
      * Requests contract document electronic signing
      * @param {String} id contract id
      * @param {String} type document type
+     * @param {String} ssn Social security number
+     * @param {String} authService Used auth service name
      * @param {module:model/ContractDocumentSignRequest} body Payload
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ContractDocumentSignRequest}
      */
-    this.createContractDocumentSignRequest = function(id, type, body) {
-      return this.createContractDocumentSignRequestWithHttpInfo(id, type, body)
+    this.createContractDocumentSignRequest = function(id, type, ssn, authService, body) {
+      return this.createContractDocumentSignRequestWithHttpInfo(id, type, ssn, authService, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -36,7 +36,7 @@
   /**
    * The ItemGroup model module.
    * @module model/ItemGroup
-   * @version 0.0.6
+   * @version 0.0.7
    */
 
   /**
