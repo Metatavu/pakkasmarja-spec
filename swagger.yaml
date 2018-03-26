@@ -436,13 +436,15 @@ paths:
           description: document type
           type: string
         - name: ssn
-          in: query
           required: true
+          in: query
           description: Social security number
+          type: string
         - name: authService
-          in: query
           required: true
+          in: query
           description: Used auth service name
+          type: string
         - name: body
           in: body
           description: Payload
