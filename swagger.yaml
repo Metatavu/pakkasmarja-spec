@@ -435,6 +435,14 @@ paths:
           in: path
           description: document type
           type: string
+        - name: ssn
+          in: query
+          required: true
+          description: Social security number
+        - name: authService
+          in: query
+          required: true
+          description: Used auth service name
         - name: body
           in: body
           description: Payload
@@ -828,6 +836,32 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  '/signAuthenticationServices':
+    get:
+      operationId: listSignAuthenticationServices
+      summary: List sign authentication services
+      description: List available sign authentication services
+      tags:
+        - SignAuthenticationServices
+      responses:
+        '200':
+          description: A list of sign authentication services
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SignAuthenticationService'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
 definitions:
   Contact:
     type: object
@@ -950,6 +984,16 @@ definitions:
     properties:
       redirectUrl:
         type: string
+  SignAuthenticationService:
+    type: object
+    properties:
+      identifier:
+        type: string
+      name:
+        type: string
+      image:
+        type: string
+        format: url
   ItemGroup:
     type: object
     properties:
