@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ItemGroup = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.Price = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The ItemGroup model module.
-   * @module model/ItemGroup
+   * The Price model module.
+   * @module model/Price
    * @version 0.0.8
    */
 
   /**
-   * Constructs a new <code>ItemGroup</code>.
-   * @alias module:model/ItemGroup
+   * Constructs a new <code>Price</code>.
+   * @alias module:model/Price
    * @class
    */
   var exports = function() {
@@ -50,14 +50,16 @@
 
 
 
+
+
   };
 
   /**
-   * Constructs a <code>ItemGroup</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Price</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ItemGroup} obj Optional instance to populate.
-   * @return {module:model/ItemGroup} The populated <code>ItemGroup</code> instance.
+   * @param {module:model/Price} obj Optional instance to populate.
+   * @return {module:model/Price} The populated <code>Price</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -66,11 +68,17 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('group')) {
+        obj['group'] = ApiClient.convertToType(data['group'], 'String');
       }
-      if (data.hasOwnProperty('category')) {
-        obj['category'] = ApiClient.convertToType(data['category'], 'String');
+      if (data.hasOwnProperty('year')) {
+        obj['year'] = ApiClient.convertToType(data['year'], 'Number');
+      }
+      if (data.hasOwnProperty('unit')) {
+        obj['unit'] = ApiClient.convertToType(data['unit'], 'String');
+      }
+      if (data.hasOwnProperty('price')) {
+        obj['price'] = ApiClient.convertToType(data['price'], 'String');
       }
     }
     return obj;
@@ -81,13 +89,21 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * @member {String} name
+   * @member {String} group
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['group'] = undefined;
   /**
-   * @member {String} category
+   * @member {Number} year
    */
-  exports.prototype['category'] = undefined;
+  exports.prototype['year'] = undefined;
+  /**
+   * @member {String} unit
+   */
+  exports.prototype['unit'] = undefined;
+  /**
+   * @member {String} price
+   */
+  exports.prototype['price'] = undefined;
 
 
 

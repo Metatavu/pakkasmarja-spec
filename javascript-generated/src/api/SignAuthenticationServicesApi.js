@@ -33,7 +33,7 @@
   /**
    * SignAuthenticationServices service.
    * @module api/SignAuthenticationServicesApi
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**

@@ -36,7 +36,7 @@
   /**
    * The DeliveryPlace model module.
    * @module model/DeliveryPlace
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**

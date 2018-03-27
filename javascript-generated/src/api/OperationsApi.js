@@ -33,7 +33,7 @@
   /**
    * Operations service.
    * @module api/OperationsApi
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**

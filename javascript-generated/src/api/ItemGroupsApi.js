@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate', 'model/Price'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/ItemGroup'), require('../model/ItemGroupDocumentTemplate'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/ItemGroup'), require('../model/ItemGroupDocumentTemplate'), require('../model/Price'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ItemGroupsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.ItemGroup, root.PakkasmarjaRestClient.ItemGroupDocumentTemplate);
+    root.PakkasmarjaRestClient.ItemGroupsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.ItemGroup, root.PakkasmarjaRestClient.ItemGroupDocumentTemplate, root.PakkasmarjaRestClient.Price);
   }
-}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate) {
+}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate, Price) {
   'use strict';
 
   /**
    * ItemGroups service.
    * @module api/ItemGroupsApi
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**
@@ -46,6 +46,66 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+
+    /**
+     * Creates item group price
+     * Creates an item group price
+     * @param {String} itemGroupId item group id
+     * @param {module:model/Price} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Price} and HTTP response
+     */
+    this.createItemGroupPriceWithHttpInfo = function(itemGroupId, body) {
+      var postBody = body;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling createItemGroupPrice");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling createItemGroupPrice");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = Price;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/prices', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Creates item group price
+     * Creates an item group price
+     * @param {String} itemGroupId item group id
+     * @param {module:model/Price} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Price}
+     */
+    this.createItemGroupPrice = function(itemGroupId, body) {
+      return this.createItemGroupPriceWithHttpInfo(itemGroupId, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -163,6 +223,67 @@
 
 
     /**
+     * Find item group price
+     * Finds a item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Price} and HTTP response
+     */
+    this.findItemGroupPriceWithHttpInfo = function(itemGroupId, priceId) {
+      var postBody = null;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling findItemGroupPrice");
+      }
+
+      // verify the required parameter 'priceId' is set
+      if (priceId === undefined || priceId === null) {
+        throw new Error("Missing the required parameter 'priceId' when calling findItemGroupPrice");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId,
+        'priceId': priceId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = Price;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/prices/{priceId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Find item group price
+     * Finds a item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Price}
+     */
+    this.findItemGroupPrice = function(itemGroupId, priceId) {
+      return this.findItemGroupPriceWithHttpInfo(itemGroupId, priceId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List item group document templates
      * Lists item group templates
      * @param {String} itemGroupId item group id
@@ -209,6 +330,74 @@
      */
     this.listItemGroupDocumentTemplates = function(itemGroupId) {
       return this.listItemGroupDocumentTemplatesWithHttpInfo(itemGroupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List item group prices
+     * Lists item group prices
+     * @param {String} itemGroupId item group id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sortBy sort by (YEAR)
+     * @param {String} opts.sortDir sort direction (ASC, DESC)
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Price>} and HTTP response
+     */
+    this.listItemGroupPricesWithHttpInfo = function(itemGroupId, opts) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling listItemGroupPrices");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId
+      };
+      var queryParams = {
+        'sortBy': opts['sortBy'],
+        'sortDir': opts['sortDir'],
+        'firstResult': opts['firstResult'],
+        'maxResults': opts['maxResults'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = [Price];
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/prices', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * List item group prices
+     * Lists item group prices
+     * @param {String} itemGroupId item group id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sortBy sort by (YEAR)
+     * @param {String} opts.sortDir sort direction (ASC, DESC)
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Price>}
+     */
+    this.listItemGroupPrices = function(itemGroupId, opts) {
+      return this.listItemGroupPricesWithHttpInfo(itemGroupId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -322,6 +511,74 @@
      */
     this.updateItemGroupDocumentTemplate = function(itemGroupId, id, body) {
       return this.updateItemGroupDocumentTemplateWithHttpInfo(itemGroupId, id, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update item group price
+     * Updates a item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @param {module:model/Price} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Price} and HTTP response
+     */
+    this.updateItemGroupPriceWithHttpInfo = function(itemGroupId, priceId, body) {
+      var postBody = body;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling updateItemGroupPrice");
+      }
+
+      // verify the required parameter 'priceId' is set
+      if (priceId === undefined || priceId === null) {
+        throw new Error("Missing the required parameter 'priceId' when calling updateItemGroupPrice");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateItemGroupPrice");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId,
+        'priceId': priceId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = Price;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/prices/{priceId}', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Update item group price
+     * Updates a item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @param {module:model/Price} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Price}
+     */
+    this.updateItemGroupPrice = function(itemGroupId, priceId, body) {
+      return this.updateItemGroupPriceWithHttpInfo(itemGroupId, priceId, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

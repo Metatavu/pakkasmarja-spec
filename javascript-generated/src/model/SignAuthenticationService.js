@@ -36,7 +36,7 @@
   /**
    * The SignAuthenticationService model module.
    * @module model/SignAuthenticationService
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**

@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/Forbidden', 'model/InternalServerError'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/Forbidden', 'model/InternalServerError', 'model/Price'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contract'), require('../model/ContractDocumentSignRequest'), require('../model/ContractDocumentTemplate'), require('../model/Forbidden'), require('../model/InternalServerError'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contract'), require('../model/ContractDocumentSignRequest'), require('../model/ContractDocumentTemplate'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/Price'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ContractsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contract, root.PakkasmarjaRestClient.ContractDocumentSignRequest, root.PakkasmarjaRestClient.ContractDocumentTemplate, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
+    root.PakkasmarjaRestClient.ContractsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contract, root.PakkasmarjaRestClient.ContractDocumentSignRequest, root.PakkasmarjaRestClient.ContractDocumentTemplate, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError, root.PakkasmarjaRestClient.Price);
   }
-}(this, function(ApiClient, BadRequest, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, Forbidden, InternalServerError) {
+}(this, function(ApiClient, BadRequest, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, Forbidden, InternalServerError, Price) {
   'use strict';
 
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.7
+   * @version 0.0.8
    */
 
   /**
@@ -434,6 +434,74 @@
      */
     this.listContractDocumentTemplates = function(contractId, opts) {
       return this.listContractDocumentTemplatesWithHttpInfo(contractId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List contract prices
+     * Lists contract prices
+     * @param {String} contractId contract id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sortBy sort by (YEAR)
+     * @param {String} opts.sortDir sort direction (ASC, DESC)
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Price>} and HTTP response
+     */
+    this.listContractPricesWithHttpInfo = function(contractId, opts) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'contractId' is set
+      if (contractId === undefined || contractId === null) {
+        throw new Error("Missing the required parameter 'contractId' when calling listContractPrices");
+      }
+
+
+      var pathParams = {
+        'contractId': contractId
+      };
+      var queryParams = {
+        'sortBy': opts['sortBy'],
+        'sortDir': opts['sortDir'],
+        'firstResult': opts['firstResult'],
+        'maxResults': opts['maxResults'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = [Price];
+
+      return this.apiClient.callApi(
+        '/contracts/{contractId}/prices', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * List contract prices
+     * Lists contract prices
+     * @param {String} contractId contract id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sortBy sort by (YEAR)
+     * @param {String} opts.sortDir sort direction (ASC, DESC)
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Price>}
+     */
+    this.listContractPrices = function(contractId, opts) {
+      return this.listContractPricesWithHttpInfo(contractId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
