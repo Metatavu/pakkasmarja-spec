@@ -1144,6 +1144,8 @@ definitions:
       deliveryPlaceId:
         type: string
         format: uuid
+      deliveryPlaceComment:
+        type: string
       itemGroupId:
         type: string
         format: uuid
@@ -1159,6 +1161,8 @@ definitions:
       proposedQuantity:
         type: number
         format: double
+      quantityComment:
+        type: string
       startDate:
         type: string
         format: date
