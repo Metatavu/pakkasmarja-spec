@@ -127,10 +127,23 @@ paths:
           in: query
           type: boolean
           description: Returns all contracts instead of just user's own contracts. User must have permission to do this.
-        - name: itemGroupCategory 
+        - name: itemGroupCategory
           in: query
           type: string
           description: Filters results by item group category.
+        - name: itemGroupId
+          in: query
+          type: string
+          description: Filters results by item group id.
+        - name: year
+          in: query
+          type: integer
+          format: int32
+          description: Filters results by year.
+        - name: status
+          in: query
+          type: string
+          description: Filters results by status
       responses:
         '200':
           description: List of contracts.
@@ -1134,6 +1147,9 @@ definitions:
       itemGroupId:
         type: string
         format: uuid
+      year:
+        type: integer
+        format: int32
       contractQuantity:
         type: number
         format: double
