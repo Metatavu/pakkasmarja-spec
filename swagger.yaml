@@ -144,6 +144,16 @@ paths:
           in: query
           type: string
           description: Filters results by status
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          type: integer
+          format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          type: integer
+          format: int64
       responses:
         '200':
           description: List of contracts.
