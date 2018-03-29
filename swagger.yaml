@@ -1154,6 +1154,9 @@ definitions:
       deliveryPlaceId:
         type: string
         format: uuid
+      proposedDeliveryPlaceId:
+        type: string
+        format: uuid
       deliveryPlaceComment:
         type: string
       itemGroupId:
