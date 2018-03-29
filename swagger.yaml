@@ -1175,6 +1175,8 @@ definitions:
       termDate:
         type: string
         format: date
+      rejectComment:
+        type: string
       status:
         type: string
         enum:
@@ -1182,6 +1184,7 @@ definitions:
           - ON_HOLD
           - DRAFT
           - TERMINATED
+          - REJECTED
       remarks:
         type: string
   Price:
