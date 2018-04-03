@@ -33,7 +33,7 @@
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.9
+   * @version 0.0.10
    */
 
   /**
@@ -80,7 +80,7 @@
       var returnType = Contract;
 
       return this.apiClient.callApi(
-        '/contacts', 'POST',
+        '/contracts', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );

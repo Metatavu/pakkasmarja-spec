@@ -4,7 +4,7 @@ All URIs are relative to *https://localhost/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createContract**](ContractsApi.md#createContract) | **POST** /contacts | Create contract
+[**createContract**](ContractsApi.md#createContract) | **POST** /contracts | Create contract
 [**createContractDocumentSignRequest**](ContractsApi.md#createContractDocumentSignRequest) | **POST** /contracts/{id}/documents/{type}/signRequests | Requests contract document electronic signing
 [**createContractDocumentTemplate**](ContractsApi.md#createContractDocumentTemplate) | **POST** /contracts/{contractId}/documentTemplates | Create contract document template
 [**findContract**](ContractsApi.md#findContract) | **GET** /contracts/{id} | Find contract
