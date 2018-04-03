@@ -33,7 +33,7 @@
   /**
    * Contracts service.
    * @module api/ContractsApi
-   * @version 0.0.8
+   * @version 0.0.9
    */
 
   /**
@@ -46,6 +46,58 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+
+    /**
+     * Create contract
+     * Create new contract
+     * @param {module:model/Contract} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Contract} and HTTP response
+     */
+    this.createContractWithHttpInfo = function(body) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling createContract");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = Contract;
+
+      return this.apiClient.callApi(
+        '/contacts', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Create contract
+     * Create new contract
+     * @param {module:model/Contract} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Contract}
+     */
+    this.createContract = function(body) {
+      return this.createContractWithHttpInfo(body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -515,6 +567,11 @@
      * @param {String} opts.accept Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
      * @param {Boolean} opts.listAll Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this.
      * @param {String} opts.itemGroupCategory Filters results by item group category.
+     * @param {String} opts.itemGroupId Filters results by item group id.
+     * @param {Number} opts.year Filters results by year.
+     * @param {String} opts.status Filters results by status
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Contract>} and HTTP response
      */
     this.listContractsWithHttpInfo = function(opts) {
@@ -527,6 +584,11 @@
       var queryParams = {
         'listAll': opts['listAll'],
         'itemGroupCategory': opts['itemGroupCategory'],
+        'itemGroupId': opts['itemGroupId'],
+        'year': opts['year'],
+        'status': opts['status'],
+        'firstResult': opts['firstResult'],
+        'maxResults': opts['maxResults'],
       };
       var collectionQueryParams = {
       };
@@ -555,6 +617,11 @@
      * @param {String} opts.accept Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
      * @param {Boolean} opts.listAll Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this.
      * @param {String} opts.itemGroupCategory Filters results by item group category.
+     * @param {String} opts.itemGroupId Filters results by item group id.
+     * @param {Number} opts.year Filters results by year.
+     * @param {String} opts.status Filters results by status
+     * @param {Number} opts.firstResult Offset of first result. Defaults to 0
+     * @param {Number} opts.maxResults Max results. Defaults to 5
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Contract>}
      */
     this.listContracts = function(opts) {

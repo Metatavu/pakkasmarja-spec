@@ -6,14 +6,19 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
 **deliveryPlaceId** | **String** |  | [optional] 
+**proposedDeliveryPlaceId** | **String** |  | [optional] 
+**deliveryPlaceComment** | **String** |  | [optional] 
 **itemGroupId** | **String** |  | [optional] 
+**year** | **Number** |  | [optional] 
 **contractQuantity** | **Number** |  | [optional] 
 **deliveredQuantity** | **Number** |  | [optional] 
 **proposedQuantity** | **Number** |  | [optional] 
+**quantityComment** | **String** |  | [optional] 
 **startDate** | **Date** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 **signDate** | **Date** |  | [optional] 
 **termDate** | **Date** |  | [optional] 
+**rejectComment** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
 **remarks** | **String** |  | [optional] 
 
@@ -29,6 +34,8 @@ Name | Type | Description | Notes
 * `DRAFT` (value: `"DRAFT"`)
 
 * `TERMINATED` (value: `"TERMINATED"`)
+
+* `REJECTED` (value: `"REJECTED"`)
 
 
 

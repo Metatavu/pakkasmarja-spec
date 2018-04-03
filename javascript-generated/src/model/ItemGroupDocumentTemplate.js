@@ -36,7 +36,7 @@
   /**
    * The ItemGroupDocumentTemplate model module.
    * @module model/ItemGroupDocumentTemplate
-   * @version 0.0.8
+   * @version 0.0.9
    */
 
   /**

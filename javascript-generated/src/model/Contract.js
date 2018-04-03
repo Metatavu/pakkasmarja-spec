@@ -36,7 +36,7 @@
   /**
    * The Contract model module.
    * @module model/Contract
-   * @version 0.0.8
+   * @version 0.0.9
    */
 
   /**
@@ -46,6 +46,11 @@
    */
   var exports = function() {
     var _this = this;
+
+
+
+
+
 
 
 
@@ -82,8 +87,17 @@
       if (data.hasOwnProperty('deliveryPlaceId')) {
         obj['deliveryPlaceId'] = ApiClient.convertToType(data['deliveryPlaceId'], 'String');
       }
+      if (data.hasOwnProperty('proposedDeliveryPlaceId')) {
+        obj['proposedDeliveryPlaceId'] = ApiClient.convertToType(data['proposedDeliveryPlaceId'], 'String');
+      }
+      if (data.hasOwnProperty('deliveryPlaceComment')) {
+        obj['deliveryPlaceComment'] = ApiClient.convertToType(data['deliveryPlaceComment'], 'String');
+      }
       if (data.hasOwnProperty('itemGroupId')) {
         obj['itemGroupId'] = ApiClient.convertToType(data['itemGroupId'], 'String');
+      }
+      if (data.hasOwnProperty('year')) {
+        obj['year'] = ApiClient.convertToType(data['year'], 'Number');
       }
       if (data.hasOwnProperty('contractQuantity')) {
         obj['contractQuantity'] = ApiClient.convertToType(data['contractQuantity'], 'Number');
@@ -93,6 +107,9 @@
       }
       if (data.hasOwnProperty('proposedQuantity')) {
         obj['proposedQuantity'] = ApiClient.convertToType(data['proposedQuantity'], 'Number');
+      }
+      if (data.hasOwnProperty('quantityComment')) {
+        obj['quantityComment'] = ApiClient.convertToType(data['quantityComment'], 'String');
       }
       if (data.hasOwnProperty('startDate')) {
         obj['startDate'] = ApiClient.convertToType(data['startDate'], 'Date');
@@ -105,6 +122,9 @@
       }
       if (data.hasOwnProperty('termDate')) {
         obj['termDate'] = ApiClient.convertToType(data['termDate'], 'Date');
+      }
+      if (data.hasOwnProperty('rejectComment')) {
+        obj['rejectComment'] = ApiClient.convertToType(data['rejectComment'], 'String');
       }
       if (data.hasOwnProperty('status')) {
         obj['status'] = ApiClient.convertToType(data['status'], 'String');
@@ -129,9 +149,21 @@
    */
   exports.prototype['deliveryPlaceId'] = undefined;
   /**
+   * @member {String} proposedDeliveryPlaceId
+   */
+  exports.prototype['proposedDeliveryPlaceId'] = undefined;
+  /**
+   * @member {String} deliveryPlaceComment
+   */
+  exports.prototype['deliveryPlaceComment'] = undefined;
+  /**
    * @member {String} itemGroupId
    */
   exports.prototype['itemGroupId'] = undefined;
+  /**
+   * @member {Number} year
+   */
+  exports.prototype['year'] = undefined;
   /**
    * @member {Number} contractQuantity
    */
@@ -144,6 +176,10 @@
    * @member {Number} proposedQuantity
    */
   exports.prototype['proposedQuantity'] = undefined;
+  /**
+   * @member {String} quantityComment
+   */
+  exports.prototype['quantityComment'] = undefined;
   /**
    * @member {Date} startDate
    */
@@ -160,6 +196,10 @@
    * @member {Date} termDate
    */
   exports.prototype['termDate'] = undefined;
+  /**
+   * @member {String} rejectComment
+   */
+  exports.prototype['rejectComment'] = undefined;
   /**
    * @member {module:model/Contract.StatusEnum} status
    */
@@ -195,7 +235,12 @@
      * value: "TERMINATED"
      * @const
      */
-    "TERMINATED": "TERMINATED"  };
+    "TERMINATED": "TERMINATED",
+    /**
+     * value: "REJECTED"
+     * @const
+     */
+    "REJECTED": "REJECTED"  };
 
 
   return exports;

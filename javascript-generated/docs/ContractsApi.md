@@ -4,6 +4,7 @@ All URIs are relative to *https://localhost/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createContract**](ContractsApi.md#createContract) | **POST** /contacts | Create contract
 [**createContractDocumentSignRequest**](ContractsApi.md#createContractDocumentSignRequest) | **POST** /contracts/{id}/documents/{type}/signRequests | Requests contract document electronic signing
 [**createContractDocumentTemplate**](ContractsApi.md#createContractDocumentTemplate) | **POST** /contracts/{contractId}/documentTemplates | Create contract document template
 [**findContract**](ContractsApi.md#findContract) | **GET** /contracts/{id} | Find contract
@@ -15,6 +16,56 @@ Method | HTTP request | Description
 [**updateContract**](ContractsApi.md#updateContract) | **PUT** /contracts/{id} | Update contract
 [**updateContractDocumentTemplate**](ContractsApi.md#updateContractDocumentTemplate) | **PUT** /contracts/{contractId}/documentTemplates/{contractDocumentTemplateId} | Updates contract document template
 
+
+<a name="createContract"></a>
+# **createContract**
+> Contract createContract(body)
+
+Create contract
+
+Create new contract
+
+### Example
+```javascript
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
+
+var apiInstance = new PakkasmarjaRestClient.ContractsApi();
+
+var body = new PakkasmarjaRestClient.Contract(); // Contract | Payload
+
+apiInstance.createContract(body).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Contract**](Contract.md)| Payload | 
+
+### Return type
+
+[**Contract**](Contract.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8
 
 <a name="createContractDocumentSignRequest"></a>
 # **createContractDocumentSignRequest**
@@ -432,7 +483,12 @@ var apiInstance = new PakkasmarjaRestClient.ContractsApi();
 var opts = { 
   'accept': "accept_example", // String | Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
   'listAll': true, // Boolean | Returns all contracts instead of just user's own contracts. User must have permission to do this.
-  'itemGroupCategory': "itemGroupCategory_example" // String | Filters results by item group category.
+  'itemGroupCategory': "itemGroupCategory_example", // String | Filters results by item group category.
+  'itemGroupId': "itemGroupId_example", // String | Filters results by item group id.
+  'year': 56, // Number | Filters results by year.
+  'status': "status_example", // String | Filters results by status
+  'firstResult': 789, // Number | Offset of first result. Defaults to 0
+  'maxResults': 789 // Number | Max results. Defaults to 5
 };
 apiInstance.listContracts(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -449,6 +505,11 @@ Name | Type | Description  | Notes
  **accept** | **String**| Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response | [optional] 
  **listAll** | **Boolean**| Returns all contracts instead of just user&#39;s own contracts. User must have permission to do this. | [optional] 
  **itemGroupCategory** | **String**| Filters results by item group category. | [optional] 
+ **itemGroupId** | **String**| Filters results by item group id. | [optional] 
+ **year** | **Number**| Filters results by year. | [optional] 
+ **status** | **String**| Filters results by status | [optional] 
+ **firstResult** | **Number**| Offset of first result. Defaults to 0 | [optional] 
+ **maxResults** | **Number**| Max results. Defaults to 5 | [optional] 
 
 ### Return type
 
