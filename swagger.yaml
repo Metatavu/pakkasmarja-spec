@@ -1260,6 +1260,10 @@ definitions:
         format: date
       rejectComment:
         type: string
+      areaDetails:
+        type: string
+      deliverAll:
+        type: boolean
       status:
         type: string
         enum:
