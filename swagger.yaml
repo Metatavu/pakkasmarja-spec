@@ -1352,6 +1352,10 @@ definitions:
         type: string
       category:
         type: string
+      prerequisiteContractItemGroupId:
+        description: Require contract in specified item group before siging a contract
+        type: string
+        format: uuid
   DeliveryPlace:
     type: object
     properties:
