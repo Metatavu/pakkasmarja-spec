@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.NotFound = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.AreaDetail = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The NotFound model module.
-   * @module model/NotFound
+   * The AreaDetail model module.
+   * @module model/AreaDetail
    * @version 0.0.11
    */
 
   /**
-   * Constructs a new <code>NotFound</code>.
-   * @alias module:model/NotFound
+   * Constructs a new <code>AreaDetail</code>.
+   * @alias module:model/AreaDetail
    * @class
    */
   var exports = function() {
@@ -49,37 +49,53 @@
 
 
 
+
+
   };
 
   /**
-   * Constructs a <code>NotFound</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AreaDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/NotFound} obj Optional instance to populate.
-   * @return {module:model/NotFound} The populated <code>NotFound</code> instance.
+   * @param {module:model/AreaDetail} obj Optional instance to populate.
+   * @return {module:model/AreaDetail} The populated <code>AreaDetail</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('size')) {
+        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      }
+      if (data.hasOwnProperty('species')) {
+        obj['species'] = ApiClient.convertToType(data['species'], 'String');
+      }
+      if (data.hasOwnProperty('profitEstimation')) {
+        obj['profitEstimation'] = ApiClient.convertToType(data['profitEstimation'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} code
+   * @member {String} name
    */
-  exports.prototype['code'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
-   * @member {String} message
+   * @member {Number} size
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['size'] = undefined;
+  /**
+   * @member {String} species
+   */
+  exports.prototype['species'] = undefined;
+  /**
+   * @member {Number} profitEstimation
+   */
+  exports.prototype['profitEstimation'] = undefined;
 
 
 

@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Contact', 'model/Forbidden', 'model/InternalServerError'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Contact', 'model/Credentials', 'model/Forbidden', 'model/InternalServerError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contact'), require('../model/Forbidden'), require('../model/InternalServerError'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Contact'), require('../model/Credentials'), require('../model/Forbidden'), require('../model/InternalServerError'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.ContactsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contact, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
+    root.PakkasmarjaRestClient.ContactsApi = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.BadRequest, root.PakkasmarjaRestClient.Contact, root.PakkasmarjaRestClient.Credentials, root.PakkasmarjaRestClient.Forbidden, root.PakkasmarjaRestClient.InternalServerError);
   }
-}(this, function(ApiClient, BadRequest, Contact, Forbidden, InternalServerError) {
+}(this, function(ApiClient, BadRequest, Contact, Credentials, Forbidden, InternalServerError) {
   'use strict';
 
   /**
    * Contacts service.
    * @module api/ContactsApi
-   * @version 0.0.10
+   * @version 0.0.11
    */
 
   /**
@@ -200,6 +200,66 @@
      */
     this.updateContact = function(id, body) {
       return this.updateContactWithHttpInfo(id, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update contact credentials
+     * Updates single contact credentials
+     * @param {String} id contact id
+     * @param {module:model/Credentials} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    this.updateContactCredentialsWithHttpInfo = function(id, body) {
+      var postBody = body;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateContactCredentials");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateContactCredentials");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/contacts/{id}/credentials', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Update contact credentials
+     * Updates single contact credentials
+     * @param {String} id contact id
+     * @param {module:model/Credentials} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    this.updateContactCredentials = function(id, body) {
+      return this.updateContactCredentialsWithHttpInfo(id, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **signDate** | **Date** |  | [optional] 
 **termDate** | **Date** |  | [optional] 
 **rejectComment** | **String** |  | [optional] 
+**areaDetails** | [**[AreaDetail]**](AreaDetail.md) |  | [optional] 
+**deliverAll** | **Boolean** |  | [optional] 
 **status** | **String** |  | [optional] 
 **remarks** | **String** |  | [optional] 
 

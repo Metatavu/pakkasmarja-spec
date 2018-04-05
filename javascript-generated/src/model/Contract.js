@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/AreaDetail'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./AreaDetail'));
   } else {
     // Browser globals (root is window)
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.Contract = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.Contract = factory(root.PakkasmarjaRestClient.ApiClient, root.PakkasmarjaRestClient.AreaDetail);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, AreaDetail) {
   'use strict';
 
 
@@ -36,7 +36,7 @@
   /**
    * The Contract model module.
    * @module model/Contract
-   * @version 0.0.10
+   * @version 0.0.11
    */
 
   /**
@@ -46,6 +46,8 @@
    */
   var exports = function() {
     var _this = this;
+
+
 
 
 
@@ -126,6 +128,12 @@
       if (data.hasOwnProperty('rejectComment')) {
         obj['rejectComment'] = ApiClient.convertToType(data['rejectComment'], 'String');
       }
+      if (data.hasOwnProperty('areaDetails')) {
+        obj['areaDetails'] = ApiClient.convertToType(data['areaDetails'], [AreaDetail]);
+      }
+      if (data.hasOwnProperty('deliverAll')) {
+        obj['deliverAll'] = ApiClient.convertToType(data['deliverAll'], 'Boolean');
+      }
       if (data.hasOwnProperty('status')) {
         obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
@@ -200,6 +208,14 @@
    * @member {String} rejectComment
    */
   exports.prototype['rejectComment'] = undefined;
+  /**
+   * @member {Array.<module:model/AreaDetail>} areaDetails
+   */
+  exports.prototype['areaDetails'] = undefined;
+  /**
+   * @member {Boolean} deliverAll
+   */
+  exports.prototype['deliverAll'] = undefined;
   /**
    * @member {module:model/Contract.StatusEnum} status
    */

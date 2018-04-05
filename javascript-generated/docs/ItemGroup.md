@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **displayName** | **String** |  | [optional] 
 **category** | **String** |  | [optional] 
+**prerequisiteContractItemGroupId** | **String** | Require contract in specified item group before siging a contract | [optional] 
 
 

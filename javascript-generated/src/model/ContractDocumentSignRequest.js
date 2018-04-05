@@ -36,7 +36,7 @@
   /**
    * The ContractDocumentSignRequest model module.
    * @module model/ContractDocumentSignRequest
-   * @version 0.0.10
+   * @version 0.0.11
    */
 
   /**

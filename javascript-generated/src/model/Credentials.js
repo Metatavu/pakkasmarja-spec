@@ -25,7 +25,7 @@
     if (!root.PakkasmarjaRestClient) {
       root.PakkasmarjaRestClient = {};
     }
-    root.PakkasmarjaRestClient.NotFound = factory(root.PakkasmarjaRestClient.ApiClient);
+    root.PakkasmarjaRestClient.Credentials = factory(root.PakkasmarjaRestClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,52 +34,44 @@
 
 
   /**
-   * The NotFound model module.
-   * @module model/NotFound
+   * The Credentials model module.
+   * @module model/Credentials
    * @version 0.0.11
    */
 
   /**
-   * Constructs a new <code>NotFound</code>.
-   * @alias module:model/NotFound
+   * Constructs a new <code>Credentials</code>.
+   * @alias module:model/Credentials
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
-
   };
 
   /**
-   * Constructs a <code>NotFound</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Credentials</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/NotFound} obj Optional instance to populate.
-   * @return {module:model/NotFound} The populated <code>NotFound</code> instance.
+   * @param {module:model/Credentials} obj Optional instance to populate.
+   * @return {module:model/Credentials} The populated <code>Credentials</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
-      }
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('password')) {
+        obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} code
+   * @member {String} password
    */
-  exports.prototype['code'] = undefined;
-  /**
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
+  exports.prototype['password'] = undefined;
 
 
 
