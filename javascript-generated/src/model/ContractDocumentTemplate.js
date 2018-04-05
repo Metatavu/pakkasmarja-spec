@@ -36,7 +36,7 @@
   /**
    * The ContractDocumentTemplate model module.
    * @module model/ContractDocumentTemplate
-   * @version 0.0.11
+   * @version 0.0.12
    */
 
   /**

@@ -36,7 +36,7 @@
   /**
    * The AreaDetail model module.
    * @module model/AreaDetail
-   * @version 0.0.11
+   * @version 0.0.12
    */
 
   /**
