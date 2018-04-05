@@ -1261,7 +1261,9 @@ definitions:
       rejectComment:
         type: string
       areaDetails:
-        type: string
+        type: array
+        items:
+          $ref: '#/definitions/AreaDetail'
       deliverAll:
         type: boolean
       status:
@@ -1408,6 +1410,19 @@ definitions:
           - SUCCESS
       message:
         type: string
+  AreaDetail:
+    type: object
+    properties:
+      name:
+        type: string
+      size:
+        type: number
+        format: double
+      species:
+        type: string
+      profitEstimation:
+        type: number
+        format: double
   InternalServerError:
     type: object
     properties:
