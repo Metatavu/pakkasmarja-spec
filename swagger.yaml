@@ -1352,6 +1352,9 @@ definitions:
         type: string
       category:
         type: string
+      minimumProfitEstimation:
+        type: number
+        format: double
       prerequisiteContractItemGroupId:
         description: Require contract in specified item group before siging a contract
         type: string
