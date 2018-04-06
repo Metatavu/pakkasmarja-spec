@@ -1176,6 +1176,8 @@ definitions:
       id:
         type: string
         format: uuid
+      sapId:
+        type: string
       firstName:
         type: string
       lastName:
