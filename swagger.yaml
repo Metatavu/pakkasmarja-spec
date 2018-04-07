@@ -830,6 +830,40 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+    delete:
+      operationId: deleteItemGroupPrice
+      summary: Delete item group price
+      description: Deletes an item group price
+      tags:
+        - ItemGroups
+      parameters:
+        - name: itemGroupId
+          required: true
+          in: path
+          description: item group id
+          type: string
+          format: uuid
+        - name: priceId
+          required: true
+          in: path
+          description: price id
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Successful deletion
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
   '/itemGroups/{itemGroupId}/documentTemplates':
     get:
       operationId: listItemGroupDocumentTemplates
