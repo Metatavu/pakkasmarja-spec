@@ -15,6 +15,18 @@ module.exports = function(grunt) {
     const packageJson = JSON.parse(fs.readFileSync(`${this.data.folder}/package.json`));
     fs.writeFileSync(`${this.data.folder}/package.json`, JSON.stringify(Object.assign(packageJson, this.data.fields), null, 2));
   });
+  
+  grunt.registerMultiTask('nodejs-concat', 'Concats nodejs path files', function () {
+    const files = fs.readdirSync(this.data.folder);
+    const fileDatas = files.map((file) => {
+      const data = fs.readFileSync(`${this.data.folder}/${file}`);
+      return data.toString("UTF-8").trim().replace(/\,$/, "");
+    });
+
+    const json = fileDatas.join(',');
+
+    fs.writeFileSync(this.data.output, JSON.stringify(JSON.parse(`[${json}]`), null, 2));
+  });
 
   grunt.registerMultiTask('kebabify', 'Kebabify files', function () {
     const files = fs.readdirSync(this.data.folder);
@@ -49,6 +61,9 @@ module.exports = function(grunt) {
         'nodejs-generated/README.md',
         'nodejs-generated/index.js',
         'nodejs-generated/package.json'
+      ],
+      'nodejs-paths-generated': [
+        'nodejs-paths-generated'
       ]
     },
     'shell': {
@@ -58,6 +73,14 @@ module.exports = function(grunt) {
           '-l nodejs-server ' +
           '-o nodejs-generated/ ' +
           '-t nodejs-templates ' +
+          `--additional-properties useES6=false,usePromises=true,projectName=pakkasmarja-spec`
+      },
+      'nodejs-paths-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l nodejs-server ' +
+          '-o nodejs-paths-generated/ ' +
+          '-t nodejs-templates-paths ' +
           `--additional-properties useES6=false,usePromises=true,projectName=pakkasmarja-spec`
       },
       'nodejs-model-generate': {
@@ -139,13 +162,19 @@ module.exports = function(grunt) {
           "license": "gpl-3.0"
         }
       }
+    },
+    'nodejs-concat': {
+      'paths-concat': {
+        'folder': 'nodejs-paths-generated/service',
+        'output': 'nodejs-paths.json'
+      }
     }
   });
   
   grunt.registerTask('download-dependencies', 'if-missing:curl:swagger-codegen');
   grunt.registerTask('javascript-gen', [ 'download-dependencies', 'shell:javascript-generate', 'javascript-package-update:javascript-package' ]);
   grunt.registerTask('javascript', [ 'javascript-gen', 'shell:javascript-bump-version', 'shell:javascript-push', 'shell:javascript-publish']);
-  grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated']);
+  grunt.registerTask('nodejs-gen', [ 'download-dependencies', 'clean:nodejs-generated', 'shell:nodejs-generate', 'shell:nodejs-model-generate', 'clean:nodejs-remove-cruft', 'shell:nodejs-model-move', 'kebabify:nodejs-services', 'kebabify:nodejs-models', 'clean:nodejs-model-generated', 'nodejs-concat:paths-concat', 'clean:nodejs-paths-generated']);
   grunt.registerTask('php-gen', [ "shell:php-client-generate" ]);
   grunt.registerTask('php', [ "php-gen", "shell:php-client-publish" ]);
   
