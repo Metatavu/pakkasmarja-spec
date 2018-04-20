@@ -33,7 +33,7 @@
   /**
    * Contacts service.
    * @module api/ContactsApi
-   * @version 0.0.12
+   * @version 0.0.13
    */
 
   /**
@@ -104,15 +104,19 @@
     /**
      * Lists contacts
      * Lists contacts
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.search filter results by free text search
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Contact>} and HTTP response
      */
-    this.listContactsWithHttpInfo = function() {
+    this.listContactsWithHttpInfo = function(opts) {
+      opts = opts || {};
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
+        'search': opts['search'],
       };
       var collectionQueryParams = {
       };
@@ -136,10 +140,12 @@
     /**
      * Lists contacts
      * Lists contacts
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.search filter results by free text search
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Contact>}
      */
-    this.listContacts = function() {
-      return this.listContactsWithHttpInfo()
+    this.listContacts = function(opts) {
+      return this.listContactsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

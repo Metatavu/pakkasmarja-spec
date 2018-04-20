@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a name="listContacts"></a>
 # **listContacts**
-> [Contact] listContacts()
+> [Contact] listContacts(opts)
 
 Lists contacts
 
@@ -80,7 +80,11 @@ bearer.apiKey = 'YOUR API KEY';
 //bearer.apiKeyPrefix = 'Token';
 
 var apiInstance = new PakkasmarjaRestClient.ContactsApi();
-apiInstance.listContacts().then(function(data) {
+
+var opts = { 
+  'search': "search_example" // String | filter results by free text search
+};
+apiInstance.listContacts(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -89,7 +93,10 @@ apiInstance.listContacts().then(function(data) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **String**| filter results by free text search | [optional] 
 
 ### Return type
 

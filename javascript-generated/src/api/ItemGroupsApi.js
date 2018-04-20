@@ -33,7 +33,7 @@
   /**
    * ItemGroups service.
    * @module api/ItemGroupsApi
-   * @version 0.0.12
+   * @version 0.0.13
    */
 
   /**
@@ -102,6 +102,67 @@
      */
     this.createItemGroupPrice = function(itemGroupId, body) {
       return this.createItemGroupPriceWithHttpInfo(itemGroupId, body)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete item group price
+     * Deletes an item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    this.deleteItemGroupPriceWithHttpInfo = function(itemGroupId, priceId) {
+      var postBody = null;
+
+      // verify the required parameter 'itemGroupId' is set
+      if (itemGroupId === undefined || itemGroupId === null) {
+        throw new Error("Missing the required parameter 'itemGroupId' when calling deleteItemGroupPrice");
+      }
+
+      // verify the required parameter 'priceId' is set
+      if (priceId === undefined || priceId === null) {
+        throw new Error("Missing the required parameter 'priceId' when calling deleteItemGroupPrice");
+      }
+
+
+      var pathParams = {
+        'itemGroupId': itemGroupId,
+        'priceId': priceId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearer'];
+      var contentTypes = ['application/json;charset=utf-8'];
+      var accepts = ['application/json;charset=utf-8'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/itemGroups/{itemGroupId}/prices/{priceId}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Delete item group price
+     * Deletes an item group price
+     * @param {String} itemGroupId item group id
+     * @param {String} priceId price id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    this.deleteItemGroupPrice = function(itemGroupId, priceId) {
+      return this.deleteItemGroupPriceWithHttpInfo(itemGroupId, priceId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

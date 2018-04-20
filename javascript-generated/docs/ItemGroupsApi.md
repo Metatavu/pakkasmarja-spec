@@ -5,6 +5,7 @@ All URIs are relative to *https://localhost/rest/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createItemGroupPrice**](ItemGroupsApi.md#createItemGroupPrice) | **POST** /itemGroups/{itemGroupId}/prices | Creates item group price
+[**deleteItemGroupPrice**](ItemGroupsApi.md#deleteItemGroupPrice) | **DELETE** /itemGroups/{itemGroupId}/prices/{priceId} | Delete item group price
 [**findItemGroup**](ItemGroupsApi.md#findItemGroup) | **GET** /itemGroups/{id} | Find item group
 [**findItemGroupDocumentTemplate**](ItemGroupsApi.md#findItemGroupDocumentTemplate) | **GET** /itemGroups/{itemGroupId}/documentTemplates/{id} | Find item group document template
 [**findItemGroupPrice**](ItemGroupsApi.md#findItemGroupPrice) | **GET** /itemGroups/{itemGroupId}/prices/{priceId} | Find item group price
@@ -58,6 +59,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Price**](Price.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8
+
+<a name="deleteItemGroupPrice"></a>
+# **deleteItemGroupPrice**
+> deleteItemGroupPrice(itemGroupId, priceId)
+
+Delete item group price
+
+Deletes an item group price
+
+### Example
+```javascript
+var PakkasmarjaRestClient = require('pakkasmarja-rest-client');
+var defaultClient = PakkasmarjaRestClient.ApiClient.instance;
+
+// Configure API key authorization: bearer
+var bearer = defaultClient.authentications['bearer'];
+bearer.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearer.apiKeyPrefix = 'Token';
+
+var apiInstance = new PakkasmarjaRestClient.ItemGroupsApi();
+
+var itemGroupId = "itemGroupId_example"; // String | item group id
+
+var priceId = "priceId_example"; // String | price id
+
+apiInstance.deleteItemGroupPrice(itemGroupId, priceId).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **itemGroupId** | **String**| item group id | 
+ **priceId** | **String**| price id | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

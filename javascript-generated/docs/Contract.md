@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**sapId** | **String** |  | [optional] 
 **contactId** | **String** |  | [optional] 
 **deliveryPlaceId** | **String** |  | [optional] 
 **proposedDeliveryPlaceId** | **String** |  | [optional] 

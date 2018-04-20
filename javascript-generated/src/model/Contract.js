@@ -36,7 +36,7 @@
   /**
    * The Contract model module.
    * @module model/Contract
-   * @version 0.0.12
+   * @version 0.0.13
    */
 
   /**
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -82,6 +83,9 @@
 
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('sapId')) {
+        obj['sapId'] = ApiClient.convertToType(data['sapId'], 'String');
       }
       if (data.hasOwnProperty('contactId')) {
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
@@ -148,6 +152,10 @@
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
+  /**
+   * @member {String} sapId
+   */
+  exports.prototype['sapId'] = undefined;
   /**
    * @member {String} contactId
    */
