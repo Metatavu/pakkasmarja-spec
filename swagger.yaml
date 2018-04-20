@@ -25,6 +25,11 @@ paths:
       description: Lists contacts
       tags:
         - Contacts
+      parameters:
+        - name: search
+          in: query
+          description: filter results by free text search
+          type: string
       responses:
         '200':
           description: List of contacts
