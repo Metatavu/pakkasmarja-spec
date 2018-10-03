@@ -1208,6 +1208,161 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
+  '/threads/{threadId}/predefinedTexts':
+    get:
+      operationId: listThreadPredefinedTexts
+      summary: List thread's predefined texts
+      description: Lists thread's predefined texts
+      tags: 
+        - Threads
+      parameters:
+        - name: threadId
+          required: true
+          in: path
+          description: thread id
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: List of thread predefined texts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ThreadPredefinedText'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    post:
+      operationId: createThreadPredefinedText
+      summary: Creates a predefined text for a thread
+      description: Creates predefined text for a thrad
+      tags: 
+        - Threads
+      parameters:
+        - name: threadId
+          required: true
+          in: path
+          description: thread id
+          type: integer
+          format: int64
+        - name: predefinedTextId
+          required: true
+          in: path
+          description: predefined text id
+          type: integer
+          format: int64
+        - name: payload
+          required: true
+          in: body
+          description: predefined text
+          schema:
+            $ref: '#/definitions/ThreadPredefinedText'
+      responses:
+        '200':
+          description: Created predefined text
+          schema:
+            $ref: '#/definitions/ThreadPredefinedText'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  '/threads/{threadId}/predefinedTexts/{predefinedTextId}':
+    get:
+      operationId: findThreadPredefinedText
+      summary: Finds a thread predefined text
+      description: Finds a thread predefined text
+      tags: 
+        - Threads
+      parameters:
+        - name: threadId
+          required: true
+          in: path
+          description: thread id
+          type: integer
+          format: int64
+        - name: predefinedTextId
+          required: true
+          in: path
+          description: predefined text id
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Finds a thread predefined text
+          schema:
+            $ref: '#/definitions/ThreadPredefinedText'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateThreadPredefinedText
+      summary: Updates a thread's predefined text
+      description: Updates a thread's predefined text
+      tags: 
+        - Threads
+      parameters:
+        - name: threadId
+          required: true
+          in: path
+          description: thread id
+          type: integer
+          format: int64
+        - name: predefinedTextId
+          required: true
+          in: path
+          description: predefined text id
+          type: integer
+          format: int64
+        - name: payload
+          required: true
+          in: body
+          description: predefined text
+          schema:
+            $ref: '#/definitions/ThreadPredefinedText'
+      responses:
+        '200':
+          description: Updated predefined text
+          schema:
+            $ref: '#/definitions/ThreadPredefinedText'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+      
 definitions:
   Contact:
     type: object
@@ -1473,6 +1628,46 @@ definitions:
       profitEstimation:
         type: number
         format: double
+        
+  Thread:
+    type: object
+    required:
+      - title
+      - answerType
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
+        type: string
+      type:
+        type: string
+      originId:
+        type: string
+      imageUrl:
+        type: string
+        format: url
+      answerType:
+        type: string
+        enum:
+          - TEXT
+          - PREDEFINED
+  
+  ThreadPredefinedText:
+    type: object
+    required:
+      - threadId
+      - text
+    properties:
+      id:
+        type: integer
+        format: int64
+      threadId:
+        type: integer
+        format: int64
+      text:
+        type: string
+        
   InternalServerError:
     type: object
     properties:
