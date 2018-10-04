@@ -1208,13 +1208,13 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  '/threads/{threadId}/predefinedTexts':
+  '/chatThreads/{threadId}/predefinedTexts':
     get:
-      operationId: listThreadPredefinedTexts
+      operationId: listChatThreadPredefinedTexts
       summary: List thread's predefined texts
       description: Lists thread's predefined texts
       tags: 
-        - Threads
+        - ChatThreads
       parameters:
         - name: threadId
           required: true
@@ -1246,7 +1246,7 @@ paths:
       summary: Creates a predefined text for a thread
       description: Creates predefined text for a thrad
       tags: 
-        - Threads
+        - ChatThreads
       parameters:
         - name: threadId
           required: true
@@ -1265,12 +1265,12 @@ paths:
           in: body
           description: predefined text
           schema:
-            $ref: '#/definitions/ThreadPredefinedText'
+            $ref: '#/definitions/ChatThreadPredefinedText'
       responses:
         '200':
           description: Created predefined text
           schema:
-            $ref: '#/definitions/ThreadPredefinedText'
+            $ref: '#/definitions/ChatThreadPredefinedText'
         '400':
           description: Invalid request was sent to the server
           schema:
@@ -1283,13 +1283,13 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  '/threads/{threadId}/predefinedTexts/{predefinedTextId}':
+  '/chatThreads/{threadId}/predefinedTexts/{predefinedTextId}':
     get:
-      operationId: findThreadPredefinedText
+      operationId: findChatThreadPredefinedText
       summary: Finds a thread predefined text
       description: Finds a thread predefined text
       tags: 
-        - Threads
+        - ChatThreads
       parameters:
         - name: threadId
           required: true
@@ -1307,7 +1307,7 @@ paths:
         '200':
           description: Finds a thread predefined text
           schema:
-            $ref: '#/definitions/ThreadPredefinedText'
+            $ref: '#/definitions/ChatThreadPredefinedText'
         '400':
           description: Invalid request was sent to the server
           schema:
@@ -1321,11 +1321,11 @@ paths:
           schema:
             $ref: '#/definitions/InternalServerError'
     put:
-      operationId: updateThreadPredefinedText
+      operationId: updateChatThreadPredefinedText
       summary: Updates a thread's predefined text
       description: Updates a thread's predefined text
       tags: 
-        - Threads
+        - ChatThreads
       parameters:
         - name: threadId
           required: true
@@ -1344,12 +1344,12 @@ paths:
           in: body
           description: predefined text
           schema:
-            $ref: '#/definitions/ThreadPredefinedText'
+            $ref: '#/definitions/ChatThreadPredefinedText'
       responses:
         '200':
           description: Updated predefined text
           schema:
-            $ref: '#/definitions/ThreadPredefinedText'
+            $ref: '#/definitions/ChatThreadPredefinedText'
         '400':
           description: Invalid request was sent to the server
           schema:
@@ -1629,7 +1629,7 @@ definitions:
         type: number
         format: double
         
-  Thread:
+  ChatThread:
     type: object
     required:
       - title
@@ -1653,16 +1653,16 @@ definitions:
           - TEXT
           - PREDEFINED
   
-  ThreadPredefinedText:
+  ChatThreadPredefinedText:
     type: object
     required:
-      - threadId
+      - chatThreadId
       - text
     properties:
       id:
         type: integer
         format: int64
-      threadId:
+      chatThreadId:
         type: integer
         format: int64
       text:
