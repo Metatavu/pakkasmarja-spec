@@ -1209,6 +1209,38 @@ paths:
           schema:
             $ref: '#/definitions/InternalServerError'
           
+  '/chatThreads':
+    get:
+      operationId: listChatThreads
+      summary: Returns list of chat threads
+      description: Returns list of chat threads
+      tags:
+        - ChatThreads
+      parameters:
+        - name: originId
+          in: query
+          description: Filter chat threads by origin id
+          type: string  
+      responses:
+        '200':
+          description: A list of chat threads
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ChatThread'
+        '400':
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+
   '/chatThreads/{threadId}/reports/{type}':
     get:
       operationId: getChatThreadReport
@@ -1516,6 +1548,29 @@ definitions:
       profitEstimation:
         type: number
         format: double
+  ChatThread:
+    type: object
+    required:
+      - title
+      - answerType
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
+        type: string
+      type:
+        type: string
+      originId:
+        type: string
+      imageUrl:
+        type: string
+        format: url
+      answerType:
+        type: string
+        enum:
+          - TEXT
+          - PREDEFINED        
   InternalServerError:
     type: object
     properties:
