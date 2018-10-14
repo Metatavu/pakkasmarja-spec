@@ -1215,7 +1215,7 @@ paths:
       summary: Returns chat thread report
       description: Returns chat thread report
       tags:
-        - ChatThread
+        - ChatThreads
       parameters:
         - name: threadId
           required: true
@@ -1516,31 +1516,6 @@ definitions:
       profitEstimation:
         type: number
         format: double
-        
-  ChatThread:
-    type: object
-    required:
-      - title
-      - answerType
-    properties:
-      id:
-        type: integer
-        format: int64
-      title:
-        type: string
-      type:
-        type: string
-      originId:
-        type: string
-      imageUrl:
-        type: string
-        format: url
-      answerType:
-        type: string
-        enum:
-          - TEXT
-          - PREDEFINED
-    
   InternalServerError:
     type: object
     properties:
