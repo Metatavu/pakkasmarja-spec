@@ -1,22 +1,11 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Pakkasmarja REST API
   description: REST API for Pakkasmarja
-  version: 0.0.3
-schemes:
-  - https
-basePath: /rest/v1
-consumes:
-  - application/json;charset=utf-8
-produces:
-  - application/json;charset=utf-8
-securityDefinitions:
-  bearer:
-    type: apiKey
-    name: Authorization
-    in: header
+  version: 3.0.0
 security:
-  - bearer: []
+  - bearer:
+      []
 paths:
   /contacts:
     get:
@@ -29,27 +18,36 @@ paths:
         - name: search
           in: query
           description: filter results by free text search
-          type: string
+          schema:
+            type: string
       responses:
-        '200':
+        "200":
           description: List of contacts
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Contact'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Contact"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contacts/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contacts/{id}":
     get:
       operationId: findContact
       summary: Find contact
@@ -61,25 +59,34 @@ paths:
           required: true
           in: path
           description: contact id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A contact
-          schema:
-            $ref: '#/definitions/Contact'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     put:
       operationId: updateContact
       summary: Update contact
@@ -91,32 +98,42 @@ paths:
           required: true
           in: path
           description: contact id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/Contact'
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+        description: Payload
+        required: true
       responses:
-        '200':
+        "200":
           description: Updated contact
-          schema:
-            $ref: '#/definitions/Contact'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contacts/{id}/credentials':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contacts/{id}/credentials":
     put:
       operationId: updateContactCredentials
       summary: Update contact credentials
@@ -128,29 +145,37 @@ paths:
           required: true
           in: path
           description: contact id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/Credentials'
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credentials"
+        description: Payload
+        required: true
       responses:
-        '204':
+        "204":
           description: No content to indicate successfull update
-        '400':
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /contracts:
     get:
       operationId: listContracts
@@ -159,91 +184,114 @@ paths:
       tags:
         - Contracts
       parameters:
-        - name: Accept 
+        - name: Accept
           in: header
-          type: string
-          description: Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
-        - name: listAll 
+          description: Expected response format. Accepted values application/json for JSON
+            reponse (default) and
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            for Excel response
+          schema:
+            type: string
+        - name: listAll
           in: query
-          type: boolean
-          description: Returns all contracts instead of just user's own contracts. User must have permission to do this.
+          description: Returns all contracts instead of just user's own contracts. User
+            must have permission to do this.
+          schema:
+            type: boolean
         - name: itemGroupCategory
           in: query
-          type: string
           description: Filters results by item group category.
+          schema:
+            type: string
         - name: itemGroupId
           in: query
-          type: string
           description: Filters results by item group id.
+          schema:
+            type: string
         - name: year
           in: query
-          type: integer
-          format: int32
           description: Filters results by year.
+          schema:
+            type: integer
+            format: int32
         - name: status
           in: query
-          type: string
           description: Filters results by status
+          schema:
+            type: string
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
         - name: maxResults
           in: query
           description: Max results. Defaults to 5
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
       responses:
-        '200':
+        "200":
           description: List of contracts.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Contract'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Contract"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     post:
       operationId: createContract
       summary: Create contract
       description: Create new contract
       tags:
         - Contracts
-      parameters:
-        - name: body
-          in: body
-          description: Payload
-          required: true
-          schema:
-            $ref: '#/definitions/Contract'
+      requestBody:
+        $ref: "#/components/requestBodies/Contract"
       responses:
-        '200':
+        "200":
           description: Created contract
-          schema:
-            $ref: '#/definitions/Contract'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contract"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{id}":
     get:
       operationId: findContract
       summary: Find contract
@@ -255,29 +303,42 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
-        - name: Accept 
+          schema:
+            type: string
+            format: uuid
+        - name: Accept
           in: header
-          type: string
-          description: Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response 
+          description: Expected response format. Accepted values application/json for JSON
+            reponse (default) and
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            for Excel response
+          schema:
+            type: string
       responses:
-        '200':
+        "200":
           description: A contract
-          schema:
-            $ref: '#/definitions/Contract'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contract"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     put:
       operationId: updateContract
       summary: Update contract
@@ -289,32 +350,37 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/Contract'
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/Contract"
       responses:
-        '200':
+        "200":
           description: Updated contract
-          schema:
-            $ref: '#/definitions/Contract'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contract"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{contractId}/prices':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{contractId}/prices":
     get:
       operationId: listContractPrices
       summary: List contract prices
@@ -326,46 +392,59 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: sortBy
           in: query
           description: sort by (YEAR)
-          type: string
+          schema:
+            type: string
         - name: sortDir
           in: query
           description: sort direction (ASC, DESC)
-          type: string
+          schema:
+            type: string
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
         - name: maxResults
           in: query
           description: Max results. Defaults to 5
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
       responses:
-        '200':
+        "200":
           description: A list of contract prices
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Price'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Price"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{contractId}/documentTemplates':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{contractId}/documentTemplates":
     get:
       operationId: listContractDocumentTemplates
       summary: List contract document templates
@@ -377,32 +456,42 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: type
           required: false
           in: query
-          description: Filter results by document template type 
-          type: string
+          description: Filter results by document template type
+          schema:
+            type: string
       responses:
-        '200':
+        "200":
           description: List of contract templates
-          schema:
-            type: 'array'
-            items:
-              $ref: '#/definitions/ContractDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContractDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     post:
       operationId: createContractDocumentTemplate
       summary: Create contract document template
@@ -414,32 +503,37 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/ContractDocumentTemplate'
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/ContractDocumentTemplate"
       responses:
-        '200':
+        "200":
           description: Created contract document template
-          schema:
-            $ref: '#/definitions/ContractDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}":
     get:
       operationId: findContractDocumentTemplate
       summary: Find contract document template
@@ -451,31 +545,41 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: contractDocumentTemplateId
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: Found contract document template
-          schema:
-            $ref: '#/definitions/ContractDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     put:
       operationId: updateContractDocumentTemplate
       summary: Updates contract document template
@@ -487,38 +591,44 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: contractDocumentTemplateId
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/ContractDocumentTemplate'
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/ContractDocumentTemplate"
       responses:
-        '200':
+        "200":
           description: Updated contract document template
-          schema:
-            $ref: '#/definitions/ContractDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{id}/documents/{type}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{id}/documents/{type}":
     get:
       operationId: getContractDocument
       summary: Returns contract document
@@ -530,37 +640,48 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: type
           required: true
           in: path
           description: document type
-          type: string
+          schema:
+            type: string
         - name: format
           required: true
           in: query
           description: document format (HTML or PDF)
-          type: string
-      responses:
-        '200':
-          description: Document data
           schema:
             type: string
-            format: binary
-        '400':
+      responses:
+        "200":
+          description: Document data
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/contracts/{id}/documents/{type}/signRequests':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/contracts/{id}/documents/{type}/signRequests":
     post:
       operationId: createContractDocumentSignRequest
       summary: Requests contract document electronic signing
@@ -572,46 +693,59 @@ paths:
           required: true
           in: path
           description: contract id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: type
           required: true
           in: path
           description: document type
-          type: string
+          schema:
+            type: string
         - name: ssn
           required: true
           in: query
           description: Social security number
-          type: string
+          schema:
+            type: string
         - name: authService
           required: true
           in: query
           description: Used auth service name
-          type: string
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/ContractDocumentSignRequest'
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContractDocumentSignRequest"
+        description: Payload
+        required: true
       responses:
-        '200':
+        "200":
           description: Contract document sign request with redirect url filled
-          schema:
-            $ref: '#/definitions/ContractDocumentSignRequest'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDocumentSignRequest"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /itemGroups:
     get:
       operationId: listItemGroups
@@ -620,25 +754,33 @@ paths:
       tags:
         - ItemGroups
       responses:
-        '200':
+        "200":
           description: List of item groups
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ItemGroup'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemGroup"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/itemGroups/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/itemGroups/{id}":
     get:
       operationId: findItemGroup
       summary: Find item group
@@ -650,26 +792,35 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A item group
-          schema:
-            $ref: '#/definitions/ItemGroup'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemGroup"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/itemGroups/{itemGroupId}/prices':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/itemGroups/{itemGroupId}/prices":
     get:
       operationId: listItemGroupPrices
       summary: List item group prices
@@ -681,45 +832,58 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: sortBy
           in: query
           description: sort by (YEAR)
-          type: string
+          schema:
+            type: string
         - name: sortDir
           in: query
           description: sort direction (ASC, DESC)
-          type: string
+          schema:
+            type: string
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
         - name: maxResults
           in: query
           description: Max results. Defaults to 5
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
       responses:
-        '200':
+        "200":
           description: A list of item group prices
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Price'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Price"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     post:
       operationId: createItemGroupPrice
       summary: Creates item group price
@@ -731,32 +895,37 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/Price'
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/Price"
       responses:
-        '200':
+        "200":
           description: Created item group price
-          schema:
-            $ref: '#/definitions/Price'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Price"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/itemGroups/{itemGroupId}/prices/{priceId}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/itemGroups/{itemGroupId}/prices/{priceId}":
     get:
       operationId: findItemGroupPrice
       summary: Find item group price
@@ -768,31 +937,41 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: priceId
           required: true
           in: path
           description: price id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A finds item group price
-          schema:
-            $ref: '#/definitions/Price'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Price"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     put:
       operationId: updateItemGroupPrice
       summary: Update item group price
@@ -804,37 +983,43 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: priceId
           required: true
           in: path
           description: price id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/Price'
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/Price"
       responses:
-        '200':
+        "200":
           description: Updated item group price
-          schema:
-            $ref: '#/definitions/Price'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Price"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     delete:
       operationId: deleteItemGroupPrice
       summary: Delete item group price
@@ -846,30 +1031,38 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: priceId
           required: true
           in: path
           description: price id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '204':
+        "204":
           description: Successful deletion
-        '400':
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/itemGroups/{itemGroupId}/documentTemplates':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/itemGroups/{itemGroupId}/documentTemplates":
     get:
       operationId: listItemGroupDocumentTemplates
       summary: List item group document templates
@@ -881,28 +1074,37 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: List of item group templates
-          schema:
-            type: 'array'
-            items:
-              $ref: '#/definitions/ItemGroupDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemGroupDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/itemGroups/{itemGroupId}/documentTemplates/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/itemGroups/{itemGroupId}/documentTemplates/{id}":
     get:
       operationId: findItemGroupDocumentTemplate
       summary: Find item group document template
@@ -914,31 +1116,41 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: id
           required: true
           in: path
           description: template id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A item group template
-          schema:
-            $ref: '#/definitions/ItemGroupDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemGroupDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     put:
       operationId: updateItemGroupDocumentTemplate
       summary: Updates item group document template
@@ -950,37 +1162,48 @@ paths:
           required: true
           in: path
           description: item group id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
         - name: id
           required: true
           in: path
           description: template id
-          type: string
-          format: uuid
-        - name: body
-          in: body
-          description: Payload
-          required: true
           schema:
-            $ref: '#/definitions/ItemGroupDocumentTemplate'
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemGroupDocumentTemplate"
+        description: Payload
+        required: true
       responses:
-        '200':
+        "200":
           description: An updated item group document template
-          schema:
-            $ref: '#/definitions/ItemGroupDocumentTemplate'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemGroupDocumentTemplate"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /deliveryPlaces:
     get:
       operationId: listDeliveryPlaces
@@ -989,25 +1212,33 @@ paths:
       tags:
         - DeliveryPlaces
       responses:
-        '200':
+        "200":
           description: List of delivery places
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/DeliveryPlace'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryPlace"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/deliveryPlaces/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/deliveryPlaces/{id}":
     get:
       operationId: findDeliveryPlace
       summary: Find delivery place
@@ -1019,57 +1250,74 @@ paths:
           required: true
           in: path
           description: delivery place id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A delivery place
-          schema:
-            $ref: '#/definitions/DeliveryPlace'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryPlace"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/operations':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /operations:
     post:
       operationId: createOperation
       summary: Creates new operation
       description: Creates new operation
       tags:
         - Operations
-      parameters:
-        - name: body
-          in: body
-          description: Payload
-          required: true
-          schema:
-            $ref: '#/definitions/Operation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Operation"
+        description: Payload
+        required: true
       responses:
-        '200':
+        "200":
           description: Operation created successful
-          schema:
-            $ref: '#/definitions/Operation'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Operation"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/operationReports':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /operationReports:
     get:
       operationId: listOperationReports
       summary: List operation reports
@@ -1080,45 +1328,58 @@ paths:
         - name: type
           in: query
           description: filter by type
-          type: string
+          schema:
+            type: string
         - name: sortBy
           in: query
           description: sort by (CREATED)
-          type: string
+          schema:
+            type: string
         - name: sortDir
           in: query
           description: sort direction (ASC, DESC)
-          type: string
+          schema:
+            type: string
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
         - name: maxResults
           in: query
           description: Max results. Defaults to 20
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
       responses:
-        '200':
+        "200":
           description: List of operation reports
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/OperationReport'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OperationReport"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/operationReports/{id}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/operationReports/{id}":
     get:
       operationId: findOperationReport
       summary: Find operation report
@@ -1130,26 +1391,35 @@ paths:
           required: true
           in: path
           description: operation report id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A operation report
-          schema:
-            $ref: '#/definitions/OperationReport'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OperationReport"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/operationReports/{id}/items':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/operationReports/{id}/items":
     get:
       operationId: listOperationReportItems
       summary: List operation report items
@@ -1161,28 +1431,37 @@ paths:
           required: true
           in: path
           description: operation report id
-          type: string
-          format: uuid
+          schema:
+            type: string
+            format: uuid
       responses:
-        '200':
+        "200":
           description: A list of operation report items
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/OperationReportItem'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OperationReportItem"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-  '/signAuthenticationServices':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /signAuthenticationServices:
     get:
       operationId: listSignAuthenticationServices
       summary: List sign authentication services
@@ -1190,26 +1469,33 @@ paths:
       tags:
         - SignAuthenticationServices
       responses:
-        '200':
+        "200":
           description: A list of sign authentication services
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/SignAuthenticationService'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SignAuthenticationService"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-          
-  '/chatThreads':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /chatThreads:
     get:
       operationId: listChatThreads
       summary: Returns list of chat threads
@@ -1220,28 +1506,36 @@ paths:
         - name: originId
           in: query
           description: Filter chat threads by origin id
-          type: string  
+          schema:
+            type: string
       responses:
-        '200':
+        "200":
           description: A list of chat threads
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ChatThread'
-        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatThread"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-
-  '/chatThreads/{threadId}/reports/{type}':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/chatThreads/{threadId}/reports/{type}":
     get:
       operationId: getChatThreadReport
       summary: Returns chat thread report
@@ -1253,361 +1547,413 @@ paths:
           required: true
           in: path
           description: chat thread id
-          type: integer
-          format: int64
+          schema:
+            type: integer
+            format: int64
         - name: type
           required: true
           in: path
           description: report type. Accepted values summaryReport
-          type: string  
-        - name: Accept 
-          in: header
-          type: string
-          description: Expected response format. Accepted values application/vnd.openxmlformats for Excel response
-      responses:
-        '200':
-          description: Report data
           schema:
             type: string
-            format: binary
-        '400':
+        - name: Accept
+          in: header
+          description: Expected response format. Accepted values
+            application/vnd.openxmlformats for Excel response
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Report data
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        '403':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        '500':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
 
-definitions:
-  Contact:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      sapId:
-        type: string
-      firstName:
-        type: string
-      lastName:
-        type: string
-      companyName:
-        type: string
-      phoneNumbers:
-        type: array
-        items:
+components:
+  requestBodies:
+    ContractDocumentTemplate:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ContractDocumentTemplate"
+      description: Payload
+      required: true
+    Price:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Price"
+      description: Payload
+      required: true
+    Contract:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Contract"
+      description: Payload
+      required: true
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
           type: string
-      email:
-        type: string
-        format: email
-      addresses:
-        type: array
-        items:
-          $ref: '#/definitions/Address'
-      BIC:
-        type: string
-      IBAN:
-        type: string
-      taxCode:
-        type: string
-      vatLiable:
-        type: string
-        enum:
-          - 'YES'
-          - 'NO'
-          - EU
-      audit:
-        type: string
-  Credentials:
-    type: object
-    properties:
-      password:
-        type: string
-  Contract:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      sapId:
-        type: string
-      contactId:
-        type: string
-        format: uuid
-      deliveryPlaceId:
-        type: string
-        format: uuid
-      proposedDeliveryPlaceId:
-        type: string
-        format: uuid
-      deliveryPlaceComment:
-        type: string
-      itemGroupId:
-        type: string
-        format: uuid
-      year:
-        type: integer
-        format: int32
-      contractQuantity:
-        type: number
-        format: double
-      deliveredQuantity:
-        type: number
-        format: double
-      proposedQuantity:
-        type: number
-        format: double
-      quantityComment:
-        type: string
-      startDate:
-        type: string
-        format: date
-      endDate:
-        type: string
-        format: date
-      signDate:
-        type: string
-        format: date
-      termDate:
-        type: string
-        format: date
-      rejectComment:
-        type: string
-      areaDetails:
-        type: array
-        items:
-          $ref: '#/definitions/AreaDetail'
-      deliverAll:
-        type: boolean
-      status:
-        type: string
-        enum:
-          - APPROVED
-          - ON_HOLD
-          - DRAFT
-          - TERMINATED
-          - REJECTED
-      remarks:
-        type: string
-  Price:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      group:
-        type: string
-      year:
-        type: integer
-        format: int32
-      unit:
-        type: string
-      price:
-        type: string
-  ItemGroupDocumentTemplate:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      itemGroupId:
-        type: string
-        format: uuid
-      type:
-        type: string
-      contents:
-        type: string
-      header:
-        type: string
-      footer:
-        type: string
-  ContractDocumentTemplate:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      contractId:
-        type: string
-        format: uuid
-      type:
-        type: string
-      contents:
-        type: string
-      header:
-        type: string
-      footer:
-        type: string
-  ContractDocumentSignRequest:
-    type: object
-    properties:
-      redirectUrl:
-        type: string
-  SignAuthenticationService:
-    type: object
-    properties:
-      identifier:
-        type: string
-      name:
-        type: string
-      image:
-        type: string
-        format: url
-  ItemGroup:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      name:
-        type: string
-      displayName:
-        type: string
-      category:
-        type: string
-      minimumProfitEstimation:
-        type: number
-        format: double
-      prerequisiteContractItemGroupId:
-        description: Require contract in specified item group before siging a contract
-        type: string
-        format: uuid
-  DeliveryPlace:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      name:
-        type: string
-  Address:
-    type: object
-    properties:
-      type:
-        type: string
-      streetAddress:
-        type: string
-      postalCode:
-        type: string
-      city:
-        type: string
-  Operation:
-    type: object
-    properties:
-      type:
-        type: string
-      operationReportId:
-        type: string
-        format: uuid
-  OperationReport:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      type:
-        type: string
-      started:
-        type: string
-        format: date-time
-      pendingCount:
-        type: integer
-        format: int32
-      failedCount:
-        type: integer
-        format: int32
-      successCount:
-        type: integer
-        format: int32  
-  OperationReportItem:
-    type: object
-    properties:
-      status:
-        type: string
-        enum:
-          - PENDING
-          - FAILURE
-          - SUCCESS
-      message:
-        type: string
-  AreaDetail:
-    type: object
-    properties:
-      name:
-        type: string
-      size:
-        type: number
-        format: double
-      species:
-        type: string
-      profitEstimation:
-        type: number
-        format: double
-  ChatThread:
-    type: object
-    required:
-      - title
-      - answerType
-    properties:
-      id:
-        type: integer
-        format: int64
-      title:
-        type: string
-      type:
-        type: string
-      originId:
-        type: string
-      imageUrl:
-        type: string
-        format: url
-      answerType:
-        type: string
-        enum:
-          - TEXT
-          - POLL
-  InternalServerError:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  Forbidden:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  BadRequest:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  NotImplemented:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  NotFound:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
+          format: uuid
+        sapId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumbers:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+          format: email
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+        BIC:
+          type: string
+        IBAN:
+          type: string
+        taxCode:
+          type: string
+        vatLiable:
+          type: string
+          enum:
+            - YES
+            - NO
+            - EU
+        audit:
+          type: string
+    Credentials:
+      type: object
+      properties:
+        password:
+          type: string
+    Contract:
+      type: object
+      required:
+        - year
+        - status
+        - deliverAll
+      properties:
+        id:
+          type: string
+          format: uuid
+        sapId:
+          type: string
+        contactId:
+          type: string
+          format: uuid
+        deliveryPlaceId:
+          type: string
+          format: uuid
+        proposedDeliveryPlaceId:
+          type: string
+          format: uuid
+        deliveryPlaceComment:
+          type: string
+        itemGroupId:
+          type: string
+          format: uuid
+        year:
+          type: integer
+          format: int32
+        contractQuantity:
+          type: number
+          format: double
+        deliveredQuantity:
+          type: number
+          format: double
+        proposedQuantity:
+          type: number
+          format: double
+        quantityComment:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        signDate:
+          type: string
+          format: date
+        termDate:
+          type: string
+          format: date
+        rejectComment:
+          type: string
+        areaDetails:
+          type: array
+          items:
+            $ref: "#/components/schemas/AreaDetail"
+        deliverAll:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - APPROVED
+            - ON_HOLD
+            - DRAFT
+            - TERMINATED
+            - REJECTED
+        remarks:
+          type: string
+    Price:
+      type: object
+      required:
+        - group
+        - unit
+        - price
+        - year
+      properties:
+        id:
+          type: string
+          format: uuid
+        group:
+          type: string
+        year:
+          type: integer
+          format: int32
+        unit:
+          type: string
+        price:
+          type: string
+    ItemGroupDocumentTemplate:
+      type: object
+      required:
+        - contents
+      properties:
+        id:
+          type: string
+          format: uuid
+        itemGroupId:
+          type: string
+          format: uuid
+        type:
+          type: string
+        contents:
+          type: string
+        header:
+          type: string
+        footer:
+          type: string
+    ContractDocumentTemplate:
+      type: object
+      required:
+        - contents
+        - type
+      properties:
+        id:
+          type: string
+          format: uuid
+        contractId:
+          type: string
+          format: uuid
+        type:
+          type: string
+        contents:
+          type: string
+        header:
+          type: string
+        footer:
+          type: string
+    ContractDocumentSignRequest:
+      type: object
+      properties:
+        redirectUrl:
+          type: string
+    SignAuthenticationService:
+      type: object
+      properties:
+        identifier:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+          format: url
+    ItemGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        displayName:
+          type: string
+        category:
+          type: string
+        minimumProfitEstimation:
+          type: number
+          format: double
+        prerequisiteContractItemGroupId:
+          description: Require contract in specified item group before siging a contract
+          type: string
+          format: uuid
+    DeliveryPlace:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    Address:
+      type: object
+      properties:
+        streetAddress:
+          type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+    Operation:
+      type: object
+      properties:
+        type:
+          type: string
+        operationReportId:
+          type: string
+          format: uuid
+    OperationReport:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+        started:
+          type: string
+          format: date-time
+        pendingCount:
+          type: integer
+          format: int32
+        failedCount:
+          type: integer
+          format: int32
+        successCount:
+          type: integer
+          format: int32
+    OperationReportItem:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - PENDING
+            - FAILURE
+            - SUCCESS
+        message:
+          type: string
+    AreaDetail:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+          format: double
+        species:
+          type: string
+        profitEstimation:
+          type: number
+          format: double
+    ChatThread:
+      type: object
+      required:
+        - title
+        - answerType
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        type:
+          type: string
+        originId:
+          type: string
+        imageUrl:
+          type: string
+          format: url
+        answerType:
+          type: string
+          enum:
+            - TEXT
+            - POLL
+    InternalServerError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Forbidden:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    BadRequest:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    NotImplemented:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    NotFound:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
