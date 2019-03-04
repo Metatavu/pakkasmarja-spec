@@ -2,7 +2,8 @@ import { BadRequest } from '../model/badRequest';
 import { ChatThread } from '../model/chatThread';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import URI from "urijs";
+import { URI } from "urijs";
+
 
 export class ChatThreadsService {
 

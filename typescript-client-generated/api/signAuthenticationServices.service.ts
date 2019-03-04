@@ -2,7 +2,8 @@ import { BadRequest } from '../model/badRequest';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { SignAuthenticationService } from '../model/signAuthenticationService';
-import URI from "urijs";
+import { URI } from "urijs";
+
 
 export class SignAuthenticationServicesService {
 

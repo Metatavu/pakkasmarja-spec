@@ -3,7 +3,8 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { OperationReport } from '../model/operationReport';
 import { OperationReportItem } from '../model/operationReportItem';
-import URI from "urijs";
+import { URI } from "urijs";
+
 
 export class OperationReportsService {
 
