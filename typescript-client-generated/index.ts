@@ -1,3 +1,3 @@
-import * as Api from './api/api';
+import Api from './api/api';
 export * from './model/models';
-export Api;
+export default Api;
