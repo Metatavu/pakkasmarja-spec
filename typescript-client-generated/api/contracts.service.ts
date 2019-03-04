@@ -5,7 +5,7 @@ import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { Price } from '../model/price';
-import { URI } from "urijs";
+import URI from "urijs";
 
 
 export class ContractsService {

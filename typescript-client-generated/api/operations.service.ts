@@ -2,7 +2,7 @@ import { BadRequest } from '../model/badRequest';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { Operation } from '../model/operation';
-import { URI } from "urijs";
+import URI from "urijs";
 
 
 export class OperationsService {

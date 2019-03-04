@@ -3,7 +3,7 @@ import { Contact } from '../model/contact';
 import { Credentials } from '../model/credentials';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { URI } from "urijs";
+import URI from "urijs";
 
 
 export class ContactsService {
