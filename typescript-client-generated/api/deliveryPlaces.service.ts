@@ -2,8 +2,7 @@ import { BadRequest } from '../model/badRequest';
 import { DeliveryPlace } from '../model/deliveryPlace';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import URI from "urijs";
-
+import * as URI from "urijs";
 
 export class DeliveryPlacesService {
 

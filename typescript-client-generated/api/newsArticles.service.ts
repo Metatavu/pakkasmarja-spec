@@ -3,8 +3,7 @@ import { Contact } from '../model/contact';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { NewsArticle } from '../model/newsArticle';
-import URI from "urijs";
-
+import * as URI from "urijs";
 
 export class NewsArticlesService {
 
