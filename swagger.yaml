@@ -1495,6 +1495,207 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+
+  /chatGroups:
+    get:
+      operationId: listChatGroups
+      summary: Returns list of chat groups
+      description: Returns list of chat groups
+      tags:
+        - ChatGroups
+      parameters:
+        - name: groupType
+          in: query
+          description: Filter chat groups by group type
+          schema:
+            $ref: "#/components/schemas/ChatGroupType"
+      responses:
+        "200":
+          description: A list of chat groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatGroup"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createChatGroup
+      summary: Creates new chat group
+      description: Creates new chat group
+      tags:
+        - ChatGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThread"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created chat group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatGroup"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /chatGroups/{chatGroupId}:
+    get:
+      operationId: findChatGroup
+      summary: Returns a chat group
+      description: Returns a chat group
+      tags:
+        - ChatGroups
+      parameters:
+        - name: chatGroupId
+          required: true
+          in: path
+          description: Chat group id
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: A finds a chat group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatGroup"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateChatGroup
+      summary: Update chat group
+      description: Update chat group
+      tags:
+        - ChatGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThread"
+        description: Payload
+        required: true
+      parameters:
+        - name: chatGroupId
+          required: true
+          in: path
+          description: Chat group id
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Updated chat group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatGroup"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteChatGroup
+      summary: Deletes a chat group
+      description: Deletes a chat group
+      tags:
+        - ChatGroups
+      parameters:
+        - name: chatGroupId
+          required: true
+          in: path
+          description: Chat group id
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
   /chatThreads:
     get:
       operationId: listChatThreads
@@ -1503,11 +1704,17 @@ paths:
       tags:
         - ChatThreads
       parameters:
-        - name: originId
+        - name: groupId
           in: query
-          description: Filter chat threads by origin id
+          description: Filter chat threads by group id
           schema:
-            type: string
+            type: integer
+            format: int64
+        - name: groupType
+          in: query
+          description: Filter chat groups by group type
+          schema:
+            $ref: "#/components/schemas/ChatGroupType"
       responses:
         "200":
           description: A list of chat threads
@@ -1536,7 +1743,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
     post:
-      operationId: createChatThreads
+      operationId: createChatThread
       summary: Creates new chat thread
       description: Creates new chat thread
       tags:
@@ -1582,9 +1789,12 @@ paths:
         - ChatThreads
       parameters:
         - name: chatThreadId
+          required: true
           in: path
-          type: integer
-          format: int64
+          description: Chat thread id
+          schema:
+            type: integer
+            format: int32
       responses:
         "200":
           description: Updated chat thread
@@ -1618,9 +1828,12 @@ paths:
         - ChatThreads
       parameters:
         - name: chatThreadId
+          required: true
           in: path
-          type: integer
-          format: int64
+          description: Chat thread id
+          schema:
+            type: integer
+            format: int32
       responses:
         "200":
           description: A of chat thread
@@ -1654,12 +1867,15 @@ paths:
         - ChatThreads
       parameters:
         - name: chatThreadId
+          required: true
           in: path
-          type: integer
-          format: int64
+          description: Chat thread id
+          schema:
+            type: integer
+            format: int32
       responses:
         "204":
-          description: A of chat thread
+          description: No content to indicate successful delete
           content:
             application/json:
               schema:
@@ -2235,6 +2451,25 @@ components:
         profitEstimation:
           type: number
           format: double
+
+    ChatGroup:
+      type: object
+      required:
+        - title
+        - type
+        - answerType
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: "#/components/schemas/ChatGroupType"
+        title:
+          type: string
+        imageUrl:
+          type: string
+          format: url
+      
     ChatThread:
       type: object
       required:
@@ -2246,10 +2481,6 @@ components:
           format: int64
         title:
           type: string
-        type:
-          type: string
-        originId:
-          type: string
         imageUrl:
           type: string
           format: url
@@ -2258,6 +2489,13 @@ components:
           enum:
             - TEXT
             - POLL
+
+    ChatGroupType:
+      type: string
+      enum:
+        - CHAT
+        - QUESTION
+
     NewsArticle:
       type: object
       required:
