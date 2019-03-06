@@ -1535,6 +1535,154 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createChatThreads
+      summary: Creates new chat thread
+      description: Creates new chat thread
+      tags:
+        - ChatThreads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThread"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: A created chat thread
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThread"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /chatThreads/{chatThreadId}:
+    get:
+      operationId: findChatThread
+      summary: Returns chat thread
+      description: Returns chat thread
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Updated chat thread
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThread"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateChatThread
+      summary: Update chat thread
+      description: Update chat thread
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: A of chat thread
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThread"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteChatThread
+      summary: Deletes chat thread
+      description: Deletes chat thread
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          type: integer
+          format: int64
+      responses:
+        "204":
+          description: A of chat thread
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThread"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
   "/chatThreads/{threadId}/reports/{type}":
     get:
       operationId: getChatThreadReport
@@ -1677,11 +1825,11 @@ paths:
             format: int32
       responses:
         "200":
-          description: A contact
+          description: A created news article
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contact"
+                $ref: "#/components/schemas/NewsArticle"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -1727,7 +1875,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contact"
+                $ref: "#/components/schemas/NewsArticle"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -1762,11 +1910,7 @@ paths:
             format: int32
       responses:
         "204":
-          description: No content to indicate successful update
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Contact"
+          description: No content to indicate successful delete
         "400":
           description: Invalid request was sent to the server
           content:
@@ -1785,7 +1929,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
- 
+
 components:
   requestBodies:
     ContractDocumentTemplate:
