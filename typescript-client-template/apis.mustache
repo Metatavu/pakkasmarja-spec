@@ -1,0 +1,25 @@
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+export * from './{{ classFilename }}';
+import { {{ classname }} } from './{{ classFilename }}';
+{{/operations}}
+{{#withInterfaces}}
+export * from './{{ classFilename }}Interface'
+{{/withInterfaces}}
+{{/apis}}
+
+export default new class Api {
+
+  private apiUrl = "http://localhost";
+  public configure(baseUrl: string) {
+    this.apiUrl = baseUrl;
+  }
+
+  {{#apis}}{{#operations}}
+  public get{{ classname }}(token: string): {{ classname }} {
+    return new {{ classname }}(this.apiUrl, token);
+  }
+  {{/operations}}{{/apis}}
+}
+{{/apiInfo}}
