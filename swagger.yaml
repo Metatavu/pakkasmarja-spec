@@ -1972,7 +1972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contact"
+                $ref: "#/components/schemas/NewsArticle"
         "400":
           description: Invalid request was sent to the server
           content:
