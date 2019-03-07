@@ -2,6 +2,7 @@
 import { {{classname}} } from '../{{filename}}';
 {{/imports}}
 import * as URI from "urijs";
+import { ApiUtils } from "./api";
 
 {{#operations}}
 export class {{classname}} {
@@ -62,7 +63,7 @@ export class {{classname}} {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return ApiUtils.handleResponse(response);
     });
   }
 
