@@ -33,7 +33,7 @@ export class OperationsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 

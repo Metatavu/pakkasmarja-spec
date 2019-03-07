@@ -33,7 +33,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -57,7 +57,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -80,7 +80,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -103,7 +103,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 

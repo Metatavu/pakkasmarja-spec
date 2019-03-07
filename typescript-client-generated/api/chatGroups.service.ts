@@ -35,7 +35,7 @@ export class ChatGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -56,7 +56,7 @@ export class ChatGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -77,7 +77,7 @@ export class ChatGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -101,7 +101,7 @@ export class ChatGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
@@ -124,7 +124,7 @@ export class ChatGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleRespons(response);
+      return Api.handleResponse(response);
     });
   }
 
