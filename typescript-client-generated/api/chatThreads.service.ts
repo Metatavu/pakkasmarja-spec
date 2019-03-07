@@ -44,7 +44,7 @@ export class ChatThreadsService {
    * @summary Deletes chat thread
    * @param chatThreadId Chat thread id
   */
-  public deleteChatThread(chatThreadId: number, ):Promise<ChatThread> {
+  public deleteChatThread(chatThreadId: number, ):Promise<any> {
     const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}`);
     const options = {
       method: "delete",

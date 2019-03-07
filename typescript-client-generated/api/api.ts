@@ -1,5 +1,7 @@
 export * from './chatGroups.service';
 import { ChatGroupsService } from './chatGroups.service';
+export * from './chatMessages.service';
+import { ChatMessagesService } from './chatMessages.service';
 export * from './chatThreads.service';
 import { ChatThreadsService } from './chatThreads.service';
 export * from './contacts.service';
@@ -50,6 +52,10 @@ export default new class Api {
   
   public getChatGroupsService(token: string): ChatGroupsService {
     return new ChatGroupsService(this.apiUrl, token);
+  }
+  
+  public getChatMessagesService(token: string): ChatMessagesService {
+    return new ChatMessagesService(this.apiUrl, token);
   }
   
   public getChatThreadsService(token: string): ChatThreadsService {
