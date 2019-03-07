@@ -3,7 +3,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { NewsArticle } from '../model/newsArticle';
 import * as URI from "urijs";
-import Api from "./api";
+import { ApiUtils } from "./api";
 
 export class NewsArticlesService {
 
@@ -33,7 +33,7 @@ export class NewsArticlesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -54,7 +54,7 @@ export class NewsArticlesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -75,7 +75,7 @@ export class NewsArticlesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -95,7 +95,7 @@ export class NewsArticlesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -118,7 +118,7 @@ export class NewsArticlesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 

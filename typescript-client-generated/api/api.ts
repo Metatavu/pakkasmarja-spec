@@ -19,18 +19,7 @@ import { OperationsService } from './operations.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 
-export default new class Api {
-
-  private apiUrl = "http://localhost";
-
-  /**
-   * Configures api endpoint
-   *
-   */
-  public configure(baseUrl: string) {
-    this.apiUrl = baseUrl;
-  }
-
+export class ApiUtils {
   /**
    * Handles response from API
    * 
@@ -43,6 +32,19 @@ export default new class Api {
       default:
         return response.json();
     }
+  }
+}
+
+export default new class Api {
+
+  private apiUrl = "http://localhost";
+
+  /**
+   * Configures api endpoint
+   *
+   */
+  public configure(baseUrl: string) {
+    this.apiUrl = baseUrl;
   }
 
   

@@ -6,7 +6,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { Price } from '../model/price';
 import * as URI from "urijs";
-import Api from "./api";
+import { ApiUtils } from "./api";
 
 export class ContractsService {
 
@@ -36,7 +36,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -68,7 +68,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -91,7 +91,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -113,7 +113,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -135,7 +135,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -161,7 +161,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -186,7 +186,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -223,7 +223,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -272,7 +272,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -295,7 +295,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -319,7 +319,7 @@ export class ContractsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 

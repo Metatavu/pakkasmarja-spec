@@ -3,7 +3,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { Operation } from '../model/operation';
 import * as URI from "urijs";
-import Api from "./api";
+import { ApiUtils } from "./api";
 
 export class OperationsService {
 
@@ -33,7 +33,7 @@ export class OperationsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 

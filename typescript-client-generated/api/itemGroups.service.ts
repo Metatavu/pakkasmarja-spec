@@ -5,7 +5,7 @@ import { ItemGroup } from '../model/itemGroup';
 import { ItemGroupDocumentTemplate } from '../model/itemGroupDocumentTemplate';
 import { Price } from '../model/price';
 import * as URI from "urijs";
-import Api from "./api";
+import { ApiUtils } from "./api";
 
 export class ItemGroupsService {
 
@@ -36,7 +36,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -58,7 +58,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -79,7 +79,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -101,7 +101,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -123,7 +123,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -144,7 +144,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -181,7 +181,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -201,7 +201,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -225,7 +225,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
@@ -249,7 +249,7 @@ export class ItemGroupsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return Api.handleResponse(response);
+      return ApiUtils.handleResponse(response);
     });
   }
 
