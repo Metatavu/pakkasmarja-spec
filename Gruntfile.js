@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         }
       },
       "typescript-client-publish": {
-        command : 'npm install && npm publish',
+        command : 'npm install && npm run build && npm publish',
         options: {
           execOptions: {
             cwd: 'typescript-client-generated'
