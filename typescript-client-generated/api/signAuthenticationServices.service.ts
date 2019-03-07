@@ -3,6 +3,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { SignAuthenticationService } from '../model/signAuthenticationService';
 import * as URI from "urijs";
+import Api from "./api";
 
 export class SignAuthenticationServicesService {
 
@@ -30,7 +31,7 @@ export class SignAuthenticationServicesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 

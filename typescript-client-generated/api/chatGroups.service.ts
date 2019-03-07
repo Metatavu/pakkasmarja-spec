@@ -1,11 +1,13 @@
 import { BadRequest } from '../model/badRequest';
+import { ChatGroup } from '../model/chatGroup';
+import { ChatGroupType } from '../model/chatGroupType';
+import { ChatThread } from '../model/chatThread';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { NewsArticle } from '../model/newsArticle';
 import * as URI from "urijs";
 import Api from "./api";
 
-export class NewsArticlesService {
+export class ChatGroupsService {
 
   private token: string;
   private basePath: string;
@@ -17,12 +19,12 @@ export class NewsArticlesService {
 
 
   /**
-   * Creates news article
-   * @summary Create news article
+   * Creates new chat group
+   * @summary Creates new chat group
    * @param body Payload
   */
-  public createNewsArticle(body: NewsArticle, ):Promise<NewsArticle> {
-    const uri = new URI(`${this.basePath}/newsArticles`);
+  public createChatGroup(body: ChatThread, ):Promise<ChatGroup> {
+    const uri = new URI(`${this.basePath}/chatGroups`);
     const options = {
       method: "post",
       headers: {
@@ -39,12 +41,12 @@ export class NewsArticlesService {
 
 
   /**
-   * Deletes news article
-   * @summary Delete news article
-   * @param newsArticleId news article id id
+   * Deletes a chat group
+   * @summary Deletes a chat group
+   * @param chatGroupId Chat group id
   */
-  public deleteNewsArticle(newsArticleId: number, ):Promise<any> {
-    const uri = new URI(`${this.basePath}/newsArticles/${encodeURIComponent(String(newsArticleId))}`);
+  public deleteChatGroup(chatGroupId: number, ):Promise<any> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}`);
     const options = {
       method: "delete",
       headers: {
@@ -60,12 +62,12 @@ export class NewsArticlesService {
 
 
   /**
-   * Finds news article by id
-   * @summary Find news article
-   * @param newsArticleId news article id id
+   * Returns a chat group
+   * @summary Returns a chat group
+   * @param chatGroupId Chat group id
   */
-  public findNewsArticle(newsArticleId: number, ):Promise<NewsArticle> {
-    const uri = new URI(`${this.basePath}/newsArticles/${encodeURIComponent(String(newsArticleId))}`);
+  public findChatGroup(chatGroupId: number, ):Promise<ChatGroup> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}`);
     const options = {
       method: "get",
       headers: {
@@ -81,11 +83,15 @@ export class NewsArticlesService {
 
 
   /**
-   * Lists news articles
-   * @summary Lists news articles
+   * Returns list of chat groups
+   * @summary Returns list of chat groups
+   * @param groupType Filter chat groups by group type
   */
-  public listNewsArticles():Promise<Array<NewsArticle>> {
-    const uri = new URI(`${this.basePath}/newsArticles`);
+  public listChatGroups(groupType?: ChatGroupType, ):Promise<Array<ChatGroup>> {
+    const uri = new URI(`${this.basePath}/chatGroups`);
+    if (groupType !== undefined && groupType !== null) {
+        uri.addQuery('groupType', <any>groupType);
+    }
     const options = {
       method: "get",
       headers: {
@@ -101,13 +107,13 @@ export class NewsArticlesService {
 
 
   /**
-   * Updates news article
-   * @summary Update news article
+   * Update chat group
+   * @summary Update chat group
    * @param body Payload
-   * @param newsArticleId news article id id
+   * @param chatGroupId Chat group id
   */
-  public updateNewsArticle(body: NewsArticle, newsArticleId: number, ):Promise<NewsArticle> {
-    const uri = new URI(`${this.basePath}/newsArticles/${encodeURIComponent(String(newsArticleId))}`);
+  public updateChatGroup(body: ChatThread, chatGroupId: number, ):Promise<ChatGroup> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}`);
     const options = {
       method: "put",
       headers: {

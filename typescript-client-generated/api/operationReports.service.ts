@@ -4,6 +4,7 @@ import { InternalServerError } from '../model/internalServerError';
 import { OperationReport } from '../model/operationReport';
 import { OperationReportItem } from '../model/operationReportItem';
 import * as URI from "urijs";
+import Api from "./api";
 
 export class OperationReportsService {
 
@@ -32,7 +33,7 @@ export class OperationReportsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -53,7 +54,7 @@ export class OperationReportsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -93,7 +94,7 @@ export class OperationReportsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 

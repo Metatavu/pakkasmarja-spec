@@ -1,8 +1,10 @@
 import { BadRequest } from '../model/badRequest';
+import { ChatGroupType } from '../model/chatGroupType';
 import { ChatThread } from '../model/chatThread';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import * as URI from "urijs";
+import Api from "./api";
 
 export class ChatThreadsService {
 
@@ -12,6 +14,70 @@ export class ChatThreadsService {
   constructor(basePath: string, token: string) {
     this.token = token;
     this.basePath = basePath;
+  }
+
+
+  /**
+   * Creates new chat thread
+   * @summary Creates new chat thread
+   * @param body Payload
+  */
+  public createChatThread(body: ChatThread, ):Promise<ChatThread> {
+    const uri = new URI(`${this.basePath}/chatThreads`);
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      },
+      body: JSON.stringify(body)
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return Api.handleRespons(response);
+    });
+  }
+
+
+  /**
+   * Deletes chat thread
+   * @summary Deletes chat thread
+   * @param chatThreadId Chat thread id
+  */
+  public deleteChatThread(chatThreadId: number, ):Promise<ChatThread> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}`);
+    const options = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return Api.handleRespons(response);
+    });
+  }
+
+
+  /**
+   * Returns chat thread
+   * @summary Returns chat thread
+   * @param chatThreadId Chat thread id
+  */
+  public findChatThread(chatThreadId: number, ):Promise<ChatThread> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return Api.handleRespons(response);
+    });
   }
 
 
@@ -33,7 +99,7 @@ export class ChatThreadsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -41,12 +107,16 @@ export class ChatThreadsService {
   /**
    * Returns list of chat threads
    * @summary Returns list of chat threads
-   * @param originId Filter chat threads by origin id
+   * @param groupId Filter chat threads by group id
+   * @param groupType Filter chat groups by group type
   */
-  public listChatThreads(originId?: string, ):Promise<Array<ChatThread>> {
+  public listChatThreads(groupId?: number, groupType?: ChatGroupType, ):Promise<Array<ChatThread>> {
     const uri = new URI(`${this.basePath}/chatThreads`);
-    if (originId !== undefined && originId !== null) {
-        uri.addQuery('originId', <any>originId);
+    if (groupId !== undefined && groupId !== null) {
+        uri.addQuery('groupId', <any>groupId);
+    }
+    if (groupType !== undefined && groupType !== null) {
+        uri.addQuery('groupType', <any>groupType);
     }
     const options = {
       method: "get",
@@ -57,7 +127,28 @@ export class ChatThreadsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
+    });
+  }
+
+
+  /**
+   * Update chat thread
+   * @summary Update chat thread
+   * @param chatThreadId Chat thread id
+  */
+  public updateChatThread(chatThreadId: number, ):Promise<ChatThread> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}`);
+    const options = {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return Api.handleRespons(response);
     });
   }
 

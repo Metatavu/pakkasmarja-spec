@@ -4,6 +4,7 @@ import { Credentials } from '../model/credentials';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import * as URI from "urijs";
+import Api from "./api";
 
 export class ContactsService {
 
@@ -32,7 +33,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -56,7 +57,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -79,7 +80,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -102,7 +103,7 @@ export class ContactsService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 

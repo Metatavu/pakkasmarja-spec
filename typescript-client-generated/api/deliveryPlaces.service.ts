@@ -3,6 +3,7 @@ import { DeliveryPlace } from '../model/deliveryPlace';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import * as URI from "urijs";
+import Api from "./api";
 
 export class DeliveryPlacesService {
 
@@ -31,7 +32,7 @@ export class DeliveryPlacesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 
@@ -51,7 +52,7 @@ export class DeliveryPlacesService {
     };
 
     return fetch(uri.toString(), options).then((response) => {
-      return response.json();
+      return Api.handleRespons(response);
     });
   }
 

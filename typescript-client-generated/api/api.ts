@@ -1,3 +1,5 @@
+export * from './chatGroups.service';
+import { ChatGroupsService } from './chatGroups.service';
 export * from './chatThreads.service';
 import { ChatThreadsService } from './chatThreads.service';
 export * from './contacts.service';
@@ -20,10 +22,33 @@ import { SignAuthenticationServicesService } from './signAuthenticationServices.
 export default new class Api {
 
   private apiUrl = "http://localhost";
+
+  /**
+   * Configures api endpoint
+   *
+   */
   public configure(baseUrl: string) {
     this.apiUrl = baseUrl;
   }
 
+  /**
+   * Handles response from API
+   * 
+   * @param response response object
+   */
+  public static handleResponse(response: any) {
+    switch (response.status) {
+      case 204:
+        return {};
+      default:
+        return response.json();
+    }
+  }
+
+  
+  public getChatGroupsService(token: string): ChatGroupsService {
+    return new ChatGroupsService(this.apiUrl, token);
+  }
   
   public getChatThreadsService(token: string): ChatThreadsService {
     return new ChatThreadsService(this.apiUrl, token);

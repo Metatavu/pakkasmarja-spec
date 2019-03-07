@@ -13,17 +13,15 @@
 
 export interface ChatThread { 
     id?: number;
+    groupId?: number;
     title: string;
-    type?: string;
-    originId?: string;
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
 }
 export interface ChatThreadOpt { 
     id?: number;
+    groupId?: number;
     title?: string;
-    type?: string;
-    originId?: string;
     imageUrl?: string;
     answerType?: ChatThread.AnswerTypeEnum;
 }
