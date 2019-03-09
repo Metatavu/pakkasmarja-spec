@@ -2705,6 +2705,8 @@ components:
           format: int64
         title:
           type: string
+        description:
+          type: string
         imageUrl:
           type: string
           format: url
