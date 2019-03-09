@@ -2696,6 +2696,7 @@ components:
       required:
         - title
         - answerType
+        - groupId
       properties:
         id:
           type: integer
