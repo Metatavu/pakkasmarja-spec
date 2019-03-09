@@ -2716,7 +2716,12 @@ components:
           enum:
             - TEXT
             - POLL
-      
+        pollAllowOther:
+          type: boolean
+        expiresAt:
+          type: string
+          format: date-time
+
     ChatMessage:
       type: object
       required:
