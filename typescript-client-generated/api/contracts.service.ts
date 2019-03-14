@@ -107,6 +107,7 @@ export class ContractsService {
     const options = {
       method: "get",
       headers: {
+        "Accept" : accept,
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`
       }
@@ -266,6 +267,7 @@ export class ContractsService {
     const options = {
       method: "get",
       headers: {
+        "Accept" : accept,
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`
       }

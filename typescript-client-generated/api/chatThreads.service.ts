@@ -93,6 +93,7 @@ export class ChatThreadsService {
     const options = {
       method: "get",
       headers: {
+        "Accept" : accept,
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`
       }
