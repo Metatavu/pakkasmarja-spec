@@ -74,6 +74,7 @@ var ChatThreadsService = /** @class */ (function () {
         var options = {
             method: "get",
             headers: {
+                "Accept": accept,
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.token
             }

@@ -56,6 +56,11 @@ export class {{classname}} {
     const options = {
       method: "{{httpMethod}}",
       headers: {
+        {{#hasHeaderParams}}
+        {{#headerParams}}
+        "{{baseName}}" : {{paramName}},
+        {{/headerParams}}
+        {{/hasHeaderParams}}
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`
       }{{#isBodyAllowed}}{{#bodyParam}},

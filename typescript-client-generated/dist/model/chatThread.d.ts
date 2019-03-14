@@ -11,17 +11,23 @@
  */
 export interface ChatThread {
     id?: number;
-    groupId?: number;
+    groupId: number;
     title: string;
+    description?: string;
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
+    pollAllowOther?: boolean;
+    expiresAt?: string;
 }
 export interface ChatThreadOpt {
     id?: number;
     groupId?: number;
     title?: string;
+    description?: string;
     imageUrl?: string;
     answerType?: ChatThread.AnswerTypeEnum;
+    pollAllowOther?: boolean;
+    expiresAt?: string;
 }
 export declare namespace ChatThread {
     type AnswerTypeEnum = 'TEXT' | 'POLL';
