@@ -2646,11 +2646,6 @@ paths:
           description: filter by item group id
           schema:
             $ref: "#/components/schemas/ItemGroupType"
-        - name: itemGroupType
-          in: query
-          description: filter by status
-          schema:
-            $ref: "#/components/schemas/DeliveryStatus"
         - name: itemGroupId
           in: query
           description: filter by item group id
@@ -3073,7 +3068,241 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-                
+  /weekDeliveryPredictions:
+    post:
+      operationId: createWeekDeliveryPrediction
+      summary: Create week delivery prediction
+      description: Creates week delivery prediction
+      tags:
+        - WeekDeliveryPredictions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WeekDeliveryPrediction"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created weekDeliveryPrediction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeekDeliveryPrediction"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    get:
+      operationId: listWeekDeliveryPredictions
+      summary: Lists weekDeliveryPredictions
+      description: Lists weekDeliveryPredictions
+      tags:
+        - WeekDeliveryPredictions
+      parameters:
+        - name: itemGroupId
+          in: query
+          description: filter by item group id
+          schema:
+            type: string
+            format: uuid
+        - name: itemGroupType
+          in: query
+          description: filter by item group id
+          schema:
+            $ref: "#/components/schemas/ItemGroupType"
+        - name: userId
+          in: query
+          description: filter by user id
+          schema:
+            type: string
+            format: uuid
+        - name: weekNumber
+          in: query
+          description: filter by week number
+          schema:
+            type: integer
+            format: int32
+        - name: year
+          in: query
+          description: filter by year
+          schema:
+            type: integer
+            format: int32
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: List of weekDeliveryPredictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WeekDeliveryPrediction"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/weekDeliveryPredictions/{weekDeliveryPredictionId}":
+    get:
+      operationId: findWeekDeliveryPrediction
+      summary: Find weekDeliveryPrediction
+      description: Finds weekDeliveryPrediction by id
+      tags:
+        - WeekDeliveryPredictions
+      parameters:
+        - name: weekDeliveryPredictionId
+          required: true
+          in: path
+          description: weekDeliveryPrediction id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A created weekDeliveryPrediction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeekDeliveryPrediction"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateWeekDeliveryPrediction
+      summary: Update weekDeliveryPrediction
+      description: Updates weekDeliveryPrediction
+      tags:
+        - WeekDeliveryPredictions
+      parameters:
+        - name: weekDeliveryPredictionId
+          required: true
+          in: path
+          description: weekDeliveryPrediction id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WeekDeliveryPrediction"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated weekDeliveryPrediction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeekDeliveryPrediction"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteWeekDeliveryPrediction
+      summary: Delete weekDeliveryPrediction
+      description: Deletes weekDeliveryPrediction
+      tags:
+        - WeekDeliveryPredictions
+      parameters:
+        - name: weekDeliveryPredictionId
+          required: true
+          in: path
+          description: weekDeliveryPrediction id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"     
 components:
   requestBodies:
     ContractDocumentTemplate:
@@ -3365,6 +3594,9 @@ components:
         productId:
           type: string
           format: uuid
+        userId:
+          type: string
+          format: uuid
         time:
           type: string
           format: date-time
@@ -3380,6 +3612,59 @@ components:
         deliveryPlaceId:
           type: string
           format: uuid
+          
+    WeekDeliveryPrediction:
+      required:
+        - itemGroupId
+        - userId
+        - amount
+        - weekNumber
+        - year
+        - days
+      properties: 
+        id:
+          type: string
+          format: uuid
+        itemGroupId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        amount:
+          type: integer
+          format: int32
+        weekNumber:
+          type: integer
+          format: int32
+        year:
+          type: integer
+          format: int32
+        days:
+          type: object
+          required:
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+            - sunday
+          properties:
+            monday:
+              type: boolean
+            tuesday:
+              type: boolean
+            wednesday:
+              type: boolean
+            thursday:
+              type: boolean
+            friday:
+              type: boolean
+            saturday:
+              type: boolean
+            sunday:
+              type: boolean
 
     DeliveryStatus:
       type: string
