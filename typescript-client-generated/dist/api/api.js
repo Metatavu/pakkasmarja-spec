@@ -13,6 +13,8 @@ __export(require("./contacts.service"));
 var contacts_service_1 = require("./contacts.service");
 __export(require("./contracts.service"));
 var contracts_service_1 = require("./contracts.service");
+__export(require("./deliveries.service"));
+var deliveries_service_1 = require("./deliveries.service");
 __export(require("./deliveryPlaces.service"));
 var deliveryPlaces_service_1 = require("./deliveryPlaces.service");
 __export(require("./itemGroups.service"));
@@ -23,6 +25,8 @@ __export(require("./operationReports.service"));
 var operationReports_service_1 = require("./operationReports.service");
 __export(require("./operations.service"));
 var operations_service_1 = require("./operations.service");
+__export(require("./products.service"));
+var products_service_1 = require("./products.service");
 __export(require("./signAuthenticationServices.service"));
 var signAuthenticationServices_service_1 = require("./signAuthenticationServices.service");
 var ApiUtils = /** @class */ (function () {
@@ -70,6 +74,9 @@ exports.default = new /** @class */ (function () {
     Api.prototype.getContractsService = function (token) {
         return new contracts_service_1.ContractsService(this.apiUrl, token);
     };
+    Api.prototype.getDeliveriesService = function (token) {
+        return new deliveries_service_1.DeliveriesService(this.apiUrl, token);
+    };
     Api.prototype.getDeliveryPlacesService = function (token) {
         return new deliveryPlaces_service_1.DeliveryPlacesService(this.apiUrl, token);
     };
@@ -84,6 +91,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getOperationsService = function (token) {
         return new operations_service_1.OperationsService(this.apiUrl, token);
+    };
+    Api.prototype.getProductsService = function (token) {
+        return new products_service_1.ProductsService(this.apiUrl, token);
     };
     Api.prototype.getSignAuthenticationServicesService = function (token) {
         return new signAuthenticationServices_service_1.SignAuthenticationServicesService(this.apiUrl, token);

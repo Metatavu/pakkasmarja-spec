@@ -29,3 +29,5 @@ export * from './operationReport';
 export * from './operationReportItem';
 export * from './product';
 export * from './signAuthenticationService';
+export * from './weekDeliveryPrediction';
+export * from './weekDeliveryPredictionDays';

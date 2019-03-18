@@ -19,7 +19,7 @@ export interface ChatThread {
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
     pollAllowOther?: boolean;
-    expiresAt?: string;
+    expiresAt?: Date;
 }
 export interface ChatThreadOpt { 
     id?: number;
@@ -29,7 +29,7 @@ export interface ChatThreadOpt {
     imageUrl?: string;
     answerType?: ChatThread.AnswerTypeEnum;
     pollAllowOther?: boolean;
-    expiresAt?: string;
+    expiresAt?: Date;
 }
 export namespace ChatThread {
     export type AnswerTypeEnum = 'TEXT' | 'POLL';
