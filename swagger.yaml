@@ -425,7 +425,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Price"
+                  $ref: "#/components/schemas/ItemGroupPrice"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -865,7 +865,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Price"
+                  $ref: "#/components/schemas/ItemGroupPrice"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -899,14 +899,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/Price"
+        $ref: "#/components/requestBodies/ItemGroupPrice"
       responses:
         "200":
           description: Created item group price
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Price"
+                $ref: "#/components/schemas/ItemGroupPrice"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -953,7 +953,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Price"
+                $ref: "#/components/schemas/ItemGroupPrice"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -994,14 +994,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/Price"
+        $ref: "#/components/requestBodies/ItemGroupPrice"
       responses:
         "200":
           description: Updated item group price
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Price"
+                $ref: "#/components/schemas/ItemGroupPrice"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -2367,6 +2367,713 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
 
+  /products:
+    post:
+      operationId: createProduct
+      summary: Create product
+      description: Creates product
+      tags:
+        - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    get:
+      operationId: listProducts
+      summary: Lists products
+      description: Lists products
+      tags:
+        - Products
+      parameters:
+        - name: itemGroupId
+          in: query
+          description: filter by item group id
+          schema:
+            type: string
+            format: uuid
+        - name: itemGroupType
+          in: query
+          description: filter by item group id
+          schema:
+            $ref: "#/components/schemas/ItemGroupType"
+        - name: contractUserId
+          in: query
+          description: output only products what specified user has contract in
+          schema:
+            type: string
+            format: uuid
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/products/{productId}":
+    get:
+      operationId: findProduct
+      summary: Find product
+      description: Finds product by id
+      tags:
+        - Products
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A created product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateProduct
+      summary: Update product
+      description: Updates product
+      tags:
+        - Products
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteProduct
+      summary: Delete product
+      description: Deletes product
+      tags:
+        - Products
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/deliveries":
+    post:
+      operationId: createDelivery
+      summary: Create delivery
+      description: Creates delivery
+      tags:
+        - Deliveries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Delivery"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created delivery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Delivery"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    get:
+      operationId: listDeliveries
+      summary: Lists deliveries
+      description: Lists deliveries
+      tags:
+        - Deliveries
+      parameters:
+        - name: status
+          in: query
+          description: filter by status
+          schema:
+            $ref: "#/components/schemas/DeliveryStatus"
+        - name: itemGroupType
+          in: query
+          description: filter by item group id
+          schema:
+            $ref: "#/components/schemas/ItemGroupType"
+        - name: itemGroupType
+          in: query
+          description: filter by status
+          schema:
+            $ref: "#/components/schemas/DeliveryStatus"
+        - name: itemGroupId
+          in: query
+          description: filter by item group id
+          schema:
+            type: string
+            format: uuid
+        - name: productId
+          in: query
+          description: filter by item group id
+          schema:
+            type: string
+            format: uuid
+        - name: deliveryPlaceId
+          in: query
+          description: filter by delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: timeBefore
+          in: query
+          description: filter by time before specified time
+          schema:
+            type: string
+            format: date-time
+        - name: timeAfter
+          in: query
+          description: filter by time after specified time
+          schema:
+            type: string
+            format: date-time
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: List of deliveries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Delivery"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/deliveries/{deliveryId}":
+    get:
+      operationId: findDelivery
+      summary: Find delivery
+      description: Finds delivery by id
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A created delivery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Delivery"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateDelivery
+      summary: Update delivery
+      description: Updates delivery
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Delivery"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated delivery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Delivery"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteDelivery
+      summary: Delete delivery
+      description: Deletes delivery
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/deliveries/{deliveryId}/notes":
+    post:
+      operationId: createDeliveryNote
+      summary: Create delivery note
+      description: Creates delivery note
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryNote"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created delivery note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryNote"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    get:
+      operationId: listDeliveryNotes
+      summary: Lists deliveries notes
+      description: Lists deliveries notes
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of delivery notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryNote"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
+  "/deliveries/{deliveryId}/notes/{deliveryNoteId}":
+    get:
+      operationId: findDeliveryNote
+      summary: Find delivery note
+      description: Finds delivery note by id
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+        - name: deliveryNoteId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of delivery notes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryNote"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateDeliveryNote
+      summary: Update delivery note
+      description: Updates delivery note
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+        - name: deliveryNoteId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryNote"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated delivery note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryNote"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteDeliveryNote
+      summary: Delete delivery note
+      description: Deletes delivery note
+      tags:
+        - Deliveries
+      parameters:
+        - name: deliveryId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+        - name: deliveryNoteId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+                
 components:
   requestBodies:
     ContractDocumentTemplate:
@@ -2376,11 +3083,11 @@ components:
             $ref: "#/components/schemas/ContractDocumentTemplate"
       description: Payload
       required: true
-    Price:
+    ItemGroupPrice:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Price"
+            $ref: "#/components/schemas/ItemGroupPrice"
       description: Payload
       required: true
     Contract:
@@ -2510,7 +3217,8 @@ components:
             - REJECTED
         remarks:
           type: string
-    Price:
+          
+    ItemGroupPrice:
       type: object
       required:
         - group
@@ -2530,6 +3238,7 @@ components:
           type: string
         price:
           type: string
+
     ItemGroupDocumentTemplate:
       type: object
       required:
@@ -2584,6 +3293,7 @@ components:
         image:
           type: string
           format: url
+          
     ItemGroup:
       type: object
       properties:
@@ -2592,6 +3302,8 @@ components:
           format: uuid
         name:
           type: string
+        type:
+          $ref: "#/components/schemas/ItemGroupType"
         displayName:
           type: string
         category:
@@ -2603,6 +3315,13 @@ components:
           description: Require contract in specified item group before siging a contract
           type: string
           format: uuid
+
+    ItemGroupType:
+      type: string
+      enum:
+        - FRESH
+        - FROZEN
+        
     DeliveryPlace:
       type: object
       properties:
@@ -2611,6 +3330,82 @@ components:
           format: uuid
         name:
           type: string
+          
+    Product:
+      type: object
+      required:
+        - itemGroupId
+        - name
+        - units
+        - unitSize
+        - unitName
+      properties: 
+        id:
+          type: string
+          format: uuid
+        itemGroupId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        units:
+          type: integer
+          format: int32
+        unitSize:
+          type: integer
+          format: int32
+        unitName:
+          type: string
+      
+    Delivery:
+      properties: 
+        id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        time:
+          type: string
+          format: date-time
+        status:
+          $ref: "#/components/schemas/DeliveryStatus"
+        amount:
+          type: integer
+          format: int32
+        price:
+          type: string
+        quality:
+          $ref: "#/components/schemas/DeliveryQuality"
+        deliveryPlaceId:
+          type: string
+          format: uuid
+
+    DeliveryStatus:
+      type: string
+      enum:
+        - PROPOSAL
+        - PLANNED
+        - DELIVERY
+        - DONE
+        - REJECTED
+
+    DeliveryQuality:
+      type: string
+      enum:
+        - NORMAL
+      
+    DeliveryNote:
+      properties: 
+        id:
+          type: string
+          format: uuid
+        text:
+          type: string
+        image:
+          type: string
+          format: url
+          
     Address:
       type: object
       properties:
