@@ -8,6 +8,8 @@ export * from './contacts.service';
 import { ContactsService } from './contacts.service';
 export * from './contracts.service';
 import { ContractsService } from './contracts.service';
+export * from './deliveries.service';
+import { DeliveriesService } from './deliveries.service';
 export * from './deliveryPlaces.service';
 import { DeliveryPlacesService } from './deliveryPlaces.service';
 export * from './itemGroups.service';
@@ -18,6 +20,8 @@ export * from './operationReports.service';
 import { OperationReportsService } from './operationReports.service';
 export * from './operations.service';
 import { OperationsService } from './operations.service';
+export * from './products.service';
+import { ProductsService } from './products.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 
@@ -70,6 +74,10 @@ export default new class Api {
     return new ContractsService(this.apiUrl, token);
   }
   
+  public getDeliveriesService(token: string): DeliveriesService {
+    return new DeliveriesService(this.apiUrl, token);
+  }
+  
   public getDeliveryPlacesService(token: string): DeliveryPlacesService {
     return new DeliveryPlacesService(this.apiUrl, token);
   }
@@ -88,6 +96,10 @@ export default new class Api {
   
   public getOperationsService(token: string): OperationsService {
     return new OperationsService(this.apiUrl, token);
+  }
+  
+  public getProductsService(token: string): ProductsService {
+    return new ProductsService(this.apiUrl, token);
   }
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {

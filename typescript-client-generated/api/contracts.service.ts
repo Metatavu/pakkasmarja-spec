@@ -4,7 +4,7 @@ import { ContractDocumentSignRequest } from '../model/contractDocumentSignReques
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { Price } from '../model/price';
+import { ItemGroupPrice } from '../model/itemGroupPrice';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -201,7 +201,7 @@ export class ContractsService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listContractPrices(contractId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<Price>> {
+  public listContractPrices(contractId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<ItemGroupPrice>> {
     const uri = new URI(`${this.basePath}/contracts/${encodeURIComponent(String(contractId))}/prices`);
     if (sortBy !== undefined && sortBy !== null) {
         uri.addQuery('sortBy', <any>sortBy);

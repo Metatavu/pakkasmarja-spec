@@ -3,7 +3,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { ItemGroup } from '../model/itemGroup';
 import { ItemGroupDocumentTemplate } from '../model/itemGroupDocumentTemplate';
-import { Price } from '../model/price';
+import { ItemGroupPrice } from '../model/itemGroupPrice';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -24,7 +24,7 @@ export class ItemGroupsService {
    * @param body Payload
    * @param itemGroupId item group id
   */
-  public createItemGroupPrice(body: Price, itemGroupId: string, ):Promise<Price> {
+  public createItemGroupPrice(body: ItemGroupPrice, itemGroupId: string, ):Promise<ItemGroupPrice> {
     const uri = new URI(`${this.basePath}/itemGroups/${encodeURIComponent(String(itemGroupId))}/prices`);
     const options = {
       method: "post",
@@ -112,7 +112,7 @@ export class ItemGroupsService {
    * @param itemGroupId item group id
    * @param priceId price id
   */
-  public findItemGroupPrice(itemGroupId: string, priceId: string, ):Promise<Price> {
+  public findItemGroupPrice(itemGroupId: string, priceId: string, ):Promise<ItemGroupPrice> {
     const uri = new URI(`${this.basePath}/itemGroups/${encodeURIComponent(String(itemGroupId))}/prices/${encodeURIComponent(String(priceId))}`);
     const options = {
       method: "get",
@@ -158,7 +158,7 @@ export class ItemGroupsService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listItemGroupPrices(itemGroupId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<Price>> {
+  public listItemGroupPrices(itemGroupId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<ItemGroupPrice>> {
     const uri = new URI(`${this.basePath}/itemGroups/${encodeURIComponent(String(itemGroupId))}/prices`);
     if (sortBy !== undefined && sortBy !== null) {
         uri.addQuery('sortBy', <any>sortBy);
@@ -237,7 +237,7 @@ export class ItemGroupsService {
    * @param itemGroupId item group id
    * @param priceId price id
   */
-  public updateItemGroupPrice(body: Price, itemGroupId: string, priceId: string, ):Promise<Price> {
+  public updateItemGroupPrice(body: ItemGroupPrice, itemGroupId: string, priceId: string, ):Promise<ItemGroupPrice> {
     const uri = new URI(`${this.basePath}/itemGroups/${encodeURIComponent(String(itemGroupId))}/prices/${encodeURIComponent(String(priceId))}`);
     const options = {
       method: "put",

@@ -9,11 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { ItemGroupType } from './itemGroupType';
 
 
 export interface ItemGroup { 
     id?: string;
     name?: string;
+    type?: ItemGroupType;
     displayName?: string;
     category?: string;
     minimumProfitEstimation?: number;
@@ -25,6 +27,7 @@ export interface ItemGroup {
 export interface ItemGroupOpt { 
     id?: string;
     name?: string;
+    type?: ItemGroupType;
     displayName?: string;
     category?: string;
     minimumProfitEstimation?: number;
