@@ -1,6 +1,6 @@
 import { ItemGroup } from '../model/itemGroup';
 import { ItemGroupDocumentTemplate } from '../model/itemGroupDocumentTemplate';
-import { Price } from '../model/price';
+import { ItemGroupPrice } from '../model/itemGroupPrice';
 export declare class ItemGroupsService {
     private token;
     private basePath;
@@ -11,7 +11,7 @@ export declare class ItemGroupsService {
      * @param body Payload
      * @param itemGroupId item group id
     */
-    createItemGroupPrice(body: Price, itemGroupId: string): Promise<Price>;
+    createItemGroupPrice(body: ItemGroupPrice, itemGroupId: string): Promise<ItemGroupPrice>;
     /**
      * Deletes an item group price
      * @summary Delete item group price
@@ -38,7 +38,7 @@ export declare class ItemGroupsService {
      * @param itemGroupId item group id
      * @param priceId price id
     */
-    findItemGroupPrice(itemGroupId: string, priceId: string): Promise<Price>;
+    findItemGroupPrice(itemGroupId: string, priceId: string): Promise<ItemGroupPrice>;
     /**
      * Lists item group templates
      * @summary List item group document templates
@@ -54,7 +54,7 @@ export declare class ItemGroupsService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listItemGroupPrices(itemGroupId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<Price>>;
+    listItemGroupPrices(itemGroupId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<ItemGroupPrice>>;
     /**
      * Lists item groups
      * @summary Lists item groups
@@ -75,5 +75,5 @@ export declare class ItemGroupsService {
      * @param itemGroupId item group id
      * @param priceId price id
     */
-    updateItemGroupPrice(body: Price, itemGroupId: string, priceId: string): Promise<Price>;
+    updateItemGroupPrice(body: ItemGroupPrice, itemGroupId: string, priceId: string): Promise<ItemGroupPrice>;
 }

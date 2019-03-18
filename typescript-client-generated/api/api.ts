@@ -24,6 +24,8 @@ export * from './products.service';
 import { ProductsService } from './products.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
+export * from './weekDeliveryPredictions.service';
+import { WeekDeliveryPredictionsService } from './weekDeliveryPredictions.service';
 
 export class ApiUtils {
   /**
@@ -104,6 +106,10 @@ export default new class Api {
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {
     return new SignAuthenticationServicesService(this.apiUrl, token);
+  }
+  
+  public getWeekDeliveryPredictionsService(token: string): WeekDeliveryPredictionsService {
+    return new WeekDeliveryPredictionsService(this.apiUrl, token);
   }
   
 }

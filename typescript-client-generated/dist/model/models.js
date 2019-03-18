@@ -7,4 +7,7 @@ __export(require("./chatGroupType"));
 __export(require("./chatThread"));
 __export(require("./contact"));
 __export(require("./contract"));
+__export(require("./deliveryQuality"));
+__export(require("./deliveryStatus"));
+__export(require("./itemGroupType"));
 __export(require("./operationReportItem"));

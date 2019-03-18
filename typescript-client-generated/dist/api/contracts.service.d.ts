@@ -1,7 +1,7 @@
 import { Contract } from '../model/contract';
 import { ContractDocumentSignRequest } from '../model/contractDocumentSignRequest';
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
-import { Price } from '../model/price';
+import { ItemGroupPrice } from '../model/itemGroupPrice';
 export declare class ContractsService {
     private token;
     private basePath;
@@ -67,7 +67,7 @@ export declare class ContractsService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listContractPrices(contractId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<Price>>;
+    listContractPrices(contractId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<ItemGroupPrice>>;
     /**
      * Lists contracts
      * @summary Lists contracts

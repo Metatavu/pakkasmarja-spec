@@ -14,7 +14,7 @@
 export interface OperationReport { 
     id?: string;
     type?: string;
-    started?: string;
+    started?: Date;
     pendingCount?: number;
     failedCount?: number;
     successCount?: number;
@@ -22,7 +22,7 @@ export interface OperationReport {
 export interface OperationReportOpt { 
     id?: string;
     type?: string;
-    started?: string;
+    started?: Date;
     pendingCount?: number;
     failedCount?: number;
     successCount?: number;

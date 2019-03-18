@@ -16,14 +16,14 @@ export interface NewsArticle {
     title: string;
     contents: string;
     imageUrl?: string;
-    readonly createdAt?: string;
-    readonly updatedAt?: string;
+    readonly createdAt?: Date;
+    readonly updatedAt?: Date;
 }
 export interface NewsArticleOpt { 
     id?: number;
     title?: string;
     contents?: string;
     imageUrl?: string;
-    readonly createdAt?: string;
-    readonly updatedAt?: string;
+    readonly createdAt?: Date;
+    readonly updatedAt?: Date;
 }
