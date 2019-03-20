@@ -2443,11 +2443,11 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: itemGroupType
+        - name: itemGroupCategory
           in: query
           description: filter by item group id
           schema:
-            $ref: "#/components/schemas/ItemGroupType"
+            $ref: "#/components/schemas/ItemGroupCategory"
         - name: contractUserId
           in: query
           description: output only products what specified user has contract in
@@ -2665,11 +2665,11 @@ paths:
           description: filter by status
           schema:
             $ref: "#/components/schemas/DeliveryStatus"
-        - name: itemGroupType
+        - name: itemGroupCategory
           in: query
           description: filter by item group id
           schema:
-            $ref: "#/components/schemas/ItemGroupType"
+            $ref: "#/components/schemas/ItemGroupCategory"
         - name: itemGroupId
           in: query
           description: filter by item group id
@@ -3144,11 +3144,11 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: itemGroupType
+        - name: itemGroupCategory
           in: query
           description: filter by item group id
           schema:
-            $ref: "#/components/schemas/ItemGroupType"
+            $ref: "#/components/schemas/ItemGroupCategory"
         - name: userId
           in: query
           description: filter by user id
@@ -3770,12 +3770,10 @@ components:
           format: uuid
         name:
           type: string
-        type:
-          $ref: "#/components/schemas/ItemGroupType"
         displayName:
           type: string
         category:
-          type: string
+          $ref: "#/components/schemas/ItemGroupCategory"
         minimumProfitEstimation:
           type: number
           format: double
@@ -3784,7 +3782,7 @@ components:
           type: string
           format: uuid
 
-    ItemGroupType:
+    ItemGroupCategory:
       type: string
       enum:
         - FRESH
