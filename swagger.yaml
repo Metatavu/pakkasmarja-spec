@@ -1910,6 +1910,30 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: createdBefore
+          in: query
+          description: Messages created before given time
+          schema:
+            type: string
+            format: date-time
+        - name: createdAfter
+          in: query
+          description: Messages created after given time
+          schema:
+            type: string
+            format: date-time
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          schema:
+            type: integer
+            format: int64
       responses:
         "200":
           description: A list of chat messages
@@ -3546,6 +3570,13 @@ components:
         id:
           type: string
           format: uuid
+        displayName: 
+          type: string
+          readOnly: true
+        avatarUrl: 
+          type: string
+          format: url
+          readOnly: true
         sapId:
           type: string
         firstName:
