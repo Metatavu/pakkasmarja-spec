@@ -4056,6 +4056,9 @@ components:
         userId:
           type: string
           format: uuid
+        image:
+          type: string
+          format: url
         contents:
           type: string
         createdAt:
