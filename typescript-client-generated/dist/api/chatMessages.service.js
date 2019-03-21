@@ -69,9 +69,25 @@ var ChatMessagesService = /** @class */ (function () {
      * Returns list of chat messages
      * @summary Returns list of chat messages
      * @param chatThreadId Chat thread
+     * @param createdBefore Messages created before given time
+     * @param createdAfter Messages created after given time
+     * @param firstResult Offset of first result. Defaults to 0
+     * @param maxResults Max results. Defaults to 5
     */
-    ChatMessagesService.prototype.listChatMessages = function (chatThreadId) {
+    ChatMessagesService.prototype.listChatMessages = function (chatThreadId, createdBefore, createdAfter, firstResult, maxResults) {
         var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/messages");
+        if (createdBefore !== undefined && createdBefore !== null) {
+            uri.addQuery('createdBefore', createdBefore.toISOString());
+        }
+        if (createdAfter !== undefined && createdAfter !== null) {
+            uri.addQuery('createdAfter', createdAfter.toISOString());
+        }
+        if (firstResult !== undefined && firstResult !== null) {
+            uri.addQuery('firstResult', firstResult);
+        }
+        if (maxResults !== undefined && maxResults !== null) {
+            uri.addQuery('maxResults', maxResults);
+        }
         var options = {
             method: "get",
             headers: {

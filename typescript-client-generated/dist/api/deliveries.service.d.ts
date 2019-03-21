@@ -1,7 +1,7 @@
 import { Delivery } from '../model/delivery';
 import { DeliveryNote } from '../model/deliveryNote';
 import { DeliveryStatus } from '../model/deliveryStatus';
-import { ItemGroupType } from '../model/itemGroupType';
+import { ItemGroupCategory } from '../model/itemGroupCategory';
 export declare class DeliveriesService {
     private token;
     private basePath;
@@ -49,7 +49,7 @@ export declare class DeliveriesService {
      * Lists deliveries
      * @summary Lists deliveries
      * @param status filter by status
-     * @param itemGroupType filter by item group id
+     * @param itemGroupCategory filter by item group id
      * @param itemGroupId filter by item group id
      * @param productId filter by item group id
      * @param deliveryPlaceId filter by delivery place id
@@ -58,7 +58,7 @@ export declare class DeliveriesService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listDeliveries(status?: DeliveryStatus, itemGroupType?: ItemGroupType, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number): Promise<Array<Delivery>>;
+    listDeliveries(status?: DeliveryStatus, itemGroupCategory?: ItemGroupCategory, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number): Promise<Array<Delivery>>;
     /**
      * Lists deliveries notes
      * @summary Lists deliveries notes

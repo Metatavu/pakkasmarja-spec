@@ -2,18 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var URI = require("urijs");
 var api_1 = require("./api");
-var ProductsService = /** @class */ (function () {
-    function ProductsService(basePath, token) {
+var PublicFilesService = /** @class */ (function () {
+    function PublicFilesService(basePath, token) {
         this.token = token;
         this.basePath = basePath;
     }
     /**
-     * Creates product
-     * @summary Create product
+     * Creates public file
+     * @summary Create public file
      * @param body Payload
     */
-    ProductsService.prototype.createProduct = function (body) {
-        var uri = new URI(this.basePath + "/products");
+    PublicFilesService.prototype.createPublicFile = function (body) {
+        var uri = new URI(this.basePath + "/publicFiles");
         var options = {
             method: "post",
             headers: {
@@ -27,12 +27,12 @@ var ProductsService = /** @class */ (function () {
         });
     };
     /**
-     * Deletes product
-     * @summary Delete product
-     * @param productId product id id
+     * Deletes public file
+     * @summary Delete public file
+     * @param publicFileId publicFile id id
     */
-    ProductsService.prototype.deleteProduct = function (productId) {
-        var uri = new URI(this.basePath + "/products/" + encodeURIComponent(String(productId)));
+    PublicFilesService.prototype.deletePublicFile = function (publicFileId) {
+        var uri = new URI(this.basePath + "/publicFiles/" + encodeURIComponent(String(publicFileId)));
         var options = {
             method: "delete",
             headers: {
@@ -45,12 +45,12 @@ var ProductsService = /** @class */ (function () {
         });
     };
     /**
-     * Finds product by id
-     * @summary Find product
-     * @param productId product id id
+     * Finds public file by id
+     * @summary Find public file
+     * @param publicFileId publicFile id id
     */
-    ProductsService.prototype.findProduct = function (productId) {
-        var uri = new URI(this.basePath + "/products/" + encodeURIComponent(String(productId)));
+    PublicFilesService.prototype.findPublicFile = function (publicFileId) {
+        var uri = new URI(this.basePath + "/publicFiles/" + encodeURIComponent(String(publicFileId)));
         var options = {
             method: "get",
             headers: {
@@ -63,25 +63,13 @@ var ProductsService = /** @class */ (function () {
         });
     };
     /**
-     * Lists products
-     * @summary Lists products
-     * @param itemGroupId filter by item group id
-     * @param itemGroupCategory filter by item group id
-     * @param contractUserId output only products what specified user has contract in
+     * Lists public files
+     * @summary Lists public files
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    ProductsService.prototype.listProducts = function (itemGroupId, itemGroupCategory, contractUserId, firstResult, maxResults) {
-        var uri = new URI(this.basePath + "/products");
-        if (itemGroupId !== undefined && itemGroupId !== null) {
-            uri.addQuery('itemGroupId', itemGroupId);
-        }
-        if (itemGroupCategory !== undefined && itemGroupCategory !== null) {
-            uri.addQuery('itemGroupCategory', itemGroupCategory);
-        }
-        if (contractUserId !== undefined && contractUserId !== null) {
-            uri.addQuery('contractUserId', contractUserId);
-        }
+    PublicFilesService.prototype.listPublicFiles = function (firstResult, maxResults) {
+        var uri = new URI(this.basePath + "/publicFiles");
         if (firstResult !== undefined && firstResult !== null) {
             uri.addQuery('firstResult', firstResult);
         }
@@ -100,13 +88,13 @@ var ProductsService = /** @class */ (function () {
         });
     };
     /**
-     * Updates product
-     * @summary Update product
+     * Updates public file
+     * @summary Update public file
      * @param body Payload
-     * @param productId product id id
+     * @param publicFileId publicFile id id
     */
-    ProductsService.prototype.updateProduct = function (body, productId) {
-        var uri = new URI(this.basePath + "/products/" + encodeURIComponent(String(productId)));
+    PublicFilesService.prototype.updatePublicFile = function (body, publicFileId) {
+        var uri = new URI(this.basePath + "/publicFiles/" + encodeURIComponent(String(publicFileId)));
         var options = {
             method: "put",
             headers: {
@@ -119,6 +107,6 @@ var ProductsService = /** @class */ (function () {
             return api_1.ApiUtils.handleResponse(response);
         });
     };
-    return ProductsService;
+    return PublicFilesService;
 }());
-exports.ProductsService = ProductsService;
+exports.PublicFilesService = PublicFilesService;

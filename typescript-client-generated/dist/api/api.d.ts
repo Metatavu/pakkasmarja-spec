@@ -22,6 +22,8 @@ export * from './operations.service';
 import { OperationsService } from './operations.service';
 export * from './products.service';
 import { ProductsService } from './products.service';
+export * from './publicFiles.service';
+import { PublicFilesService } from './publicFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 export * from './weekDeliveryPredictions.service';
@@ -53,6 +55,7 @@ declare const _default: {
     getOperationReportsService(token: string): OperationReportsService;
     getOperationsService(token: string): OperationsService;
     getProductsService(token: string): ProductsService;
+    getPublicFilesService(token: string): PublicFilesService;
     getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService;
     getWeekDeliveryPredictionsService(token: string): WeekDeliveryPredictionsService;
 };

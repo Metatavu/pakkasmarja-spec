@@ -3824,6 +3824,14 @@ components:
           type: string
       
     Delivery:
+      type: object
+      required:
+        - productId
+        - userId
+        - time
+        - status
+        - amount
+        - deliveryPlaceId
       properties: 
         id:
           type: string

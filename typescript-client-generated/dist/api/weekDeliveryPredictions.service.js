@@ -66,20 +66,20 @@ var WeekDeliveryPredictionsService = /** @class */ (function () {
      * Lists weekDeliveryPredictions
      * @summary Lists weekDeliveryPredictions
      * @param itemGroupId filter by item group id
-     * @param itemGroupType filter by item group id
+     * @param itemGroupCategory filter by item group id
      * @param userId filter by user id
      * @param weekNumber filter by week number
      * @param year filter by year
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    WeekDeliveryPredictionsService.prototype.listWeekDeliveryPredictions = function (itemGroupId, itemGroupType, userId, weekNumber, year, firstResult, maxResults) {
+    WeekDeliveryPredictionsService.prototype.listWeekDeliveryPredictions = function (itemGroupId, itemGroupCategory, userId, weekNumber, year, firstResult, maxResults) {
         var uri = new URI(this.basePath + "/weekDeliveryPredictions");
         if (itemGroupId !== undefined && itemGroupId !== null) {
             uri.addQuery('itemGroupId', itemGroupId);
         }
-        if (itemGroupType !== undefined && itemGroupType !== null) {
-            uri.addQuery('itemGroupType', itemGroupType);
+        if (itemGroupCategory !== undefined && itemGroupCategory !== null) {
+            uri.addQuery('itemGroupCategory', itemGroupCategory);
         }
         if (userId !== undefined && userId !== null) {
             uri.addQuery('userId', userId);

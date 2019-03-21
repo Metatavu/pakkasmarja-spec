@@ -13,7 +13,8 @@ export interface ChatMessage {
     id?: number;
     threadId: number;
     userId?: string;
-    contents: string;
+    image?: string;
+    contents?: string;
     readonly createdAt?: Date;
     readonly updatedAt?: Date;
 }
@@ -21,6 +22,7 @@ export interface ChatMessageOpt {
     id?: number;
     threadId?: number;
     userId?: string;
+    image?: string;
     contents?: string;
     readonly createdAt?: Date;
     readonly updatedAt?: Date;

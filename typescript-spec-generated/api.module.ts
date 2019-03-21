@@ -3,28 +3,40 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { ChatGroupsService } from './api/chatGroups.service';
+import { ChatMessagesService } from './api/chatMessages.service';
 import { ChatThreadsService } from './api/chatThreads.service';
 import { ContactsService } from './api/contacts.service';
 import { ContractsService } from './api/contracts.service';
+import { DeliveriesService } from './api/deliveries.service';
 import { DeliveryPlacesService } from './api/deliveryPlaces.service';
 import { ItemGroupsService } from './api/itemGroups.service';
+import { NewsArticlesService } from './api/newsArticles.service';
 import { OperationReportsService } from './api/operationReports.service';
 import { OperationsService } from './api/operations.service';
+import { ProductsService } from './api/products.service';
 import { SignAuthenticationServicesService } from './api/signAuthenticationServices.service';
+import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
+    ChatGroupsService,
+    ChatMessagesService,
     ChatThreadsService,
     ContactsService,
     ContractsService,
+    DeliveriesService,
     DeliveryPlacesService,
     ItemGroupsService,
+    NewsArticlesService,
     OperationReportsService,
     OperationsService,
-    SignAuthenticationServicesService ]
+    ProductsService,
+    SignAuthenticationServicesService,
+    WeekDeliveryPredictionsService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

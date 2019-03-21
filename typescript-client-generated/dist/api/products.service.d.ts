@@ -1,4 +1,4 @@
-import { ItemGroupType } from '../model/itemGroupType';
+import { ItemGroupCategory } from '../model/itemGroupCategory';
 import { Product } from '../model/product';
 export declare class ProductsService {
     private token;
@@ -26,12 +26,12 @@ export declare class ProductsService {
      * Lists products
      * @summary Lists products
      * @param itemGroupId filter by item group id
-     * @param itemGroupType filter by item group id
+     * @param itemGroupCategory filter by item group id
      * @param contractUserId output only products what specified user has contract in
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listProducts(itemGroupId?: string, itemGroupType?: ItemGroupType, contractUserId?: string, firstResult?: number, maxResults?: number): Promise<Array<Product>>;
+    listProducts(itemGroupId?: string, itemGroupCategory?: ItemGroupCategory, contractUserId?: string, firstResult?: number, maxResults?: number): Promise<Array<Product>>;
     /**
      * Updates product
      * @summary Update product

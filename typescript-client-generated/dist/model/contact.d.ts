@@ -12,6 +12,8 @@
 import { Address } from './address';
 export interface Contact {
     id?: string;
+    readonly displayName?: string;
+    readonly avatarUrl?: string;
     sapId?: string;
     firstName?: string;
     lastName?: string;
@@ -27,6 +29,8 @@ export interface Contact {
 }
 export interface ContactOpt {
     id?: string;
+    readonly displayName?: string;
+    readonly avatarUrl?: string;
     sapId?: string;
     firstName?: string;
     lastName?: string;

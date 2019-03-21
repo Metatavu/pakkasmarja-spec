@@ -27,6 +27,8 @@ __export(require("./operations.service"));
 var operations_service_1 = require("./operations.service");
 __export(require("./products.service"));
 var products_service_1 = require("./products.service");
+__export(require("./publicFiles.service"));
+var publicFiles_service_1 = require("./publicFiles.service");
 __export(require("./signAuthenticationServices.service"));
 var signAuthenticationServices_service_1 = require("./signAuthenticationServices.service");
 __export(require("./weekDeliveryPredictions.service"));
@@ -96,6 +98,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getProductsService = function (token) {
         return new products_service_1.ProductsService(this.apiUrl, token);
+    };
+    Api.prototype.getPublicFilesService = function (token) {
+        return new publicFiles_service_1.PublicFilesService(this.apiUrl, token);
     };
     Api.prototype.getSignAuthenticationServicesService = function (token) {
         return new signAuthenticationServices_service_1.SignAuthenticationServicesService(this.apiUrl, token);

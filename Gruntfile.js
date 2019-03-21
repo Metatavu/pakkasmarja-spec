@@ -71,7 +71,6 @@ module.exports = function(grunt) {
           "-t typescript-client-template/ " +
           "-o typescript-client-generated/ " +
           "--template-engine mustache " +
-          "--type-mappings Date=string " +
           `--additional-properties projectName=${TYPESCRIPT_MODEL_PACKAGE},npmName=${TYPESCRIPT_MODEL_PACKAGE},npmVersion=${TYPESCRIPT_MODEL_VERSION}`
       },
       'typescript-client-bump-version': {
