@@ -2660,6 +2660,12 @@ paths:
       tags:
         - Deliveries
       parameters:
+        - name: userId
+          in: query
+          description: filter by user id
+          schema:
+            type: string
+            format: uuid
         - name: status
           in: query
           description: filter by status
