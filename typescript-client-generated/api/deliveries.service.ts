@@ -153,6 +153,7 @@ export class DeliveriesService {
   /**
    * Lists deliveries
    * @summary Lists deliveries
+   * @param userId filter by user id
    * @param status filter by status
    * @param itemGroupCategory filter by item group id
    * @param itemGroupId filter by item group id
@@ -163,8 +164,11 @@ export class DeliveriesService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listDeliveries(status?: DeliveryStatus, itemGroupCategory?: ItemGroupCategory, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number, ):Promise<Array<Delivery>> {
+  public listDeliveries(userId?: string, status?: DeliveryStatus, itemGroupCategory?: ItemGroupCategory, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number, ):Promise<Array<Delivery>> {
     const uri = new URI(`${this.basePath}/deliveries`);
+    if (userId !== undefined && userId !== null) {
+        uri.addQuery('userId', <any>userId);
+    }
     if (status !== undefined && status !== null) {
         uri.addQuery('status', <any>status);
     }
