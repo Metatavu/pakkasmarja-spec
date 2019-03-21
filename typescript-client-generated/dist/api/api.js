@@ -29,6 +29,8 @@ __export(require("./products.service"));
 var products_service_1 = require("./products.service");
 __export(require("./signAuthenticationServices.service"));
 var signAuthenticationServices_service_1 = require("./signAuthenticationServices.service");
+__export(require("./weekDeliveryPredictions.service"));
+var weekDeliveryPredictions_service_1 = require("./weekDeliveryPredictions.service");
 var ApiUtils = /** @class */ (function () {
     function ApiUtils() {
     }
@@ -97,6 +99,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getSignAuthenticationServicesService = function (token) {
         return new signAuthenticationServices_service_1.SignAuthenticationServicesService(this.apiUrl, token);
+    };
+    Api.prototype.getWeekDeliveryPredictionsService = function (token) {
+        return new weekDeliveryPredictions_service_1.WeekDeliveryPredictionsService(this.apiUrl, token);
     };
     return Api;
 }());

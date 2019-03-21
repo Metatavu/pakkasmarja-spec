@@ -22,6 +22,8 @@ export * from './operations.service';
 import { OperationsService } from './operations.service';
 export * from './products.service';
 import { ProductsService } from './products.service';
+export * from './publicFiles.service';
+import { PublicFilesService } from './publicFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 export * from './weekDeliveryPredictions.service';
@@ -102,6 +104,10 @@ export default new class Api {
   
   public getProductsService(token: string): ProductsService {
     return new ProductsService(this.apiUrl, token);
+  }
+  
+  public getPublicFilesService(token: string): PublicFilesService {
+    return new PublicFilesService(this.apiUrl, token);
   }
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {

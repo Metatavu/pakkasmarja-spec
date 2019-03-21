@@ -1,12 +1,11 @@
 import { BadRequest } from '../model/badRequest';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { ItemGroupCategory } from '../model/itemGroupCategory';
-import { Product } from '../model/product';
+import { PublicFile } from '../model/publicFile';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
-export class ProductsService {
+export class PublicFilesService {
 
   private token: string;
   private basePath: string;
@@ -18,12 +17,12 @@ export class ProductsService {
 
 
   /**
-   * Creates product
-   * @summary Create product
+   * Creates public file
+   * @summary Create public file
    * @param body Payload
   */
-  public createProduct(body: Product, ):Promise<Product> {
-    const uri = new URI(`${this.basePath}/products`);
+  public createPublicFile(body: PublicFile, ):Promise<PublicFile> {
+    const uri = new URI(`${this.basePath}/publicFiles`);
     const options = {
       method: "post",
       headers: {
@@ -40,12 +39,12 @@ export class ProductsService {
 
 
   /**
-   * Deletes product
-   * @summary Delete product
-   * @param productId product id id
+   * Deletes public file
+   * @summary Delete public file
+   * @param publicFileId publicFile id id
   */
-  public deleteProduct(productId: string, ):Promise<any> {
-    const uri = new URI(`${this.basePath}/products/${encodeURIComponent(String(productId))}`);
+  public deletePublicFile(publicFileId: string, ):Promise<any> {
+    const uri = new URI(`${this.basePath}/publicFiles/${encodeURIComponent(String(publicFileId))}`);
     const options = {
       method: "delete",
       headers: {
@@ -61,12 +60,12 @@ export class ProductsService {
 
 
   /**
-   * Finds product by id
-   * @summary Find product
-   * @param productId product id id
+   * Finds public file by id
+   * @summary Find public file
+   * @param publicFileId publicFile id id
   */
-  public findProduct(productId: string, ):Promise<Product> {
-    const uri = new URI(`${this.basePath}/products/${encodeURIComponent(String(productId))}`);
+  public findPublicFile(publicFileId: string, ):Promise<PublicFile> {
+    const uri = new URI(`${this.basePath}/publicFiles/${encodeURIComponent(String(publicFileId))}`);
     const options = {
       method: "get",
       headers: {
@@ -82,25 +81,13 @@ export class ProductsService {
 
 
   /**
-   * Lists products
-   * @summary Lists products
-   * @param itemGroupId filter by item group id
-   * @param itemGroupCategory filter by item group id
-   * @param contractUserId output only products what specified user has contract in
+   * Lists public files
+   * @summary Lists public files
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listProducts(itemGroupId?: string, itemGroupCategory?: ItemGroupCategory, contractUserId?: string, firstResult?: number, maxResults?: number, ):Promise<Array<Product>> {
-    const uri = new URI(`${this.basePath}/products`);
-    if (itemGroupId !== undefined && itemGroupId !== null) {
-        uri.addQuery('itemGroupId', <any>itemGroupId);
-    }
-    if (itemGroupCategory !== undefined && itemGroupCategory !== null) {
-        uri.addQuery('itemGroupCategory', <any>itemGroupCategory);
-    }
-    if (contractUserId !== undefined && contractUserId !== null) {
-        uri.addQuery('contractUserId', <any>contractUserId);
-    }
+  public listPublicFiles(firstResult?: number, maxResults?: number, ):Promise<Array<PublicFile>> {
+    const uri = new URI(`${this.basePath}/publicFiles`);
     if (firstResult !== undefined && firstResult !== null) {
         uri.addQuery('firstResult', <any>firstResult);
     }
@@ -122,13 +109,13 @@ export class ProductsService {
 
 
   /**
-   * Updates product
-   * @summary Update product
+   * Updates public file
+   * @summary Update public file
    * @param body Payload
-   * @param productId product id id
+   * @param publicFileId publicFile id id
   */
-  public updateProduct(body: Product, productId: string, ):Promise<Product> {
-    const uri = new URI(`${this.basePath}/products/${encodeURIComponent(String(productId))}`);
+  public updatePublicFile(body: PublicFile, publicFileId: string, ):Promise<PublicFile> {
+    const uri = new URI(`${this.basePath}/publicFiles/${encodeURIComponent(String(publicFileId))}`);
     const options = {
       method: "put",
       headers: {

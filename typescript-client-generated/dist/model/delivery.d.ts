@@ -14,7 +14,8 @@ import { DeliveryStatus } from './deliveryStatus';
 export interface Delivery {
     id?: string;
     productId?: string;
-    time?: string;
+    userId?: string;
+    time?: Date;
     status?: DeliveryStatus;
     amount?: number;
     price?: string;
@@ -24,7 +25,8 @@ export interface Delivery {
 export interface DeliveryOpt {
     id?: string;
     productId?: string;
-    time?: string;
+    userId?: string;
+    time?: Date;
     status?: DeliveryStatus;
     amount?: number;
     price?: string;

@@ -9,15 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemGroupType } from './itemGroupType';
+import { ItemGroupCategory } from './itemGroupCategory';
 
 
 export interface ItemGroup { 
     id?: string;
     name?: string;
-    type?: ItemGroupType;
     displayName?: string;
-    category?: string;
+    category?: ItemGroupCategory;
     minimumProfitEstimation?: number;
     /**
      * Require contract in specified item group before siging a contract
@@ -27,9 +26,8 @@ export interface ItemGroup {
 export interface ItemGroupOpt { 
     id?: string;
     name?: string;
-    type?: ItemGroupType;
     displayName?: string;
-    category?: string;
+    category?: ItemGroupCategory;
     minimumProfitEstimation?: number;
     /**
      * Require contract in specified item group before siging a contract

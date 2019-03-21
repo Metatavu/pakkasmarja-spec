@@ -50,7 +50,6 @@ export declare class DeliveriesService {
      * @summary Lists deliveries
      * @param status filter by status
      * @param itemGroupType filter by item group id
-     * @param itemGroupType2 filter by status
      * @param itemGroupId filter by item group id
      * @param productId filter by item group id
      * @param deliveryPlaceId filter by delivery place id
@@ -59,7 +58,7 @@ export declare class DeliveriesService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listDeliveries(status?: DeliveryStatus, itemGroupType?: ItemGroupType, itemGroupType2?: DeliveryStatus, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: string, timeAfter?: string, firstResult?: number, maxResults?: number): Promise<Array<Delivery>>;
+    listDeliveries(status?: DeliveryStatus, itemGroupType?: ItemGroupType, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number): Promise<Array<Delivery>>;
     /**
      * Lists deliveries notes
      * @summary Lists deliveries notes

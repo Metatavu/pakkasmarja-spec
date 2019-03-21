@@ -125,7 +125,6 @@ var DeliveriesService = /** @class */ (function () {
      * @summary Lists deliveries
      * @param status filter by status
      * @param itemGroupType filter by item group id
-     * @param itemGroupType2 filter by status
      * @param itemGroupId filter by item group id
      * @param productId filter by item group id
      * @param deliveryPlaceId filter by delivery place id
@@ -134,16 +133,13 @@ var DeliveriesService = /** @class */ (function () {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    DeliveriesService.prototype.listDeliveries = function (status, itemGroupType, itemGroupType2, itemGroupId, productId, deliveryPlaceId, timeBefore, timeAfter, firstResult, maxResults) {
+    DeliveriesService.prototype.listDeliveries = function (status, itemGroupType, itemGroupId, productId, deliveryPlaceId, timeBefore, timeAfter, firstResult, maxResults) {
         var uri = new URI(this.basePath + "/deliveries");
         if (status !== undefined && status !== null) {
             uri.addQuery('status', status);
         }
         if (itemGroupType !== undefined && itemGroupType !== null) {
             uri.addQuery('itemGroupType', itemGroupType);
-        }
-        if (itemGroupType2 !== undefined && itemGroupType2 !== null) {
-            uri.addQuery('itemGroupType', itemGroupType2);
         }
         if (itemGroupId !== undefined && itemGroupId !== null) {
             uri.addQuery('itemGroupId', itemGroupId);

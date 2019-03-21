@@ -1,7 +1,7 @@
 import { BadRequest } from '../model/badRequest';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { ItemGroupType } from '../model/itemGroupType';
+import { ItemGroupCategory } from '../model/itemGroupCategory';
 import { WeekDeliveryPrediction } from '../model/weekDeliveryPrediction';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
@@ -85,20 +85,20 @@ export class WeekDeliveryPredictionsService {
    * Lists weekDeliveryPredictions
    * @summary Lists weekDeliveryPredictions
    * @param itemGroupId filter by item group id
-   * @param itemGroupType filter by item group id
+   * @param itemGroupCategory filter by item group id
    * @param userId filter by user id
    * @param weekNumber filter by week number
    * @param year filter by year
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listWeekDeliveryPredictions(itemGroupId?: string, itemGroupType?: ItemGroupType, userId?: string, weekNumber?: number, year?: number, firstResult?: number, maxResults?: number, ):Promise<Array<WeekDeliveryPrediction>> {
+  public listWeekDeliveryPredictions(itemGroupId?: string, itemGroupCategory?: ItemGroupCategory, userId?: string, weekNumber?: number, year?: number, firstResult?: number, maxResults?: number, ):Promise<Array<WeekDeliveryPrediction>> {
     const uri = new URI(`${this.basePath}/weekDeliveryPredictions`);
     if (itemGroupId !== undefined && itemGroupId !== null) {
         uri.addQuery('itemGroupId', <any>itemGroupId);
     }
-    if (itemGroupType !== undefined && itemGroupType !== null) {
-        uri.addQuery('itemGroupType', <any>itemGroupType);
+    if (itemGroupCategory !== undefined && itemGroupCategory !== null) {
+        uri.addQuery('itemGroupCategory', <any>itemGroupCategory);
     }
     if (userId !== undefined && userId !== null) {
         uri.addQuery('userId', <any>userId);

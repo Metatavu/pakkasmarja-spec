@@ -4,7 +4,7 @@ import { DeliveryNote } from '../model/deliveryNote';
 import { DeliveryStatus } from '../model/deliveryStatus';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
-import { ItemGroupType } from '../model/itemGroupType';
+import { ItemGroupCategory } from '../model/itemGroupCategory';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -154,7 +154,7 @@ export class DeliveriesService {
    * Lists deliveries
    * @summary Lists deliveries
    * @param status filter by status
-   * @param itemGroupType filter by item group id
+   * @param itemGroupCategory filter by item group id
    * @param itemGroupId filter by item group id
    * @param productId filter by item group id
    * @param deliveryPlaceId filter by delivery place id
@@ -163,13 +163,13 @@ export class DeliveriesService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listDeliveries(status?: DeliveryStatus, itemGroupType?: ItemGroupType, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number, ):Promise<Array<Delivery>> {
+  public listDeliveries(status?: DeliveryStatus, itemGroupCategory?: ItemGroupCategory, itemGroupId?: string, productId?: string, deliveryPlaceId?: string, timeBefore?: Date, timeAfter?: Date, firstResult?: number, maxResults?: number, ):Promise<Array<Delivery>> {
     const uri = new URI(`${this.basePath}/deliveries`);
     if (status !== undefined && status !== null) {
         uri.addQuery('status', <any>status);
     }
-    if (itemGroupType !== undefined && itemGroupType !== null) {
-        uri.addQuery('itemGroupType', <any>itemGroupType);
+    if (itemGroupCategory !== undefined && itemGroupCategory !== null) {
+        uri.addQuery('itemGroupCategory', <any>itemGroupCategory);
     }
     if (itemGroupId !== undefined && itemGroupId !== null) {
         uri.addQuery('itemGroupId', <any>itemGroupId);

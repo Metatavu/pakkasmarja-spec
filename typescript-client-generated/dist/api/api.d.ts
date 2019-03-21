@@ -24,6 +24,8 @@ export * from './products.service';
 import { ProductsService } from './products.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
+export * from './weekDeliveryPredictions.service';
+import { WeekDeliveryPredictionsService } from './weekDeliveryPredictions.service';
 export declare class ApiUtils {
     /**
      * Handles response from API
@@ -52,5 +54,6 @@ declare const _default: {
     getOperationsService(token: string): OperationsService;
     getProductsService(token: string): ProductsService;
     getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService;
+    getWeekDeliveryPredictionsService(token: string): WeekDeliveryPredictionsService;
 };
 export default _default;

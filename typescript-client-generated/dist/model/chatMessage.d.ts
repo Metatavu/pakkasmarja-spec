@@ -14,14 +14,14 @@ export interface ChatMessage {
     threadId: number;
     userId?: string;
     contents: string;
-    readonly createdAt?: string;
-    readonly updatedAt?: string;
+    readonly createdAt?: Date;
+    readonly updatedAt?: Date;
 }
 export interface ChatMessageOpt {
     id?: number;
     threadId?: number;
     userId?: string;
     contents?: string;
-    readonly createdAt?: string;
-    readonly updatedAt?: string;
+    readonly createdAt?: Date;
+    readonly updatedAt?: Date;
 }
