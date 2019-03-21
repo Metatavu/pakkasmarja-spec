@@ -123,6 +123,7 @@ var DeliveriesService = /** @class */ (function () {
     /**
      * Lists deliveries
      * @summary Lists deliveries
+     * @param userId filter by user id
      * @param status filter by status
      * @param itemGroupCategory filter by item group id
      * @param itemGroupId filter by item group id
@@ -133,8 +134,11 @@ var DeliveriesService = /** @class */ (function () {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    DeliveriesService.prototype.listDeliveries = function (status, itemGroupCategory, itemGroupId, productId, deliveryPlaceId, timeBefore, timeAfter, firstResult, maxResults) {
+    DeliveriesService.prototype.listDeliveries = function (userId, status, itemGroupCategory, itemGroupId, productId, deliveryPlaceId, timeBefore, timeAfter, firstResult, maxResults) {
         var uri = new URI(this.basePath + "/deliveries");
+        if (userId !== undefined && userId !== null) {
+            uri.addQuery('userId', userId);
+        }
         if (status !== undefined && status !== null) {
             uri.addQuery('status', status);
         }
