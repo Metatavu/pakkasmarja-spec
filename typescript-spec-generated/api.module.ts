@@ -15,6 +15,7 @@ import { NewsArticlesService } from './api/newsArticles.service';
 import { OperationReportsService } from './api/operationReports.service';
 import { OperationsService } from './api/operations.service';
 import { ProductsService } from './api/products.service';
+import { PublicFilesService } from './api/publicFiles.service';
 import { SignAuthenticationServicesService } from './api/signAuthenticationServices.service';
 import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.service';
 
@@ -35,6 +36,7 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     OperationReportsService,
     OperationsService,
     ProductsService,
+    PublicFilesService,
     SignAuthenticationServicesService,
     WeekDeliveryPredictionsService ]
 })

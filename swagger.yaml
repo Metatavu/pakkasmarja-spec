@@ -3926,8 +3926,13 @@ components:
         - NORMAL
       
     DeliveryNote:
+      required:
+        - deliveryId
       properties: 
         id:
+          type: string
+          format: uuid
+        deliveryId:
           type: string
           format: uuid
         text:
