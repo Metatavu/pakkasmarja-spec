@@ -3938,9 +3938,6 @@ components:
         id:
           type: string
           format: uuid
-        deliveryId:
-          type: string
-          format: uuid
         text:
           type: string
         image:
