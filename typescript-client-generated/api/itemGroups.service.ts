@@ -19,6 +19,28 @@ export class ItemGroupsService {
 
 
   /**
+   * Creates item group
+   * @summary Creates item group
+   * @param body Payload
+  */
+  public createItemGroup(body: ItemGroup, ):Promise<ItemGroup> {
+    const uri = new URI(`${this.basePath}/itemGroups`);
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      },
+      body: JSON.stringify(body)
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
    * Creates an item group price
    * @summary Creates item group price
    * @param body Payload
