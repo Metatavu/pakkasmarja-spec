@@ -17,6 +17,8 @@ __export(require("./deliveries.service"));
 var deliveries_service_1 = require("./deliveries.service");
 __export(require("./deliveryPlaces.service"));
 var deliveryPlaces_service_1 = require("./deliveryPlaces.service");
+__export(require("./deliveryQualities.service"));
+var deliveryQualities_service_1 = require("./deliveryQualities.service");
 __export(require("./itemGroups.service"));
 var itemGroups_service_1 = require("./itemGroups.service");
 __export(require("./newsArticles.service"));
@@ -25,6 +27,8 @@ __export(require("./operationReports.service"));
 var operationReports_service_1 = require("./operationReports.service");
 __export(require("./operations.service"));
 var operations_service_1 = require("./operations.service");
+__export(require("./productPrices.service"));
+var productPrices_service_1 = require("./productPrices.service");
 __export(require("./products.service"));
 var products_service_1 = require("./products.service");
 __export(require("./publicFiles.service"));
@@ -84,6 +88,9 @@ exports.default = new /** @class */ (function () {
     Api.prototype.getDeliveryPlacesService = function (token) {
         return new deliveryPlaces_service_1.DeliveryPlacesService(this.apiUrl, token);
     };
+    Api.prototype.getDeliveryQualitiesService = function (token) {
+        return new deliveryQualities_service_1.DeliveryQualitiesService(this.apiUrl, token);
+    };
     Api.prototype.getItemGroupsService = function (token) {
         return new itemGroups_service_1.ItemGroupsService(this.apiUrl, token);
     };
@@ -95,6 +102,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getOperationsService = function (token) {
         return new operations_service_1.OperationsService(this.apiUrl, token);
+    };
+    Api.prototype.getProductPricesService = function (token) {
+        return new productPrices_service_1.ProductPricesService(this.apiUrl, token);
     };
     Api.prototype.getProductsService = function (token) {
         return new products_service_1.ProductsService(this.apiUrl, token);

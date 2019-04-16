@@ -10,10 +10,12 @@ import { ContactsService } from './api/contacts.service';
 import { ContractsService } from './api/contracts.service';
 import { DeliveriesService } from './api/deliveries.service';
 import { DeliveryPlacesService } from './api/deliveryPlaces.service';
+import { DeliveryQualitiesService } from './api/deliveryQualities.service';
 import { ItemGroupsService } from './api/itemGroups.service';
 import { NewsArticlesService } from './api/newsArticles.service';
 import { OperationReportsService } from './api/operationReports.service';
 import { OperationsService } from './api/operations.service';
+import { ProductPricesService } from './api/productPrices.service';
 import { ProductsService } from './api/products.service';
 import { PublicFilesService } from './api/publicFiles.service';
 import { SignAuthenticationServicesService } from './api/signAuthenticationServices.service';
@@ -31,10 +33,12 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     ContractsService,
     DeliveriesService,
     DeliveryPlacesService,
+    DeliveryQualitiesService,
     ItemGroupsService,
     NewsArticlesService,
     OperationReportsService,
     OperationsService,
+    ProductPricesService,
     ProductsService,
     PublicFilesService,
     SignAuthenticationServicesService,

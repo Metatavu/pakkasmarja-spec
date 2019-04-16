@@ -9,7 +9,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { DeliveryQuality } from './deliveryQuality';
 import { DeliveryStatus } from './deliveryStatus';
 export interface Delivery {
     id?: string;
@@ -18,8 +17,11 @@ export interface Delivery {
     time: Date;
     status: DeliveryStatus;
     amount: number;
+    /**
+     * Base price without quality bonus
+     */
     price?: string;
-    quality?: DeliveryQuality;
+    qualityId?: string;
     deliveryPlaceId: string;
 }
 export interface DeliveryOpt {
@@ -29,7 +31,10 @@ export interface DeliveryOpt {
     time?: Date;
     status?: DeliveryStatus;
     amount?: number;
+    /**
+     * Base price without quality bonus
+     */
     price?: string;
-    quality?: DeliveryQuality;
+    qualityId?: string;
     deliveryPlaceId?: string;
 }

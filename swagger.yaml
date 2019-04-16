@@ -780,6 +780,44 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createItemGroup
+      summary: Creates item group
+      description: Creates item group
+      tags:
+        - ItemGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemGroup"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Item group created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemGroup"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   "/itemGroups/{id}":
     get:
       operationId: findItemGroup
@@ -2614,6 +2652,298 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  "/products/{productId}/prices":
+    get:
+      operationId: listProductPrices
+      summary: List product prices
+      description: Lists product prices
+      tags:
+        - ProductPrices
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: sort
+          required: true
+          description: sort
+          schema:
+            type: string
+            enum:
+              - CREATED_AT_ASC
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to 5
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: List of product prices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductPrice"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createProductPrice
+      summary: Create product price
+      description: Creates product price
+      tags:
+        - ProductPrices
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductPrice"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductPrice"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/products/{productId}/prices/{productPriceId}":
+    get:
+      operationId: findProductPrice
+      summary: Find product price
+      description: Finds product price
+      tags:
+        - ProductPrices
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id
+          schema:
+            type: string
+            format: uuid
+        - name: productPriceId
+          required: true
+          in: path
+          description: product price id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of product prices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductPrice"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateProductPrice
+      summary: Update product price
+      description: Updates product price
+      tags:
+        - ProductPrices
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: product id id
+          schema:
+            type: string
+            format: uuid
+        - name: productPriceId
+          required: true
+          in: path
+          description: product price id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductPrice"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductPrice"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteProductPrice
+      summary: Delete product price
+      description: Deletes product price
+      tags:
+        - ProductPrices
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+        - name: productPriceId
+          required: true
+          in: path
+          description: delivery id id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  "/deliveryQualities":
+    get:
+      operationId: listDeliveryQualities
+      summary: Lists delivery qualities
+      description: Lists delivery qualities
+      tags:
+        - DeliveryQualities
+      parameters:
+        - name: itemGroupCategory
+          in: query
+          description: filter by item group category
+          schema:
+            $ref: "#/components/schemas/ItemGroupCategory"
+      responses:
+        "200":
+          description: List of delivery qualities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryQuality"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   "/deliveries":
     post:
       operationId: createDelivery
@@ -3857,9 +4187,11 @@ components:
           type: integer
           format: int32
         price:
+          description: "Base price without quality bonus"
           type: string
-        quality:
-          $ref: "#/components/schemas/DeliveryQuality"
+        qualityId:
+          type: string
+          format: uuid
         deliveryPlaceId:
           type: string
           format: uuid
@@ -3927,9 +4259,18 @@ components:
         - REJECTED
 
     DeliveryQuality:
-      type: string
-      enum:
-        - NORMAL
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        itemGroupCategory:
+          $ref: "#/components/schemas/ItemGroupCategory"
+        name:
+          type: string
+        priceBonus:
+          type: number
+          format: double
       
     DeliveryNote:
       required:
@@ -4128,6 +4469,33 @@ components:
         url:
           type: string
           format: url
+    
+    ProductPrice:
+      type: object
+      required:
+        - productId
+        - unit
+        - price
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        productId:
+          type: string
+          format: uuid
+        unit:
+          type: string
+        price:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
           
     InternalServerError:
       type: object
