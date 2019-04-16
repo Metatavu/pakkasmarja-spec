@@ -6,6 +6,12 @@ export declare class ItemGroupsService {
     private basePath;
     constructor(basePath: string, token: string);
     /**
+     * Creates item group
+     * @summary Creates item group
+     * @param body Payload
+    */
+    createItemGroup(body: ItemGroup): Promise<ItemGroup>;
+    /**
      * Creates an item group price
      * @summary Creates item group price
      * @param body Payload

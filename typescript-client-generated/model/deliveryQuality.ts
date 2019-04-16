@@ -9,10 +9,18 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { ItemGroupCategory } from './itemGroupCategory';
 
 
-export type DeliveryQuality = 'NORMAL';
-
-export const DeliveryQuality = {
-    NORMAL: 'NORMAL' as DeliveryQuality
-};
+export interface DeliveryQuality { 
+    id?: string;
+    itemGroupCategory?: ItemGroupCategory;
+    name?: string;
+    priceBonus?: number;
+}
+export interface DeliveryQualityOpt { 
+    id?: string;
+    itemGroupCategory?: ItemGroupCategory;
+    name?: string;
+    priceBonus?: number;
+}

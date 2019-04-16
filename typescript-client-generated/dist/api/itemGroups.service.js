@@ -8,6 +8,25 @@ var ItemGroupsService = /** @class */ (function () {
         this.basePath = basePath;
     }
     /**
+     * Creates item group
+     * @summary Creates item group
+     * @param body Payload
+    */
+    ItemGroupsService.prototype.createItemGroup = function (body) {
+        var uri = new URI(this.basePath + "/itemGroups");
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Creates an item group price
      * @summary Creates item group price
      * @param body Payload

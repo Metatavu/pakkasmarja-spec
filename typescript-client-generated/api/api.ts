@@ -12,6 +12,8 @@ export * from './deliveries.service';
 import { DeliveriesService } from './deliveries.service';
 export * from './deliveryPlaces.service';
 import { DeliveryPlacesService } from './deliveryPlaces.service';
+export * from './deliveryQualities.service';
+import { DeliveryQualitiesService } from './deliveryQualities.service';
 export * from './itemGroups.service';
 import { ItemGroupsService } from './itemGroups.service';
 export * from './newsArticles.service';
@@ -20,6 +22,8 @@ export * from './operationReports.service';
 import { OperationReportsService } from './operationReports.service';
 export * from './operations.service';
 import { OperationsService } from './operations.service';
+export * from './productPrices.service';
+import { ProductPricesService } from './productPrices.service';
 export * from './products.service';
 import { ProductsService } from './products.service';
 export * from './publicFiles.service';
@@ -86,6 +90,10 @@ export default new class Api {
     return new DeliveryPlacesService(this.apiUrl, token);
   }
   
+  public getDeliveryQualitiesService(token: string): DeliveryQualitiesService {
+    return new DeliveryQualitiesService(this.apiUrl, token);
+  }
+  
   public getItemGroupsService(token: string): ItemGroupsService {
     return new ItemGroupsService(this.apiUrl, token);
   }
@@ -100,6 +108,10 @@ export default new class Api {
   
   public getOperationsService(token: string): OperationsService {
     return new OperationsService(this.apiUrl, token);
+  }
+  
+  public getProductPricesService(token: string): ProductPricesService {
+    return new ProductPricesService(this.apiUrl, token);
   }
   
   public getProductsService(token: string): ProductsService {
