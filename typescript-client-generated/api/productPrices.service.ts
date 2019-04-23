@@ -67,7 +67,7 @@ export class ProductPricesService {
    * @param productId product id
    * @param productPriceId product price id
   */
-  public findProductPrice(productId: string, productPriceId: string, ):Promise<Array<ProductPrice>> {
+  public findProductPrice(productId: string, productPriceId: string, ):Promise<ProductPrice> {
     const uri = new URI(`${this.basePath}/products/${encodeURIComponent(String(productId))}/prices/${encodeURIComponent(String(productPriceId))}`);
     const options = {
       method: "get",
