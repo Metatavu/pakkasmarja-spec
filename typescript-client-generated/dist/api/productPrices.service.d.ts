@@ -23,7 +23,7 @@ export declare class ProductPricesService {
      * @param productId product id
      * @param productPriceId product price id
     */
-    findProductPrice(productId: string, productPriceId: string): Promise<Array<ProductPrice>>;
+    findProductPrice(productId: string, productPriceId: string): Promise<ProductPrice>;
     /**
      * Lists product prices
      * @summary List product prices
