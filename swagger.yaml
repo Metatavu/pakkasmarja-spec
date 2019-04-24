@@ -714,6 +714,12 @@ paths:
           description: Used auth service name
           schema:
             type: string
+        - name: redirectUrl
+          required: false
+          in: query
+          description: Redirect after succesfull signing
+          schema:
+            type: string
       requestBody:
         content:
           application/json:

@@ -34,14 +34,18 @@ var ContractsService = /** @class */ (function () {
      * @param type document type
      * @param ssn Social security number
      * @param authService Used auth service name
+     * @param redirectUrl Redirect after succesfull signing
     */
-    ContractsService.prototype.createContractDocumentSignRequest = function (body, id, type, ssn, authService) {
+    ContractsService.prototype.createContractDocumentSignRequest = function (body, id, type, ssn, authService, redirectUrl) {
         var uri = new URI(this.basePath + "/contracts/" + encodeURIComponent(String(id)) + "/documents/" + encodeURIComponent(String(type)) + "/signRequests");
         if (ssn !== undefined && ssn !== null) {
             uri.addQuery('ssn', ssn);
         }
         if (authService !== undefined && authService !== null) {
             uri.addQuery('authService', authService);
+        }
+        if (redirectUrl !== undefined && redirectUrl !== null) {
+            uri.addQuery('redirectUrl', redirectUrl);
         }
         var options = {
             method: "post",

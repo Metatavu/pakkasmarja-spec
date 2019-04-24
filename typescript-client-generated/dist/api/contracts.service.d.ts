@@ -20,8 +20,9 @@ export declare class ContractsService {
      * @param type document type
      * @param ssn Social security number
      * @param authService Used auth service name
+     * @param redirectUrl Redirect after succesfull signing
     */
-    createContractDocumentSignRequest(body: ContractDocumentSignRequest, id: string, type: string, ssn: string, authService: string): Promise<ContractDocumentSignRequest>;
+    createContractDocumentSignRequest(body: ContractDocumentSignRequest, id: string, type: string, ssn: string, authService: string, redirectUrl?: string): Promise<ContractDocumentSignRequest>;
     /**
      * Create new contract document template
      * @summary Create contract document template
