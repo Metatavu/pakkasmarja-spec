@@ -1,5 +1,6 @@
 import { OperationReport } from '../model/operationReport';
 import { OperationReportItem } from '../model/operationReportItem';
+import { OperationType } from '../model/operationType';
 export declare class OperationReportsService {
     private token;
     private basePath;
@@ -25,5 +26,5 @@ export declare class OperationReportsService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 20
     */
-    listOperationReports(type?: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<OperationReport>>;
+    listOperationReports(type?: OperationType, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<OperationReport>>;
 }

@@ -10,3 +10,4 @@ __export(require("./contract"));
 __export(require("./deliveryStatus"));
 __export(require("./itemGroupCategory"));
 __export(require("./operationReportItem"));
+__export(require("./operationType"));
