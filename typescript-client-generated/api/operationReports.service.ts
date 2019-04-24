@@ -3,6 +3,7 @@ import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { OperationReport } from '../model/operationReport';
 import { OperationReportItem } from '../model/operationReportItem';
+import { OperationType } from '../model/operationType';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -68,7 +69,7 @@ export class OperationReportsService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 20
   */
-  public listOperationReports(type?: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<OperationReport>> {
+  public listOperationReports(type?: OperationType, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number, ):Promise<Array<OperationReport>> {
     const uri = new URI(`${this.basePath}/operationReports`);
     if (type !== undefined && type !== null) {
         uri.addQuery('type', <any>type);
