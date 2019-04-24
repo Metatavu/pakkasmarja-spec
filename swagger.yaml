@@ -1367,7 +1367,7 @@ paths:
           in: query
           description: filter by type
           schema:
-            type: string
+            $ref: "#/components/schemas/OperationType"
         - name: sortBy
           in: query
           description: sort by (CREATED)
@@ -4296,10 +4296,21 @@ components:
       type: object
       properties:
         type:
-          type: string
+          $ref: "#/components/schemas/OperationType"
         operationReportId:
           type: string
           format: uuid
+
+    OperationType:
+      type: string
+      enum: 
+        - SAP_CONTACT_SYNC
+        - SAP_DELIVERY_PLACE_SYNC
+        - SAP_ITEM_GROUP_SYNC
+        - SAP_CONTRACT_SYNC
+        - SAP_CONTRACT_SAPID_SYNC
+        - ITEM_GROUP_DEFAULT_DOCUMENT_TEMPLATES
+
     OperationReport:
       type: object
       properties:
