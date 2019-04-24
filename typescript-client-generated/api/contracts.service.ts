@@ -49,14 +49,18 @@ export class ContractsService {
    * @param type document type
    * @param ssn Social security number
    * @param authService Used auth service name
+   * @param redirectUrl Redirect after succesfull signing
   */
-  public createContractDocumentSignRequest(body: ContractDocumentSignRequest, id: string, type: string, ssn: string, authService: string, ):Promise<ContractDocumentSignRequest> {
+  public createContractDocumentSignRequest(body: ContractDocumentSignRequest, id: string, type: string, ssn: string, authService: string, redirectUrl?: string, ):Promise<ContractDocumentSignRequest> {
     const uri = new URI(`${this.basePath}/contracts/${encodeURIComponent(String(id))}/documents/${encodeURIComponent(String(type))}/signRequests`);
     if (ssn !== undefined && ssn !== null) {
         uri.addQuery('ssn', <any>ssn);
     }
     if (authService !== undefined && authService !== null) {
         uri.addQuery('authService', <any>authService);
+    }
+    if (redirectUrl !== undefined && redirectUrl !== null) {
+        uri.addQuery('redirectUrl', <any>redirectUrl);
     }
     const options = {
       method: "post",
