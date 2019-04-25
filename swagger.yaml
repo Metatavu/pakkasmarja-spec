@@ -4145,6 +4145,7 @@ components:
         - units
         - unitSize
         - unitName
+        - sapItemCode
       properties: 
         id:
           type: string
@@ -4161,6 +4162,8 @@ components:
           type: integer
           format: int32
         unitName:
+          type: string
+        sapItemCode:
           type: string
       
     Delivery:
