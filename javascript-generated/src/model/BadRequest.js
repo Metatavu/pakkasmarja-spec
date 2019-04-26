@@ -36,7 +36,7 @@
   /**
    * The BadRequest model module.
    * @module model/BadRequest
-   * @version 0.0.13
+   * @version 0.0.14
    */
 
   /**

@@ -36,7 +36,7 @@
   /**
    * The Credentials model module.
    * @module model/Credentials
-   * @version 0.0.13
+   * @version 0.0.14
    */
 
   /**

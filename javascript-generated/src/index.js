@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Address', 'model/AreaDetail', 'model/BadRequest', 'model/Contact', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/Credentials', 'model/DeliveryPlace', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate', 'model/NotFound', 'model/NotImplemented', 'model/Operation', 'model/OperationReport', 'model/OperationReportItem', 'model/Price', 'model/SignAuthenticationService', 'api/ContactsApi', 'api/ContractsApi', 'api/DeliveryPlacesApi', 'api/ItemGroupsApi', 'api/OperationReportsApi', 'api/OperationsApi', 'api/SignAuthenticationServicesApi'], factory);
+    define(['ApiClient', 'model/Address', 'model/AreaDetail', 'model/BadRequest', 'model/ChatThread', 'model/Contact', 'model/Contract', 'model/ContractDocumentSignRequest', 'model/ContractDocumentTemplate', 'model/Credentials', 'model/DeliveryPlace', 'model/Forbidden', 'model/InternalServerError', 'model/ItemGroup', 'model/ItemGroupDocumentTemplate', 'model/NotFound', 'model/NotImplemented', 'model/Operation', 'model/OperationReport', 'model/OperationReportItem', 'model/Price', 'model/SignAuthenticationService', 'api/ChatThreadsApi', 'api/ContactsApi', 'api/ContractsApi', 'api/DeliveryPlacesApi', 'api/ItemGroupsApi', 'api/OperationReportsApi', 'api/OperationsApi', 'api/SignAuthenticationServicesApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Address'), require('./model/AreaDetail'), require('./model/BadRequest'), require('./model/Contact'), require('./model/Contract'), require('./model/ContractDocumentSignRequest'), require('./model/ContractDocumentTemplate'), require('./model/Credentials'), require('./model/DeliveryPlace'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/ItemGroup'), require('./model/ItemGroupDocumentTemplate'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Operation'), require('./model/OperationReport'), require('./model/OperationReportItem'), require('./model/Price'), require('./model/SignAuthenticationService'), require('./api/ContactsApi'), require('./api/ContractsApi'), require('./api/DeliveryPlacesApi'), require('./api/ItemGroupsApi'), require('./api/OperationReportsApi'), require('./api/OperationsApi'), require('./api/SignAuthenticationServicesApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Address'), require('./model/AreaDetail'), require('./model/BadRequest'), require('./model/ChatThread'), require('./model/Contact'), require('./model/Contract'), require('./model/ContractDocumentSignRequest'), require('./model/ContractDocumentTemplate'), require('./model/Credentials'), require('./model/DeliveryPlace'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/ItemGroup'), require('./model/ItemGroupDocumentTemplate'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Operation'), require('./model/OperationReport'), require('./model/OperationReportItem'), require('./model/Price'), require('./model/SignAuthenticationService'), require('./api/ChatThreadsApi'), require('./api/ContactsApi'), require('./api/ContractsApi'), require('./api/DeliveryPlacesApi'), require('./api/ItemGroupsApi'), require('./api/OperationReportsApi'), require('./api/OperationsApi'), require('./api/SignAuthenticationServicesApi'));
   }
-}(function(ApiClient, Address, AreaDetail, BadRequest, Contact, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, Credentials, DeliveryPlace, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate, NotFound, NotImplemented, Operation, OperationReport, OperationReportItem, Price, SignAuthenticationService, ContactsApi, ContractsApi, DeliveryPlacesApi, ItemGroupsApi, OperationReportsApi, OperationsApi, SignAuthenticationServicesApi) {
+}(function(ApiClient, Address, AreaDetail, BadRequest, ChatThread, Contact, Contract, ContractDocumentSignRequest, ContractDocumentTemplate, Credentials, DeliveryPlace, Forbidden, InternalServerError, ItemGroup, ItemGroupDocumentTemplate, NotFound, NotImplemented, Operation, OperationReport, OperationReportItem, Price, SignAuthenticationService, ChatThreadsApi, ContactsApi, ContractsApi, DeliveryPlacesApi, ItemGroupsApi, OperationReportsApi, OperationsApi, SignAuthenticationServicesApi) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.0.13
+   * @version 0.0.14
    */
   var exports = {
     /**
@@ -76,6 +76,11 @@
      * @property {module:model/BadRequest}
      */
     BadRequest: BadRequest,
+    /**
+     * The ChatThread model constructor.
+     * @property {module:model/ChatThread}
+     */
+    ChatThread: ChatThread,
     /**
      * The Contact model constructor.
      * @property {module:model/Contact}
@@ -161,6 +166,11 @@
      * @property {module:model/SignAuthenticationService}
      */
     SignAuthenticationService: SignAuthenticationService,
+    /**
+     * The ChatThreadsApi service constructor.
+     * @property {module:api/ChatThreadsApi}
+     */
+    ChatThreadsApi: ChatThreadsApi,
     /**
      * The ContactsApi service constructor.
      * @property {module:api/ContactsApi}

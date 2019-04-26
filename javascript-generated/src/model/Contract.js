@@ -36,7 +36,7 @@
   /**
    * The Contract model module.
    * @module model/Contract
-   * @version 0.0.13
+   * @version 0.0.14
    */
 
   /**
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -138,6 +139,9 @@
       if (data.hasOwnProperty('deliverAll')) {
         obj['deliverAll'] = ApiClient.convertToType(data['deliverAll'], 'Boolean');
       }
+      if (data.hasOwnProperty('proposedDeliverAll')) {
+        obj['proposedDeliverAll'] = ApiClient.convertToType(data['proposedDeliverAll'], 'Boolean');
+      }
       if (data.hasOwnProperty('status')) {
         obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
@@ -224,6 +228,10 @@
    * @member {Boolean} deliverAll
    */
   exports.prototype['deliverAll'] = undefined;
+  /**
+   * @member {Boolean} proposedDeliverAll
+   */
+  exports.prototype['proposedDeliverAll'] = undefined;
   /**
    * @member {module:model/Contract.StatusEnum} status
    */

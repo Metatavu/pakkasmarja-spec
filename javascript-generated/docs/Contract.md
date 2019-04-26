@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **rejectComment** | **String** |  | [optional] 
 **areaDetails** | [**[AreaDetail]**](AreaDetail.md) |  | [optional] 
 **deliverAll** | **Boolean** |  | [optional] 
+**proposedDeliverAll** | **Boolean** |  | [optional] 
 **status** | **String** |  | [optional] 
 **remarks** | **String** |  | [optional] 
 
