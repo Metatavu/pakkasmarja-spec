@@ -1384,6 +1384,8 @@ definitions:
           $ref: '#/definitions/AreaDetail'
       deliverAll:
         type: boolean
+      proposedDeliverAll:
+        type: boolean
       status:
         type: string
         enum:
