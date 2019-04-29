@@ -32,6 +32,7 @@ export interface Contract {
     rejectComment?: string;
     areaDetails?: Array<AreaDetail>;
     deliverAll: boolean;
+    proposedDeliverAll: boolean;
     status: Contract.StatusEnum;
     remarks?: string;
 }
@@ -55,6 +56,7 @@ export interface ContractOpt {
     rejectComment?: string;
     areaDetails?: Array<AreaDetail>;
     deliverAll?: boolean;
+    proposedDeliverAll?: boolean;
     status?: Contract.StatusEnum;
     remarks?: string;
 }
