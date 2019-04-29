@@ -4272,6 +4272,11 @@ components:
 
     DeliveryQuality:
       type: object
+      required:
+        - itemGroupCategory
+        - name
+        - priceBonus
+        - color
       properties:
         id:
           type: string
@@ -4283,6 +4288,8 @@ components:
         priceBonus:
           type: number
           format: double
+        color:
+          type: string
       
     DeliveryNote:
       required:
