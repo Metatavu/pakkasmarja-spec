@@ -3961,6 +3961,7 @@ components:
         - year
         - status
         - deliverAll
+        - proposedDeliverAll
       properties:
         id:
           type: string
@@ -4014,6 +4015,8 @@ components:
           items:
             $ref: "#/components/schemas/AreaDetail"
         deliverAll:
+          type: boolean
+        proposedDeliverAll:
           type: boolean
         status:
           type: string
