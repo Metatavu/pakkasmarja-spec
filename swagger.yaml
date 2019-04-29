@@ -3875,6 +3875,89 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
 
+  /unreads:
+    get:
+      operationId: listUnreads
+      summary: Lists unreads
+      description: Lists unreads
+      tags:
+        - Unreads
+      parameters:
+        - name: pathPrefix
+          in: query
+          description: filter unreads by path prefix
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: filter unreads by userId
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of unreads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Unread"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /unreads/{unreadId}:
+    delete:
+      operationId: deleteUnread
+      summary: Delete unread
+      description: Deletes unread
+      tags:
+        - Unreads
+      parameters:
+        - name: unreadId
+          required: true
+          in: path
+          description: unread id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
 components:
   requestBodies:
     ContractDocumentTemplate:
@@ -4519,6 +4602,25 @@ components:
           format: date-time
           readOnly: true
         updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          
+    Unread:
+      type: object
+      required:
+        - type
+      properties:
+        id:
+          type: string
+          readOnly: true
+        path:
+          type: string
+        userId:
+          type: string
+          format: uuid
+          readOnly: true
+        createdAt:
           type: string
           format: date-time
           readOnly: true
