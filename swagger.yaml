@@ -4416,10 +4416,6 @@ components:
         expiresAt:
           type: string
           format: date-time
-        lastMessageCreated:
-          type: string
-          format: date-time
-          readOnly: true
           
     ChatMessage:
       type: object
