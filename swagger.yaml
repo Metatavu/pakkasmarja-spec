@@ -3962,6 +3962,8 @@ components:
         - status
         - deliverAll
         - proposedDeliverAll
+        - deliveryPlaceId
+        - itemGroupId
       properties:
         id:
           type: string
