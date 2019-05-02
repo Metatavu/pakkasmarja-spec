@@ -1776,7 +1776,7 @@ paths:
 
   /chatGroups/{chatGroupId}/groupPermissions:
     get:
-      operationId: listChatGroupPermissions
+      operationId: listChatGroupGroupPermissions
       summary: Returns list of chat group group permissions
       description: Returns list of chat group group permissions
       tags:
@@ -1817,7 +1817,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
     post:
-      operationId: createChatGroupPermissions
+      operationId: createChatGroupGroupPermissions
       summary: Creates new chat group group permission
       description: Creates new chat group group permission
       tags:
@@ -1865,7 +1865,7 @@ paths:
 
   /chatGroups/{chatGroupId}/groupPermissions/{permissionId}:
     get:
-      operationId: findChatGroupPermissions
+      operationId: findChatGroupGroupPermissions
       summary: Find chat group group permission
       description: Find chat group group permission
       tags:
@@ -1910,7 +1910,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
     put:
-      operationId: updateChatGroupPermissions
+      operationId: updateChatGroupGroupPermissions
       summary: Update chat group group permission
       description: Updates chat group group permission
       tags:
@@ -2391,6 +2391,194 @@ paths:
       responses:
         "204":
           description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
+  /chatThreads/{chatThreadId}/groupPermissions:
+    get:
+      operationId: listChatThreadGroupPermissions
+      summary: Returns list of chat thread group permissions
+      description: Returns list of chat thread group permissions
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: A list of chat thread group permissions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatThreadGroupPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createChatThreadGroupPermissions
+      summary: Creates new chat thread group permission
+      description: Creates new chat thread group permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThreadGroupPermission"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created chat thread group permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadGroupPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
+  /chatThreads/{chatThreadId}/groupPermissions/{permissionId}:
+    get:
+      operationId: findChatThreadGroupPermissions
+      summary: Find chat thread group permission
+      description: Find chat thread group permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: permissionId
+          in: path
+          description: Permission id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Found chat thread group permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadGroupPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateChatThreadGroupPermissions
+      summary: Update chat thread group permission
+      description: Updates chat thread group permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: permissionId
+          in: path
+          description: Permission id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThreadGroupPermission"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated chat thread group permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadGroupPermission"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -4775,7 +4963,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
           readOnly: true
         chatGroupId:
           type: integer
@@ -4803,14 +4990,17 @@ components:
         
     ChatThreadGroupPermission:
       type: object
+      required:
+        - chatThreadId
+        - userGroupId
       properties:
         id:
           type: string
-          format: uuid
+          readOnly: true
         chatThreadId:
           type: integer
           format: int64
-        groupId:
+        userGroupId:
           type: string
           format: uuid
         scope:

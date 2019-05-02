@@ -19,6 +19,8 @@ import { ProductPricesService } from './api/productPrices.service';
 import { ProductsService } from './api/products.service';
 import { PublicFilesService } from './api/publicFiles.service';
 import { SignAuthenticationServicesService } from './api/signAuthenticationServices.service';
+import { UnreadsService } from './api/unreads.service';
+import { UserGroupsService } from './api/userGroups.service';
 import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.service';
 
 @NgModule({
@@ -42,6 +44,8 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     ProductsService,
     PublicFilesService,
     SignAuthenticationServicesService,
+    UnreadsService,
+    UserGroupsService,
     WeekDeliveryPredictionsService ]
 })
 export class ApiModule {
