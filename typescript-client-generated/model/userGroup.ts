@@ -9,20 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemGroupCategory } from './itemGroupCategory';
 
 
-export interface DeliveryQuality { 
+export interface UserGroup { 
     id?: string;
-    itemGroupCategory: ItemGroupCategory;
-    name: string;
-    priceBonus: number;
-    color: string;
-}
-export interface DeliveryQualityOpt { 
-    id?: string;
-    itemGroupCategory?: ItemGroupCategory;
     name?: string;
-    priceBonus?: number;
-    color?: string;
+}
+export interface UserGroupOpt { 
+    id?: string;
+    name?: string;
 }

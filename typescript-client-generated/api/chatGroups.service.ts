@@ -1,5 +1,6 @@
 import { BadRequest } from '../model/badRequest';
 import { ChatGroup } from '../model/chatGroup';
+import { ChatGroupGroupPermission } from '../model/chatGroupGroupPermission';
 import { ChatGroupType } from '../model/chatGroupType';
 import { ChatThread } from '../model/chatThread';
 import { Forbidden } from '../model/forbidden';
@@ -25,6 +26,29 @@ export class ChatGroupsService {
   */
   public createChatGroup(body: ChatThread, ):Promise<ChatGroup> {
     const uri = new URI(`${this.basePath}/chatGroups`);
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      },
+      body: JSON.stringify(body)
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Creates new chat group group permission
+   * @summary Creates new chat group group permission
+   * @param body Payload
+   * @param chatGroupId Chat group id
+  */
+  public createChatGroupGroupPermissions(body: ChatGroupGroupPermission, chatGroupId: number, ):Promise<ChatGroupGroupPermission> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}/groupPermissions`);
     const options = {
       method: "post",
       headers: {
@@ -83,6 +107,49 @@ export class ChatGroupsService {
 
 
   /**
+   * Find chat group group permission
+   * @summary Find chat group group permission
+   * @param chatGroupId Chat group id
+   * @param permissionId Permission id
+  */
+  public findChatGroupGroupPermissions(chatGroupId: number, permissionId: string, ):Promise<ChatGroupGroupPermission> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}/groupPermissions/${encodeURIComponent(String(permissionId))}`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Returns list of chat group group permissions
+   * @summary Returns list of chat group group permissions
+   * @param chatGroupId Chat group id
+  */
+  public listChatGroupGroupPermissions(chatGroupId: number, ):Promise<Array<ChatGroupGroupPermission>> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}/groupPermissions`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
    * Returns list of chat groups
    * @summary Returns list of chat groups
    * @param groupType Filter chat groups by group type
@@ -114,6 +181,30 @@ export class ChatGroupsService {
   */
   public updateChatGroup(body: ChatThread, chatGroupId: number, ):Promise<ChatGroup> {
     const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}`);
+    const options = {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      },
+      body: JSON.stringify(body)
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Updates chat group group permission
+   * @summary Update chat group group permission
+   * @param body Payload
+   * @param chatGroupId Chat group id
+   * @param permissionId Permission id
+  */
+  public updateChatGroupGroupPermissions(body: ChatGroupGroupPermission, chatGroupId: number, permissionId: string, ):Promise<ChatGroupGroupPermission> {
+    const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}/groupPermissions/${encodeURIComponent(String(permissionId))}`);
     const options = {
       method: "put",
       headers: {

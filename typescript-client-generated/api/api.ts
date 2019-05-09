@@ -30,6 +30,10 @@ export * from './publicFiles.service';
 import { PublicFilesService } from './publicFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
+export * from './unreads.service';
+import { UnreadsService } from './unreads.service';
+export * from './userGroups.service';
+import { UserGroupsService } from './userGroups.service';
 export * from './weekDeliveryPredictions.service';
 import { WeekDeliveryPredictionsService } from './weekDeliveryPredictions.service';
 
@@ -124,6 +128,14 @@ export default new class Api {
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {
     return new SignAuthenticationServicesService(this.apiUrl, token);
+  }
+  
+  public getUnreadsService(token: string): UnreadsService {
+    return new UnreadsService(this.apiUrl, token);
+  }
+  
+  public getUserGroupsService(token: string): UserGroupsService {
+    return new UserGroupsService(this.apiUrl, token);
   }
   
   public getWeekDeliveryPredictionsService(token: string): WeekDeliveryPredictionsService {

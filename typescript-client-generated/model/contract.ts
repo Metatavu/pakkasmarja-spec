@@ -16,10 +16,10 @@ export interface Contract {
     id?: string;
     sapId?: string;
     contactId?: string;
-    deliveryPlaceId?: string;
+    deliveryPlaceId: string;
     proposedDeliveryPlaceId?: string;
     deliveryPlaceComment?: string;
-    itemGroupId?: string;
+    itemGroupId: string;
     year: number;
     contractQuantity?: number;
     deliveredQuantity?: number;
