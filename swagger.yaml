@@ -1702,7 +1702,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ChatThread"
+              $ref: "#/components/schemas/ChatGroup"
         description: Payload
         required: true
       parameters:
@@ -2141,6 +2141,13 @@ paths:
           schema:
             type: integer
             format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThread"
+        description: Payload
+        required: true
       responses:
         "200":
           description: A of chat thread

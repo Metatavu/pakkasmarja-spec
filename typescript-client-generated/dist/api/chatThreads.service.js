@@ -225,16 +225,18 @@ var ChatThreadsService = /** @class */ (function () {
     /**
      * Update chat thread
      * @summary Update chat thread
+     * @param body Payload
      * @param chatThreadId Chat thread id
     */
-    ChatThreadsService.prototype.updateChatThread = function (chatThreadId) {
+    ChatThreadsService.prototype.updateChatThread = function (body, chatThreadId) {
         var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)));
         var options = {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.token
-            }
+            },
+            body: JSON.stringify(body)
         };
         return fetch(uri.toString(), options).then(function (response) {
             return api_1.ApiUtils.handleResponse(response);

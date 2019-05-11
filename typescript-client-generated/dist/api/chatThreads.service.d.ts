@@ -82,9 +82,10 @@ export declare class ChatThreadsService {
     /**
      * Update chat thread
      * @summary Update chat thread
+     * @param body Payload
      * @param chatThreadId Chat thread id
     */
-    updateChatThread(chatThreadId: number): Promise<ChatThread>;
+    updateChatThread(body: ChatThread, chatThreadId: number): Promise<ChatThread>;
     /**
      * Updates chat thread group permission
      * @summary Update chat thread group permission
