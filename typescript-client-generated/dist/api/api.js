@@ -35,6 +35,10 @@ __export(require("./publicFiles.service"));
 var publicFiles_service_1 = require("./publicFiles.service");
 __export(require("./signAuthenticationServices.service"));
 var signAuthenticationServices_service_1 = require("./signAuthenticationServices.service");
+__export(require("./unreads.service"));
+var unreads_service_1 = require("./unreads.service");
+__export(require("./userGroups.service"));
+var userGroups_service_1 = require("./userGroups.service");
 __export(require("./weekDeliveryPredictions.service"));
 var weekDeliveryPredictions_service_1 = require("./weekDeliveryPredictions.service");
 var ApiUtils = /** @class */ (function () {
@@ -114,6 +118,12 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getSignAuthenticationServicesService = function (token) {
         return new signAuthenticationServices_service_1.SignAuthenticationServicesService(this.apiUrl, token);
+    };
+    Api.prototype.getUnreadsService = function (token) {
+        return new unreads_service_1.UnreadsService(this.apiUrl, token);
+    };
+    Api.prototype.getUserGroupsService = function (token) {
+        return new userGroups_service_1.UserGroupsService(this.apiUrl, token);
     };
     Api.prototype.getWeekDeliveryPredictionsService = function (token) {
         return new weekDeliveryPredictions_service_1.WeekDeliveryPredictionsService(this.apiUrl, token);

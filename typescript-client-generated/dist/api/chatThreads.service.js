@@ -27,6 +27,46 @@ var ChatThreadsService = /** @class */ (function () {
         });
     };
     /**
+     * Creates new chat thread group permission
+     * @summary Creates new chat thread group permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+    */
+    ChatThreadsService.prototype.createChatThreadGroupPermissions = function (body, chatThreadId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/groupPermissions");
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Creates new chat thread user permission
+     * @summary Creates new chat thread user permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+    */
+    ChatThreadsService.prototype.createChatThreadUserPermission = function (body, chatThreadId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/userPermissions");
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Deletes chat thread
      * @summary Deletes chat thread
      * @param chatThreadId Chat thread id
@@ -63,6 +103,44 @@ var ChatThreadsService = /** @class */ (function () {
         });
     };
     /**
+     * Find chat thread group permission
+     * @summary Find chat thread group permission
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    ChatThreadsService.prototype.findChatThreadGroupPermission = function (chatThreadId, permissionId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/groupPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Find chat thread user permission
+     * @summary Find chat thread user permission
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    ChatThreadsService.prototype.findChatThreadUserPermission = function (chatThreadId, permissionId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/userPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Returns chat thread report
      * @summary Returns chat thread report
      * @param threadId chat thread id
@@ -75,6 +153,42 @@ var ChatThreadsService = /** @class */ (function () {
             method: "get",
             headers: {
                 "Accept": accept,
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Returns list of chat thread group permissions
+     * @summary Returns list of chat thread group permissions
+     * @param chatThreadId Chat thread id
+    */
+    ChatThreadsService.prototype.listChatThreadGroupPermissions = function (chatThreadId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/groupPermissions");
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Returns list of chat thread user permissions
+     * @summary Returns list of chat thread user permissions
+     * @param chatThreadId Chat thread id
+    */
+    ChatThreadsService.prototype.listChatThreadUserPermissions = function (chatThreadId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/userPermissions");
+        var options = {
+            method: "get",
+            headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.token
             }
@@ -121,6 +235,48 @@ var ChatThreadsService = /** @class */ (function () {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.token
             }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Updates chat thread group permission
+     * @summary Update chat thread group permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    ChatThreadsService.prototype.updateChatThreadGroupPermission = function (body, chatThreadId, permissionId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/groupPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Updates chat thread user permission
+     * @summary Update chat thread user permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    ChatThreadsService.prototype.updateChatThreadUserPermission = function (body, chatThreadId, permissionId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/userPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
         };
         return fetch(uri.toString(), options).then(function (response) {
             return api_1.ApiUtils.handleResponse(response);

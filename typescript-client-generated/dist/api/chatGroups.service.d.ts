@@ -1,4 +1,5 @@
 import { ChatGroup } from '../model/chatGroup';
+import { ChatGroupGroupPermission } from '../model/chatGroupGroupPermission';
 import { ChatGroupType } from '../model/chatGroupType';
 import { ChatThread } from '../model/chatThread';
 export declare class ChatGroupsService {
@@ -12,6 +13,13 @@ export declare class ChatGroupsService {
     */
     createChatGroup(body: ChatThread): Promise<ChatGroup>;
     /**
+     * Creates new chat group group permission
+     * @summary Creates new chat group group permission
+     * @param body Payload
+     * @param chatGroupId Chat group id
+    */
+    createChatGroupGroupPermissions(body: ChatGroupGroupPermission, chatGroupId: number): Promise<ChatGroupGroupPermission>;
+    /**
      * Deletes a chat group
      * @summary Deletes a chat group
      * @param chatGroupId Chat group id
@@ -23,6 +31,19 @@ export declare class ChatGroupsService {
      * @param chatGroupId Chat group id
     */
     findChatGroup(chatGroupId: number): Promise<ChatGroup>;
+    /**
+     * Find chat group group permission
+     * @summary Find chat group group permission
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    findChatGroupGroupPermissions(chatGroupId: number, permissionId: string): Promise<ChatGroupGroupPermission>;
+    /**
+     * Returns list of chat group group permissions
+     * @summary Returns list of chat group group permissions
+     * @param chatGroupId Chat group id
+    */
+    listChatGroupGroupPermissions(chatGroupId: number): Promise<Array<ChatGroupGroupPermission>>;
     /**
      * Returns list of chat groups
      * @summary Returns list of chat groups
@@ -36,4 +57,12 @@ export declare class ChatGroupsService {
      * @param chatGroupId Chat group id
     */
     updateChatGroup(body: ChatThread, chatGroupId: number): Promise<ChatGroup>;
+    /**
+     * Updates chat group group permission
+     * @summary Update chat group group permission
+     * @param body Payload
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    updateChatGroupGroupPermissions(body: ChatGroupGroupPermission, chatGroupId: number, permissionId: string): Promise<ChatGroupGroupPermission>;
 }

@@ -30,6 +30,10 @@ export * from './publicFiles.service';
 import { PublicFilesService } from './publicFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
+export * from './unreads.service';
+import { UnreadsService } from './unreads.service';
+export * from './userGroups.service';
+import { UserGroupsService } from './userGroups.service';
 export * from './weekDeliveryPredictions.service';
 import { WeekDeliveryPredictionsService } from './weekDeliveryPredictions.service';
 export declare class ApiUtils {
@@ -63,6 +67,8 @@ declare const _default: {
     getProductsService(token: string): ProductsService;
     getPublicFilesService(token: string): PublicFilesService;
     getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService;
+    getUnreadsService(token: string): UnreadsService;
+    getUserGroupsService(token: string): UserGroupsService;
     getWeekDeliveryPredictionsService(token: string): WeekDeliveryPredictionsService;
 };
 export default _default;

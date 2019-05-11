@@ -1,5 +1,7 @@
 import { ChatGroupType } from '../model/chatGroupType';
 import { ChatThread } from '../model/chatThread';
+import { ChatThreadGroupPermission } from '../model/chatThreadGroupPermission';
+import { ChatThreadUserPermission } from '../model/chatThreadUserPermission';
 export declare class ChatThreadsService {
     private token;
     private basePath;
@@ -10,6 +12,20 @@ export declare class ChatThreadsService {
      * @param body Payload
     */
     createChatThread(body: ChatThread): Promise<ChatThread>;
+    /**
+     * Creates new chat thread group permission
+     * @summary Creates new chat thread group permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+    */
+    createChatThreadGroupPermissions(body: ChatThreadGroupPermission, chatThreadId: number): Promise<ChatThreadGroupPermission>;
+    /**
+     * Creates new chat thread user permission
+     * @summary Creates new chat thread user permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+    */
+    createChatThreadUserPermission(body: ChatThreadUserPermission, chatThreadId: number): Promise<ChatThreadUserPermission>;
     /**
      * Deletes chat thread
      * @summary Deletes chat thread
@@ -23,6 +39,20 @@ export declare class ChatThreadsService {
     */
     findChatThread(chatThreadId: number): Promise<ChatThread>;
     /**
+     * Find chat thread group permission
+     * @summary Find chat thread group permission
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    findChatThreadGroupPermission(chatThreadId: number, permissionId: string): Promise<ChatThreadGroupPermission>;
+    /**
+     * Find chat thread user permission
+     * @summary Find chat thread user permission
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    findChatThreadUserPermission(chatThreadId: number, permissionId: string): Promise<ChatThreadUserPermission>;
+    /**
      * Returns chat thread report
      * @summary Returns chat thread report
      * @param threadId chat thread id
@@ -30,6 +60,18 @@ export declare class ChatThreadsService {
      * @param accept Expected response format. Accepted values application/vnd.openxmlformats for Excel response
     */
     getChatThreadReport(threadId: number, type: string, accept?: string): Promise<string>;
+    /**
+     * Returns list of chat thread group permissions
+     * @summary Returns list of chat thread group permissions
+     * @param chatThreadId Chat thread id
+    */
+    listChatThreadGroupPermissions(chatThreadId: number): Promise<Array<ChatThreadGroupPermission>>;
+    /**
+     * Returns list of chat thread user permissions
+     * @summary Returns list of chat thread user permissions
+     * @param chatThreadId Chat thread id
+    */
+    listChatThreadUserPermissions(chatThreadId: number): Promise<Array<ChatThreadUserPermission>>;
     /**
      * Returns list of chat threads
      * @summary Returns list of chat threads
@@ -43,4 +85,20 @@ export declare class ChatThreadsService {
      * @param chatThreadId Chat thread id
     */
     updateChatThread(chatThreadId: number): Promise<ChatThread>;
+    /**
+     * Updates chat thread group permission
+     * @summary Update chat thread group permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    updateChatThreadGroupPermission(body: ChatThreadGroupPermission, chatThreadId: number, permissionId: string): Promise<ChatThreadGroupPermission>;
+    /**
+     * Updates chat thread user permission
+     * @summary Update chat thread user permission
+     * @param body Payload
+     * @param chatThreadId Chat thread id
+     * @param permissionId Permission id
+    */
+    updateChatThreadUserPermission(body: ChatThreadUserPermission, chatThreadId: number, permissionId: string): Promise<ChatThreadUserPermission>;
 }

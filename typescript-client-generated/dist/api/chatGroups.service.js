@@ -27,6 +27,26 @@ var ChatGroupsService = /** @class */ (function () {
         });
     };
     /**
+     * Creates new chat group group permission
+     * @summary Creates new chat group group permission
+     * @param body Payload
+     * @param chatGroupId Chat group id
+    */
+    ChatGroupsService.prototype.createChatGroupGroupPermissions = function (body, chatGroupId) {
+        var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)) + "/groupPermissions");
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Deletes a chat group
      * @summary Deletes a chat group
      * @param chatGroupId Chat group id
@@ -51,6 +71,43 @@ var ChatGroupsService = /** @class */ (function () {
     */
     ChatGroupsService.prototype.findChatGroup = function (chatGroupId) {
         var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)));
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Find chat group group permission
+     * @summary Find chat group group permission
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    ChatGroupsService.prototype.findChatGroupGroupPermissions = function (chatGroupId, permissionId) {
+        var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)) + "/groupPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Returns list of chat group group permissions
+     * @summary Returns list of chat group group permissions
+     * @param chatGroupId Chat group id
+    */
+    ChatGroupsService.prototype.listChatGroupGroupPermissions = function (chatGroupId) {
+        var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)) + "/groupPermissions");
         var options = {
             method: "get",
             headers: {
@@ -91,6 +148,27 @@ var ChatGroupsService = /** @class */ (function () {
     */
     ChatGroupsService.prototype.updateChatGroup = function (body, chatGroupId) {
         var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)));
+        var options = {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            },
+            body: JSON.stringify(body)
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Updates chat group group permission
+     * @summary Update chat group group permission
+     * @param body Payload
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    ChatGroupsService.prototype.updateChatGroupGroupPermissions = function (body, chatGroupId, permissionId) {
+        var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)) + "/groupPermissions/" + encodeURIComponent(String(permissionId)));
         var options = {
             method: "put",
             headers: {
