@@ -2,7 +2,6 @@ import { BadRequest } from '../model/badRequest';
 import { ChatGroup } from '../model/chatGroup';
 import { ChatGroupGroupPermission } from '../model/chatGroupGroupPermission';
 import { ChatGroupType } from '../model/chatGroupType';
-import { ChatThread } from '../model/chatThread';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import * as URI from "urijs";
@@ -24,7 +23,7 @@ export class ChatGroupsService {
    * @summary Creates new chat group
    * @param body Payload
   */
-  public createChatGroup(body: ChatThread, ):Promise<ChatGroup> {
+  public createChatGroup(body: ChatGroup, ):Promise<ChatGroup> {
     const uri = new URI(`${this.basePath}/chatGroups`);
     const options = {
       method: "post",
