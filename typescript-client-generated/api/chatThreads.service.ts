@@ -270,16 +270,18 @@ export class ChatThreadsService {
   /**
    * Update chat thread
    * @summary Update chat thread
+   * @param body Payload
    * @param chatThreadId Chat thread id
   */
-  public updateChatThread(chatThreadId: number, ):Promise<ChatThread> {
+  public updateChatThread(body: ChatThread, chatThreadId: number, ):Promise<ChatThread> {
     const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`
-      }
+      },
+      body: JSON.stringify(body)
     };
 
     return fetch(uri.toString(), options).then((response) => {

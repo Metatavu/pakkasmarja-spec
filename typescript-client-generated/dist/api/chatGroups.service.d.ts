@@ -63,7 +63,7 @@ export declare class ChatGroupsService {
      * @param body Payload
      * @param chatGroupId Chat group id
     */
-    updateChatGroup(body: ChatThread, chatGroupId: number): Promise<ChatGroup>;
+    updateChatGroup(body: ChatGroup, chatGroupId: number): Promise<ChatGroup>;
     /**
      * Updates chat group group permission
      * @summary Update chat group group permission
