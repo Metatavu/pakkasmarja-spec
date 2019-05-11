@@ -1961,6 +1961,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteChatGroupGroupPermission
+      summary: Delete chat group group permission
+      description: Deletes chat group group permission
+      tags:
+        - ChatGroups
+      parameters:
+        - name: chatGroupId
+          in: path
+          description: Chat group id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: permissionId
+          in: path
+          description: Permission id
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
 
   /chatThreads:
     get:
@@ -2501,7 +2542,7 @@ paths:
 
   /chatThreads/{chatThreadId}/groupPermissions/{permissionId}:
     get:
-      operationId: findChatThreadGroupPermissions
+      operationId: findChatThreadGroupPermission
       summary: Find chat thread group permission
       description: Find chat thread group permission
       tags:
@@ -2546,7 +2587,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
     put:
-      operationId: updateChatThreadGroupPermissions
+      operationId: updateChatThreadGroupPermission
       summary: Update chat thread group permission
       description: Updates chat thread group permission
       tags:
@@ -2579,6 +2620,193 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ChatThreadGroupPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /chatThreads/{chatThreadId}/userPermissions:
+    get:
+      operationId: listChatThreadUserPermissions
+      summary: Returns list of chat thread user permissions
+      description: Returns list of chat thread user permissions
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: A list of chat thread user permissions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatThreadUserPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createChatThreadUserPermission
+      summary: Creates new chat thread user permission
+      description: Creates new chat thread user permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThreadUserPermission"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created chat thread user permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadUserPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
+  /chatThreads/{chatThreadId}/userPermissions/{permissionId}:
+    get:
+      operationId: findChatThreadUserPermission
+      summary: Find chat thread user permission
+      description: Find chat thread user permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: permissionId
+          in: path
+          description: Permission id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Found chat thread user permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadUserPermission"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateChatThreadUserPermission
+      summary: Update chat thread user permission
+      description: Updates chat thread user permission
+      tags:
+        - ChatThreads
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: permissionId
+          in: path
+          description: Permission id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatThreadUserPermission"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated chat thread user permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatThreadUserPermission"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -4940,21 +5168,6 @@ components:
       enum:
         - ACCESS
         
-    ChatGroupUserPermission:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        chatGroupId:
-          type: integer
-          format: int64
-        userId:
-          type: string
-          format: uuid
-        scope:
-          $ref: "#/components/schemas/ChatGroupPermissionScope"
-        
     ChatGroupGroupPermission:
       type: object
       required:
@@ -4975,10 +5188,13 @@ components:
           
     ChatThreadUserPermission:
       type: object
+      required:
+        - chatThreadId
+        - userId
       properties:
         id:
           type: string
-          format: uuid
+          readOnly: true
         chatThreadId:
           type: integer
           format: int64
