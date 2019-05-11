@@ -65,6 +65,25 @@ var ChatGroupsService = /** @class */ (function () {
         });
     };
     /**
+     * Deletes chat group group permission
+     * @summary Delete chat group group permission
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    ChatGroupsService.prototype.deleteChatGroupGroupPermission = function (chatGroupId, permissionId) {
+        var uri = new URI(this.basePath + "/chatGroups/" + encodeURIComponent(String(chatGroupId)) + "/groupPermissions/" + encodeURIComponent(String(permissionId)));
+        var options = {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Returns a chat group
      * @summary Returns a chat group
      * @param chatGroupId Chat group id

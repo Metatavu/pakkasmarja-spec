@@ -201,7 +201,7 @@ export class ChatGroupsService {
    * @param body Payload
    * @param chatGroupId Chat group id
   */
-  public updateChatGroup(body: ChatThread, chatGroupId: number, ):Promise<ChatGroup> {
+  public updateChatGroup(body: ChatGroup, chatGroupId: number, ):Promise<ChatGroup> {
     const uri = new URI(`${this.basePath}/chatGroups/${encodeURIComponent(String(chatGroupId))}`);
     const options = {
       method: "put",

@@ -26,6 +26,13 @@ export declare class ChatGroupsService {
     */
     deleteChatGroup(chatGroupId: number): Promise<any>;
     /**
+     * Deletes chat group group permission
+     * @summary Delete chat group group permission
+     * @param chatGroupId Chat group id
+     * @param permissionId Permission id
+    */
+    deleteChatGroupGroupPermission(chatGroupId: number, permissionId: string): Promise<any>;
+    /**
      * Returns a chat group
      * @summary Returns a chat group
      * @param chatGroupId Chat group id
