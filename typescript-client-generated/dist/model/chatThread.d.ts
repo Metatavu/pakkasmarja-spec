@@ -17,6 +17,7 @@ export interface ChatThread {
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
     pollAllowOther?: boolean;
+    pollPredefinedTexts?: Array<string>;
     expiresAt?: Date;
 }
 export interface ChatThreadOpt {
@@ -27,6 +28,7 @@ export interface ChatThreadOpt {
     imageUrl?: string;
     answerType?: ChatThread.AnswerTypeEnum;
     pollAllowOther?: boolean;
+    pollPredefinedTexts?: Array<string>;
     expiresAt?: Date;
 }
 export declare namespace ChatThread {
