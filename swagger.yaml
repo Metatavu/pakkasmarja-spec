@@ -3320,12 +3320,13 @@ paths:
             format: uuid
         - in: query
           name: sort
-          required: true
+          required: false
           description: sort
           schema:
             type: string
             enum:
               - CREATED_AT_ASC
+              - CREATED_AT_DESC
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
