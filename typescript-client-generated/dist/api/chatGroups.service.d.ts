@@ -1,7 +1,6 @@
 import { ChatGroup } from '../model/chatGroup';
 import { ChatGroupGroupPermission } from '../model/chatGroupGroupPermission';
 import { ChatGroupType } from '../model/chatGroupType';
-import { ChatThread } from '../model/chatThread';
 export declare class ChatGroupsService {
     private token;
     private basePath;
@@ -11,7 +10,7 @@ export declare class ChatGroupsService {
      * @summary Creates new chat group
      * @param body Payload
     */
-    createChatGroup(body: ChatThread): Promise<ChatGroup>;
+    createChatGroup(body: ChatGroup): Promise<ChatGroup>;
     /**
      * Creates new chat group group permission
      * @summary Creates new chat group group permission

@@ -8,6 +8,7 @@ import { ChatMessagesService } from './api/chatMessages.service';
 import { ChatThreadsService } from './api/chatThreads.service';
 import { ContactsService } from './api/contacts.service';
 import { ContractsService } from './api/contracts.service';
+import { DataSheetsService } from './api/dataSheets.service';
 import { DeliveriesService } from './api/deliveries.service';
 import { DeliveryPlacesService } from './api/deliveryPlaces.service';
 import { DeliveryQualitiesService } from './api/deliveryQualities.service';
@@ -33,6 +34,7 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     ChatThreadsService,
     ContactsService,
     ContractsService,
+    DataSheetsService,
     DeliveriesService,
     DeliveryPlacesService,
     DeliveryQualitiesService,

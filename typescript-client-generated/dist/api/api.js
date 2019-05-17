@@ -13,6 +13,8 @@ __export(require("./contacts.service"));
 var contacts_service_1 = require("./contacts.service");
 __export(require("./contracts.service"));
 var contracts_service_1 = require("./contracts.service");
+__export(require("./dataSheets.service"));
+var dataSheets_service_1 = require("./dataSheets.service");
 __export(require("./deliveries.service"));
 var deliveries_service_1 = require("./deliveries.service");
 __export(require("./deliveryPlaces.service"));
@@ -85,6 +87,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getContractsService = function (token) {
         return new contracts_service_1.ContractsService(this.apiUrl, token);
+    };
+    Api.prototype.getDataSheetsService = function (token) {
+        return new dataSheets_service_1.DataSheetsService(this.apiUrl, token);
     };
     Api.prototype.getDeliveriesService = function (token) {
         return new deliveries_service_1.DeliveriesService(this.apiUrl, token);

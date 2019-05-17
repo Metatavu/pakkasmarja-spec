@@ -8,6 +8,8 @@ export * from './contacts.service';
 import { ContactsService } from './contacts.service';
 export * from './contracts.service';
 import { ContractsService } from './contracts.service';
+export * from './dataSheets.service';
+import { DataSheetsService } from './dataSheets.service';
 export * from './deliveries.service';
 import { DeliveriesService } from './deliveries.service';
 export * from './deliveryPlaces.service';
@@ -56,6 +58,7 @@ declare const _default: {
     getChatThreadsService(token: string): ChatThreadsService;
     getContactsService(token: string): ContactsService;
     getContractsService(token: string): ContractsService;
+    getDataSheetsService(token: string): DataSheetsService;
     getDeliveriesService(token: string): DeliveriesService;
     getDeliveryPlacesService(token: string): DeliveryPlacesService;
     getDeliveryQualitiesService(token: string): DeliveryQualitiesService;
