@@ -8,6 +8,8 @@ export * from './contacts.service';
 import { ContactsService } from './contacts.service';
 export * from './contracts.service';
 import { ContractsService } from './contracts.service';
+export * from './dataSheets.service';
+import { DataSheetsService } from './dataSheets.service';
 export * from './deliveries.service';
 import { DeliveriesService } from './deliveries.service';
 export * from './deliveryPlaces.service';
@@ -84,6 +86,10 @@ export default new class Api {
   
   public getContractsService(token: string): ContractsService {
     return new ContractsService(this.apiUrl, token);
+  }
+  
+  public getDataSheetsService(token: string): DataSheetsService {
+    return new DataSheetsService(this.apiUrl, token);
   }
   
   public getDeliveriesService(token: string): DeliveriesService {
