@@ -11,12 +11,12 @@
  */
 import { DeliveryLoanableType } from './deliveryLoanableType';
 export interface DeliveryLoanable {
-    type?: DeliveryLoanableType;
-    amount?: number;
+    type: DeliveryLoanableType;
+    amount: number;
     /**
      * Whether loanable is a loan or loan return
      */
-    _return?: boolean;
+    _return: boolean;
 }
 export interface DeliveryLoanableOpt {
     type?: DeliveryLoanableType;

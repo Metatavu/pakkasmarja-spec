@@ -5140,24 +5140,28 @@ components:
           type: array
           description: Array of loans. Property is write only
           items:
-            $ref: "#/components/schemas/DeliveryLoanable"
+            $ref: "#/components/schemas/DeliveryLoan"
             
-    DeliveryLoanableType:
+    DeliveryLoanItem:
       type: string
       enum:
         - GRAY_BOX
         - RED_BOX
 
     DeliveryLoanable:
+      required:
+        - item
+        - loaned
+        - returned
       properties: 
-        type:
-          $ref: "#/components/schemas/DeliveryLoanableType"
-        amount:
+        item:
+          $ref: "#/components/schemas/DeliveryLoanItem"
+        loaned:
           type: integer
           format: int32
-        return:
-          type: boolean
-          description: Whether loanable is a loan or loan return 
+        returned:
+          type: integer
+          format: int32
         
     WeekDeliveryPrediction:
       required:
