@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { DeliveryLoanable } from './deliveryLoanable';
+import { DeliveryLoan } from './deliveryLoan';
 import { DeliveryStatus } from './deliveryStatus';
 
 
@@ -29,7 +29,7 @@ export interface Delivery {
     /**
      * Array of loans. Property is write only
      */
-    loans?: Array<DeliveryLoanable>;
+    loans?: Array<DeliveryLoan>;
 }
 export interface DeliveryOpt { 
     id?: string;
@@ -47,5 +47,5 @@ export interface DeliveryOpt {
     /**
      * Array of loans. Property is write only
      */
-    loans?: Array<DeliveryLoanable>;
+    loans?: Array<DeliveryLoan>;
 }
