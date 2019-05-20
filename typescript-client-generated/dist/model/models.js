@@ -9,6 +9,7 @@ __export(require("./chatThread"));
 __export(require("./chatThreadPermissionScope"));
 __export(require("./contact"));
 __export(require("./contract"));
+__export(require("./deliveryLoanableType"));
 __export(require("./deliveryStatus"));
 __export(require("./itemGroupCategory"));
 __export(require("./operationReportItem"));
