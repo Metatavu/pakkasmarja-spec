@@ -91,7 +91,7 @@ export class ProductPricesService {
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listProductPrices(productId: string, sort: string, firstResult?: number, maxResults?: number, ):Promise<Array<ProductPrice>> {
+  public listProductPrices(productId: string, sort?: string, firstResult?: number, maxResults?: number, ):Promise<Array<ProductPrice>> {
     const uri = new URI(`${this.basePath}/products/${encodeURIComponent(String(productId))}/prices`);
     if (sort !== undefined && sort !== null) {
         uri.addQuery('sort', <any>sort);
