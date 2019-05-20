@@ -5136,7 +5136,29 @@ components:
         deliveryPlaceId:
           type: string
           format: uuid
-          
+        loans:
+          type: array
+          description: Array of loans. Property is write only
+          items:
+            $ref: "#/components/schemas/DeliveryLoanable"
+            
+    DeliveryLoanableType:
+      type: string
+      enum:
+        - GRAY_BOX
+        - RED_BOX
+
+    DeliveryLoanable:
+      properties: 
+        type:
+          $ref: "#/components/schemas/DeliveryLoanableType"
+        amount:
+          type: integer
+          format: int32
+        return:
+          type: boolean
+          description: Whether loanable is a loan or loan return 
+        
     WeekDeliveryPrediction:
       required:
         - itemGroupId
