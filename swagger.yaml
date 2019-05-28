@@ -2019,9 +2019,13 @@ paths:
             format: int64
         - name: groupType
           in: query
-          description: Filter chat groups by group type
+          description: Filter chat treads by group type
           schema:
             $ref: "#/components/schemas/ChatGroupType"
+        - name: ownerId
+          in: query
+          description: Filter chat treads by owner id
+          required: false
       responses:
         "200":
           description: A list of chat threads
@@ -5148,7 +5152,7 @@ components:
         - GRAY_BOX
         - RED_BOX
 
-    DeliveryLoanable:
+    DeliveryLoan:
       required:
         - item
         - loaned

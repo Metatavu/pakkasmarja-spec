@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Pakkasmarja REST API
  * REST API for Pakkasmarja
@@ -9,8 +10,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type DeliveryLoanableType = 'GRAY_BOX' | 'RED_BOX';
-export declare const DeliveryLoanableType: {
-    GRAYBOX: import("./deliveryLoanItem").DeliveryLoanItem;
-    REDBOX: import("./deliveryLoanItem").DeliveryLoanItem;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeliveryLoanItem = {
+    GRAYBOX: 'GRAY_BOX',
+    REDBOX: 'RED_BOX'
 };
