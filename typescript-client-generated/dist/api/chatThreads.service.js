@@ -201,15 +201,19 @@ var ChatThreadsService = /** @class */ (function () {
      * Returns list of chat threads
      * @summary Returns list of chat threads
      * @param groupId Filter chat threads by group id
-     * @param groupType Filter chat groups by group type
+     * @param groupType Filter chat treads by group type
+     * @param ownerId Filter chat treads by owner id
     */
-    ChatThreadsService.prototype.listChatThreads = function (groupId, groupType) {
+    ChatThreadsService.prototype.listChatThreads = function (groupId, groupType, ownerId) {
         var uri = new URI(this.basePath + "/chatThreads");
         if (groupId !== undefined && groupId !== null) {
             uri.addQuery('groupId', groupId);
         }
         if (groupType !== undefined && groupType !== null) {
             uri.addQuery('groupType', groupType);
+        }
+        if (ownerId !== undefined && ownerId !== null) {
+            uri.addQuery('ownerId', ownerId);
         }
         var options = {
             method: "get",

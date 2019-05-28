@@ -2025,6 +2025,9 @@ paths:
         - name: ownerId
           in: query
           description: Filter chat treads by owner id
+          schema:
+            type: string
+            format: uuid
           required: false
       responses:
         "200":

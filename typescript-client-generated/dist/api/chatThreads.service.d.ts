@@ -76,9 +76,10 @@ export declare class ChatThreadsService {
      * Returns list of chat threads
      * @summary Returns list of chat threads
      * @param groupId Filter chat threads by group id
-     * @param groupType Filter chat groups by group type
+     * @param groupType Filter chat treads by group type
+     * @param ownerId Filter chat treads by owner id
     */
-    listChatThreads(groupId?: number, groupType?: ChatGroupType): Promise<Array<ChatThread>>;
+    listChatThreads(groupId?: number, groupType?: ChatGroupType, ownerId?: string): Promise<Array<ChatThread>>;
     /**
      * Update chat thread
      * @summary Update chat thread
