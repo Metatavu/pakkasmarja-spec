@@ -2235,7 +2235,12 @@ paths:
           description: Messages created after given time
           schema:
             type: string
-            format: date-time
+            format: date-time        
+        - name: userId
+          in: query
+          description: Messages created by given user
+          schema:
+            type: string
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
