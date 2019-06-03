@@ -243,15 +243,19 @@ export class ChatThreadsService {
    * Returns list of chat threads
    * @summary Returns list of chat threads
    * @param groupId Filter chat threads by group id
-   * @param groupType Filter chat groups by group type
+   * @param groupType Filter chat treads by group type
+   * @param ownerId Filter chat treads by owner id
   */
-  public listChatThreads(groupId?: number, groupType?: ChatGroupType, ):Promise<Array<ChatThread>> {
+  public listChatThreads(groupId?: number, groupType?: ChatGroupType, ownerId?: string, ):Promise<Array<ChatThread>> {
     const uri = new URI(`${this.basePath}/chatThreads`);
     if (groupId !== undefined && groupId !== null) {
         uri.addQuery('groupId', <any>groupId);
     }
     if (groupType !== undefined && groupType !== null) {
         uri.addQuery('groupType', <any>groupType);
+    }
+    if (ownerId !== undefined && ownerId !== null) {
+        uri.addQuery('ownerId', <any>ownerId);
     }
     const options = {
       method: "get",

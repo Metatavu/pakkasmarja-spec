@@ -2019,9 +2019,16 @@ paths:
             format: int64
         - name: groupType
           in: query
-          description: Filter chat groups by group type
+          description: Filter chat treads by group type
           schema:
             $ref: "#/components/schemas/ChatGroupType"
+        - name: ownerId
+          in: query
+          description: Filter chat treads by owner id
+          schema:
+            type: string
+            format: uuid
+          required: false
       responses:
         "200":
           description: A list of chat threads
@@ -5141,7 +5148,33 @@ components:
         deliveryPlaceId:
           type: string
           format: uuid
-          
+        loans:
+          type: array
+          description: Array of loans. Property is write only
+          items:
+            $ref: "#/components/schemas/DeliveryLoan"
+            
+    DeliveryLoanItem:
+      type: string
+      enum:
+        - GRAY_BOX
+        - RED_BOX
+
+    DeliveryLoan:
+      required:
+        - item
+        - loaned
+        - returned
+      properties: 
+        item:
+          $ref: "#/components/schemas/DeliveryLoanItem"
+        loaned:
+          type: integer
+          format: int32
+        returned:
+          type: integer
+          format: int32
+        
     WeekDeliveryPrediction:
       required:
         - itemGroupId

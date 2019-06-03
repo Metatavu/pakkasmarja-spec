@@ -32,7 +32,7 @@ export declare class ProductPricesService {
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listProductPrices(productId: string, sort: string, firstResult?: number, maxResults?: number): Promise<Array<ProductPrice>>;
+    listProductPrices(productId: string, sort?: string, firstResult?: number, maxResults?: number): Promise<Array<ProductPrice>>;
     /**
      * Updates product price
      * @summary Update product price
