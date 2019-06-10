@@ -89,16 +89,20 @@ export class ChatMessagesService {
    * @param chatThreadId Chat thread
    * @param createdBefore Messages created before given time
    * @param createdAfter Messages created after given time
+   * @param userId Messages created by given user
    * @param firstResult Offset of first result. Defaults to 0
    * @param maxResults Max results. Defaults to 5
   */
-  public listChatMessages(chatThreadId: number, createdBefore?: Date, createdAfter?: Date, firstResult?: number, maxResults?: number, ):Promise<Array<ChatMessage>> {
+  public listChatMessages(chatThreadId: number, createdBefore?: Date, createdAfter?: Date, userId?: string, firstResult?: number, maxResults?: number, ):Promise<Array<ChatMessage>> {
     const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages`);
     if (createdBefore !== undefined && createdBefore !== null) {
         uri.addQuery('createdBefore', <any>createdBefore.toISOString());
     }
     if (createdAfter !== undefined && createdAfter !== null) {
         uri.addQuery('createdAfter', <any>createdAfter.toISOString());
+    }
+    if (userId !== undefined && userId !== null) {
+        uri.addQuery('userId', <any>userId);
     }
     if (firstResult !== undefined && firstResult !== null) {
         uri.addQuery('firstResult', <any>firstResult);
