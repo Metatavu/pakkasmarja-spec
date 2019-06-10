@@ -5236,6 +5236,7 @@ components:
         - DELIVERY
         - DONE
         - REJECTED
+        - NOT_ACCEPTED
 
     DeliveryQuality:
       type: object
