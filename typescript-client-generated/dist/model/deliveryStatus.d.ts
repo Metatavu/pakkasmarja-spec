@@ -9,11 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type DeliveryStatus = 'PROPOSAL' | 'PLANNED' | 'DELIVERY' | 'DONE' | 'REJECTED';
+export declare type DeliveryStatus = 'PROPOSAL' | 'PLANNED' | 'DELIVERY' | 'DONE' | 'REJECTED' | 'NOT_ACCEPTED';
 export declare const DeliveryStatus: {
     PROPOSAL: DeliveryStatus;
     PLANNED: DeliveryStatus;
     DELIVERY: DeliveryStatus;
     DONE: DeliveryStatus;
     REJECTED: DeliveryStatus;
+    NOTACCEPTED: DeliveryStatus;
 };

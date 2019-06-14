@@ -16,5 +16,6 @@ exports.DeliveryStatus = {
     PLANNED: 'PLANNED',
     DELIVERY: 'DELIVERY',
     DONE: 'DONE',
-    REJECTED: 'REJECTED'
+    REJECTED: 'REJECTED',
+    NOTACCEPTED: 'NOT_ACCEPTED'
 };

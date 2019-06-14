@@ -30,10 +30,11 @@ export declare class ChatMessagesService {
      * @param chatThreadId Chat thread
      * @param createdBefore Messages created before given time
      * @param createdAfter Messages created after given time
+     * @param userId Messages created by given user
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    listChatMessages(chatThreadId: number, createdBefore?: Date, createdAfter?: Date, firstResult?: number, maxResults?: number): Promise<Array<ChatMessage>>;
+    listChatMessages(chatThreadId: number, createdBefore?: Date, createdAfter?: Date, userId?: string, firstResult?: number, maxResults?: number): Promise<Array<ChatMessage>>;
     /**
      * Update chat message
      * @summary Update chat message
