@@ -5148,6 +5148,8 @@ components:
         deliveryPlaceId:
           type: string
           format: uuid
+        warehouseCode:
+          type: string
         loans:
           type: array
           description: Array of loans. Property is write only
