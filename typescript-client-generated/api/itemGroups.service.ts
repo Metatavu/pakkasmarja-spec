@@ -211,8 +211,9 @@ export class ItemGroupsService {
   /**
    * Lists item groups
    * @summary Lists item groups
+   * @param contractUserId contract user id
   */
-  public listItemGroups():Promise<Array<ItemGroup>> {
+  public listItemGroups(contractUserId: string, ):Promise<Array<ItemGroup>> {
     const uri = new URI(`${this.basePath}/itemGroups`);
     const options = {
       method: "get",

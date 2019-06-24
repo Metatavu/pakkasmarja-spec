@@ -1,4 +1,4 @@
-## pakkasmarja-client@0.0.48
+## pakkasmarja-client@0.0.49
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install pakkasmarja-client@0.0.48 --save
+npm install pakkasmarja-client@0.0.49 --save
 ```
 
 _without publishing (not recommended):_
