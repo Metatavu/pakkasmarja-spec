@@ -793,6 +793,13 @@ paths:
       description: Lists item groups
       tags:
         - ItemGroups
+      parameters:
+        - name: contractUserId
+          in: path
+          description: contract user id
+          schema:
+            type: string
+            format: uuid
       responses:
         "200":
           description: List of item groups
