@@ -213,8 +213,11 @@ export class ItemGroupsService {
    * @summary Lists item groups
    * @param contractUserId contract user id
   */
-  public listItemGroups(contractUserId: string, ):Promise<Array<ItemGroup>> {
+  public listItemGroups(contractUserId?: string, ):Promise<Array<ItemGroup>> {
     const uri = new URI(`${this.basePath}/itemGroups`);
+    if (contractUserId !== undefined && contractUserId !== null) {
+        uri.addQuery('contractUserId', <any>contractUserId);
+    }
     const options = {
       method: "get",
       headers: {

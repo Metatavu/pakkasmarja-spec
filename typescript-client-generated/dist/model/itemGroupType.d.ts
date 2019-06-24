@@ -11,6 +11,6 @@
  */
 export declare type ItemGroupType = 'FRESH' | 'FROZEN';
 export declare const ItemGroupType: {
-    FRESH: import("../../../../../../Users/belvain/git/pakkasmarja-spec/typescript-client-generated/model/itemGroupCategory").ItemGroupCategory;
-    FROZEN: import("../../../../../../Users/belvain/git/pakkasmarja-spec/typescript-client-generated/model/itemGroupCategory").ItemGroupCategory;
+    FRESH: import("./itemGroupCategory").ItemGroupCategory;
+    FROZEN: import("./itemGroupCategory").ItemGroupCategory;
 };

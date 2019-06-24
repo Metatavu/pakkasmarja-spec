@@ -176,8 +176,9 @@ var ItemGroupsService = /** @class */ (function () {
     /**
      * Lists item groups
      * @summary Lists item groups
+     * @param contractUserId contract user id
     */
-    ItemGroupsService.prototype.listItemGroups = function () {
+    ItemGroupsService.prototype.listItemGroups = function (contractUserId) {
         var uri = new URI(this.basePath + "/itemGroups");
         var options = {
             method: "get",
