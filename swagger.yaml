@@ -795,7 +795,7 @@ paths:
         - ItemGroups
       parameters:
         - name: contractUserId
-          in: path
+          in: query
           description: contract user id
           schema:
             type: string
