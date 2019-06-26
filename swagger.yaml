@@ -3346,6 +3346,13 @@ paths:
             enum:
               - CREATED_AT_ASC
               - CREATED_AT_DESC
+        - in: query
+          name: atTime
+          required: false
+          description: sort
+          schema:
+            type: string
+            format: date-time
         - name: firstResult
           in: query
           description: Offset of first result. Defaults to 0
