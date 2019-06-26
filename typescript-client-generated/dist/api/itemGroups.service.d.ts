@@ -66,7 +66,7 @@ export declare class ItemGroupsService {
      * @summary Lists item groups
      * @param contractUserId contract user id
     */
-    listItemGroups(contractUserId: string): Promise<Array<ItemGroup>>;
+    listItemGroups(contractUserId?: string): Promise<Array<ItemGroup>>;
     /**
      * Updated item group document template
      * @summary Updates item group document template

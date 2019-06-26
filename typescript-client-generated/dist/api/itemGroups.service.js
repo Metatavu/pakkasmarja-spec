@@ -180,6 +180,9 @@ var ItemGroupsService = /** @class */ (function () {
     */
     ItemGroupsService.prototype.listItemGroups = function (contractUserId) {
         var uri = new URI(this.basePath + "/itemGroups");
+        if (contractUserId !== undefined && contractUserId !== null) {
+            uri.addQuery('contractUserId', contractUserId);
+        }
         var options = {
             method: "get",
             headers: {
