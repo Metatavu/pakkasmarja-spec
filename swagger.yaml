@@ -5151,8 +5151,8 @@ components:
         status:
           $ref: "#/components/schemas/DeliveryStatus"
         amount:
-          type: integer
-          format: int32
+          type: number
+          format: double
         price:
           description: "Base price without quality bonus"
           type: string
