@@ -1,4 +1,5 @@
 import { BadRequest } from '../model/badRequest';
+import { BasicContact } from '../model/basicContact';
 import { Contact } from '../model/contact';
 import { Credentials } from '../model/credentials';
 import { Forbidden } from '../model/forbidden';
@@ -14,6 +15,27 @@ export class ContactsService {
   constructor(basePath: string, token: string) {
     this.token = token;
     this.basePath = basePath;
+  }
+
+
+  /**
+   * Finds a basic vesion of contact by id
+   * @summary Find basic contact
+   * @param id contact id
+  */
+  public findBasicContact(id: string, ):Promise<BasicContact> {
+    const uri = new URI(`${this.basePath}/contacts/${encodeURIComponent(String(id))}/basic`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
   }
 
 
