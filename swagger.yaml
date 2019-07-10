@@ -167,6 +167,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  "/contacts/{id}/basic":
+    get:
+      operationId: findBasicContact
+      summary: Find basic contact
+      description: Finds a basic vesion of contact by id
+      tags:
+        - Contacts
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: contact id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A basic contact
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BasicContact"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   "/contacts/{id}/credentials":
     put:
       operationId: updateContactCredentials
@@ -4905,6 +4945,19 @@ components:
             - EU
         audit:
           type: string
+    BasicContact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        displayName: 
+          type: string
+          readOnly: true
+        avatarUrl: 
+          type: string
+          format: url
+          readOnly: true
     Credentials:
       type: object
       properties:
