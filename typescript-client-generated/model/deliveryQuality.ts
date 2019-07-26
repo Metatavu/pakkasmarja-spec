@@ -18,6 +18,8 @@ export interface DeliveryQuality {
     name: string;
     priceBonus: number;
     color: string;
+    displayName: string;
+    deliveryQualityProductIds: Array<string>;
 }
 export interface DeliveryQualityOpt { 
     id?: string;
@@ -25,4 +27,6 @@ export interface DeliveryQualityOpt {
     name?: string;
     priceBonus?: number;
     color?: string;
+    displayName?: string;
+    deliveryQualityProductIds?: Array<string>;
 }
