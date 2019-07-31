@@ -1,9 +1,16 @@
+import { BasicContact } from '../model/basicContact';
 import { Contact } from '../model/contact';
 import { Credentials } from '../model/credentials';
 export declare class ContactsService {
     private token;
     private basePath;
     constructor(basePath: string, token: string);
+    /**
+     * Finds a basic vesion of contact by id
+     * @summary Find basic contact
+     * @param id contact id
+    */
+    findBasicContact(id: string): Promise<BasicContact>;
     /**
      * Finds contact by id
      * @summary Find contact

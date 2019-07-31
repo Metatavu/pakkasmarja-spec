@@ -70,13 +70,17 @@ var ProductPricesService = /** @class */ (function () {
      * @summary List product prices
      * @param productId product id
      * @param sort sort
+     * @param atTime sort
      * @param firstResult Offset of first result. Defaults to 0
      * @param maxResults Max results. Defaults to 5
     */
-    ProductPricesService.prototype.listProductPrices = function (productId, sort, firstResult, maxResults) {
+    ProductPricesService.prototype.listProductPrices = function (productId, sort, atTime, firstResult, maxResults) {
         var uri = new URI(this.basePath + "/products/" + encodeURIComponent(String(productId)) + "/prices");
         if (sort !== undefined && sort !== null) {
             uri.addQuery('sort', sort);
+        }
+        if (atTime !== undefined && atTime !== null) {
+            uri.addQuery('atTime', atTime.toISOString());
         }
         if (firstResult !== undefined && firstResult !== null) {
             uri.addQuery('firstResult', firstResult);

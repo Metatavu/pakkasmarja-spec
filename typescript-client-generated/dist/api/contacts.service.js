@@ -8,6 +8,24 @@ var ContactsService = /** @class */ (function () {
         this.basePath = basePath;
     }
     /**
+     * Finds a basic vesion of contact by id
+     * @summary Find basic contact
+     * @param id contact id
+    */
+    ContactsService.prototype.findBasicContact = function (id) {
+        var uri = new URI(this.basePath + "/contacts/" + encodeURIComponent(String(id)) + "/basic");
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Finds contact by id
      * @summary Find contact
      * @param id contact id

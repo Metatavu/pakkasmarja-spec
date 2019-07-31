@@ -121,6 +121,36 @@ var DeliveriesService = /** @class */ (function () {
         });
     };
     /**
+     * Returns deliveries document by type
+     * @summary Returns deliveries document
+     * @param type document format (HTML or PDF)
+     * @param startDate deliveries from
+     * @param endDate deliveries to
+     * @param productIds filter by product Ids
+    */
+    DeliveriesService.prototype.getDeliveriesDocument = function (type, startDate, endDate, productIds) {
+        var uri = new URI(this.basePath + "/deliveries/documents/" + encodeURIComponent(String(type)));
+        if (startDate !== undefined && startDate !== null) {
+            uri.addQuery('startDate', startDate.toISOString());
+        }
+        if (endDate !== undefined && endDate !== null) {
+            uri.addQuery('endDate', endDate.toISOString());
+        }
+        if (productIds) {
+            uri.addQuery('productIds', productIds.join(COLLECTION_FORMATS['csv']));
+        }
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Lists deliveries
      * @summary Lists deliveries
      * @param userId filter by user id
