@@ -46,15 +46,6 @@ export declare class DeliveriesService {
     */
     findDeliveryNote(deliveryId: string, deliveryNoteId: string): Promise<DeliveryNote>;
     /**
-     * Returns deliveries document by type
-     * @summary Returns deliveries document
-     * @param type document format (HTML or PDF)
-     * @param startDate deliveries from
-     * @param endDate deliveries to
-     * @param productIds filter by product Ids
-    */
-    getDeliveriesDocument(type: string, startDate: Date, endDate: Date, productIds?: Array<string>): Promise<string>;
-    /**
      * Lists deliveries
      * @summary Lists deliveries
      * @param userId filter by user id
