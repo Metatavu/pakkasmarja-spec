@@ -30,6 +30,8 @@ export * from './products.service';
 import { ProductsService } from './products.service';
 export * from './publicFiles.service';
 import { PublicFilesService } from './publicFiles.service';
+export * from './reports.service';
+import { ReportsService } from './reports.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 export * from './unreads.service';
@@ -130,6 +132,10 @@ export default new class Api {
   
   public getPublicFilesService(token: string): PublicFilesService {
     return new PublicFilesService(this.apiUrl, token);
+  }
+  
+  public getReportsService(token: string): ReportsService {
+    return new ReportsService(this.apiUrl, token);
   }
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {

@@ -151,39 +151,6 @@ export class DeliveriesService {
 
 
   /**
-   * Returns deliveries document by type
-   * @summary Returns deliveries document
-   * @param type document format (HTML or PDF)
-   * @param startDate deliveries from
-   * @param endDate deliveries to
-   * @param productIds filter by product Ids
-  */
-  public getDeliveriesDocument(type: string, startDate: Date, endDate: Date, productIds?: Array<string>, ):Promise<string> {
-    const uri = new URI(`${this.basePath}/deliveries/documents/${encodeURIComponent(String(type))}`);
-    if (startDate !== undefined && startDate !== null) {
-        uri.addQuery('startDate', <any>startDate.toISOString());
-    }
-    if (endDate !== undefined && endDate !== null) {
-        uri.addQuery('endDate', <any>endDate.toISOString());
-    }
-    if (productIds) {
-        uri.addQuery('productIds', productIds.join(COLLECTION_FORMATS['csv']));
-    }
-    const options = {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
-      }
-    };
-
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
-  }
-
-
-  /**
    * Lists deliveries
    * @summary Lists deliveries
    * @param userId filter by user id
