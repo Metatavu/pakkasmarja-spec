@@ -6,6 +6,13 @@ import { WeekDeliveryPrediction } from '../model/weekDeliveryPrediction';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
+const COLLECTION_FORMATS = {
+  'csv': ',',
+  'tsv': '   ',
+  'ssv': ' ',
+  'pipes': '|'
+}
+
 export class WeekDeliveryPredictionsService {
 
   private token: string;

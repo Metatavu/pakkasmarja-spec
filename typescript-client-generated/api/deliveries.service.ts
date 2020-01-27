@@ -8,6 +8,13 @@ import { ItemGroupCategory } from '../model/itemGroupCategory';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
+const COLLECTION_FORMATS = {
+  'csv': ',',
+  'tsv': '   ',
+  'ssv': ' ',
+  'pipes': '|'
+}
+
 export class DeliveriesService {
 
   private token: string;

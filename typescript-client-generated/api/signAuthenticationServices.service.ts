@@ -5,6 +5,13 @@ import { SignAuthenticationService } from '../model/signAuthenticationService';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
+const COLLECTION_FORMATS = {
+  'csv': ',',
+  'tsv': '   ',
+  'ssv': ' ',
+  'pipes': '|'
+}
+
 export class SignAuthenticationServicesService {
 
   private token: string;

@@ -2,6 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var URI = require("urijs");
 var api_1 = require("./api");
+var COLLECTION_FORMATS = {
+    'csv': ',',
+    'tsv': '   ',
+    'ssv': ' ',
+    'pipes': '|'
+};
 var ItemGroupsService = /** @class */ (function () {
     function ItemGroupsService(basePath, token) {
         this.token = token;
