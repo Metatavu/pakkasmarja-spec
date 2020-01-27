@@ -109,6 +109,6 @@ module.exports = function(grunt) {
   grunt.registerTask('typescript-spec', [ "download-dependencies", "shell:typescript-spec-generate", "typescript-spec-post-process:api" ]);
   grunt.registerTask('typescript-client-gen', [ 'shell:typescript-client-generate', 'clean:typescript-client']);
   grunt.registerTask('typescript-client', [ 'typescript-client-gen', "shell:typescript-client-bump-version", "shell:typescript-client-push", "shell:typescript-client-publish" ]);
-  grunt.registerTask('typescript-api-gen', [ 'shell:typescript-client-generate', 'typescript-api-post-process:api' ])
+  // grunt.registerTask('typescript-api-gen', [ 'shell:typescript-client-generate', 'typescript-api-post-process:api' ])
   
 };
