@@ -132,6 +132,28 @@ export class ChatMessagesService {
 
 
   /**
+   * Returns list of usernames who have read message
+   * @summary Returns list of usernames who have read message
+   * @param chatThreadId Chat thread
+   * @param messageId Chat message id
+  */
+  public listMessageReadBy(chatThreadId: number, messageId: number, ):Promise<Array<string>> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages/${encodeURIComponent(String(messageId))}/read`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
    * Update chat message
    * @summary Update chat message
    * @param chatThreadId Chat thread
