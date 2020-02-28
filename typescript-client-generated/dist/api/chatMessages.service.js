@@ -110,6 +110,25 @@ var ChatMessagesService = /** @class */ (function () {
         });
     };
     /**
+     * Returns list of usernames who have read message
+     * @summary Returns list of usernames who have read message
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    ChatMessagesService.prototype.listMessageReadBy = function (chatThreadId, messageId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/messages/" + encodeURIComponent(String(messageId)) + "/read");
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Update chat message
      * @summary Update chat message
      * @param chatThreadId Chat thread

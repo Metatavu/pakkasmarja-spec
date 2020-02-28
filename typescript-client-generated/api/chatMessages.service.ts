@@ -91,6 +91,50 @@ export class ChatMessagesService {
 
 
   /**
+   * Returns whether message has been read
+   * @summary Returns whether message has been read
+   * @param chatThreadId Chat thread
+   * @param messageId Chat message id
+  */
+  public getMessageRead(chatThreadId: number, messageId: number, ):Promise<boolean> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages/${encodeURIComponent(String(messageId))}/read`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Returns amount of users who have read message
+   * @summary Returns amount of users who have read message
+   * @param chatThreadId Chat thread
+   * @param messageId Chat message id
+  */
+  public getMessageReadAmount(chatThreadId: number, messageId: number, ):Promise<number> {
+    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages/${encodeURIComponent(String(messageId))}/read/amount`);
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
    * Returns list of chat messages
    * @summary Returns list of chat messages
    * @param chatThreadId Chat thread
@@ -117,28 +161,6 @@ export class ChatMessagesService {
     if (maxResults !== undefined && maxResults !== null) {
         uri.addQuery('maxResults', <any>maxResults);
     }
-    const options = {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
-      }
-    };
-
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
-  }
-
-
-  /**
-   * Returns list of usernames who have read message
-   * @summary Returns list of usernames who have read message
-   * @param chatThreadId Chat thread
-   * @param messageId Chat message id
-  */
-  public listMessageReadBy(chatThreadId: number, messageId: number, ):Promise<Array<string>> {
-    const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages/${encodeURIComponent(String(messageId))}/read`);
     const options = {
       method: "get",
       headers: {

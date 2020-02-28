@@ -36,6 +36,13 @@ export declare class ChatMessagesService {
     */
     listChatMessages(chatThreadId: number, createdBefore?: Date, createdAfter?: Date, userId?: string, firstResult?: number, maxResults?: number): Promise<Array<ChatMessage>>;
     /**
+     * Returns list of usernames who have read message
+     * @summary Returns list of usernames who have read message
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    listMessageReadBy(chatThreadId: number, messageId: number): Promise<Array<string>>;
+    /**
      * Update chat message
      * @summary Update chat message
      * @param chatThreadId Chat thread
