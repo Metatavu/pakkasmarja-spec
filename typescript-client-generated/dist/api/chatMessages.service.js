@@ -72,6 +72,44 @@ var ChatMessagesService = /** @class */ (function () {
         });
     };
     /**
+     * Returns whether message has been read
+     * @summary Returns whether message has been read
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    ChatMessagesService.prototype.getMessageRead = function (chatThreadId, messageId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/messages/" + encodeURIComponent(String(messageId)) + "/read");
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Returns amount of users who have read message
+     * @summary Returns amount of users who have read message
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    ChatMessagesService.prototype.getMessageReadAmount = function (chatThreadId, messageId) {
+        var uri = new URI(this.basePath + "/chatThreads/" + encodeURIComponent(String(chatThreadId)) + "/messages/" + encodeURIComponent(String(messageId)) + "/read/amount");
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Returns list of chat messages
      * @summary Returns list of chat messages
      * @param chatThreadId Chat thread
