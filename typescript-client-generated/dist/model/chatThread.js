@@ -17,4 +17,8 @@ var ChatThread;
         TEXT: 'TEXT',
         POLL: 'POLL'
     };
+    ChatThread.PermissionTypeEnum = {
+        ACCESS: 'ACCESS',
+        MANAGE: 'MANAGE'
+    };
 })(ChatThread = exports.ChatThread || (exports.ChatThread = {}));

@@ -2517,6 +2517,102 @@ paths:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
 
+  /chatThreads/{chatThreadId}/messages/{messageId}/read:
+    get:
+      operationId: getMessageRead
+      summary: Returns whether message has been read
+      description: Returns whether message has been read
+      tags:
+        - ChatMessages
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: messageId
+          in: path
+          description: Chat message id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Whether message has been read
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
+  /chatThreads/{chatThreadId}/messages/{messageId}/read/amount:
+    get:
+      operationId: getMessageReadAmount
+      summary: Returns amount of users who have read message as string
+      description: Returns amount of users who have read message as string
+      tags:
+        - ChatMessages
+      parameters:
+        - name: chatThreadId
+          in: path
+          description: Chat thread
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: messageId
+          in: path
+          description: Chat message id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Amount of users who have read message as string
+          content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
   /chatThreads/{chatThreadId}/groupPermissions:
     get:
       operationId: listChatThreadGroupPermissions
@@ -5358,6 +5454,7 @@ components:
         - unitSize
         - unitName
         - sapItemCode
+        - active
       properties: 
         id:
           type: string
@@ -5377,6 +5474,8 @@ components:
           type: string
         sapItemCode:
           type: string
+        active:
+          type: boolean
       
     Delivery:
       type: object
@@ -5644,6 +5743,7 @@ components:
       required:
         - title
         - answerType
+        - permissionType
         - groupId
       properties:
         id:
@@ -5664,6 +5764,11 @@ components:
           enum:
             - TEXT
             - POLL
+        permissionType:
+          type: string
+          enum:
+            - ACCESS
+            - MANAGE
         pollAllowOther:
           type: boolean
         pollPredefinedTexts:

@@ -19,6 +19,7 @@ import { OperationsService } from './api/operations.service';
 import { ProductPricesService } from './api/productPrices.service';
 import { ProductsService } from './api/products.service';
 import { PublicFilesService } from './api/publicFiles.service';
+import { ReportsService } from './api/reports.service';
 import { SignAuthenticationServicesService } from './api/signAuthenticationServices.service';
 import { UnreadsService } from './api/unreads.service';
 import { UserGroupsService } from './api/userGroups.service';
@@ -45,6 +46,7 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     ProductPricesService,
     ProductsService,
     PublicFilesService,
+    ReportsService,
     SignAuthenticationServicesService,
     UnreadsService,
     UserGroupsService,
