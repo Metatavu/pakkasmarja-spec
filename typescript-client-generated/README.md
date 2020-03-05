@@ -1,4 +1,4 @@
-## pakkasmarja-client@0.0.64
+## pakkasmarja-client@0.0.67
 
 ### Building
 
