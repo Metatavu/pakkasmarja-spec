@@ -16,6 +16,7 @@ export interface ChatThread {
     description?: string;
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
+    permissionType: ChatThread.PermissionTypeEnum;
     pollAllowOther?: boolean;
     pollPredefinedTexts?: Array<string>;
     expiresAt?: Date;
@@ -27,6 +28,7 @@ export interface ChatThreadOpt {
     description?: string;
     imageUrl?: string;
     answerType?: ChatThread.AnswerTypeEnum;
+    permissionType?: ChatThread.PermissionTypeEnum;
     pollAllowOther?: boolean;
     pollPredefinedTexts?: Array<string>;
     expiresAt?: Date;
@@ -36,5 +38,10 @@ export declare namespace ChatThread {
     const AnswerTypeEnum: {
         TEXT: AnswerTypeEnum;
         POLL: AnswerTypeEnum;
+    };
+    type PermissionTypeEnum = 'ACCESS' | 'MANAGE';
+    const PermissionTypeEnum: {
+        ACCESS: PermissionTypeEnum;
+        MANAGE: PermissionTypeEnum;
     };
 }
