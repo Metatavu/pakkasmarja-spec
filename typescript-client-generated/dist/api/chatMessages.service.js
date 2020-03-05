@@ -91,8 +91,8 @@ var ChatMessagesService = /** @class */ (function () {
         });
     };
     /**
-     * Returns amount of users who have read message
-     * @summary Returns amount of users who have read message
+     * Returns amount of users who have read message as string
+     * @summary Returns amount of users who have read message as string
      * @param chatThreadId Chat thread
      * @param messageId Chat message id
     */
