@@ -25,6 +25,20 @@ export declare class ChatMessagesService {
     */
     findChatMessage(chatThreadId: number, messageId: number): Promise<ChatMessage>;
     /**
+     * Returns whether message has been read
+     * @summary Returns whether message has been read
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    getMessageRead(chatThreadId: number, messageId: number): Promise<boolean>;
+    /**
+     * Returns amount of users who have read message as string
+     * @summary Returns amount of users who have read message as string
+     * @param chatThreadId Chat thread
+     * @param messageId Chat message id
+    */
+    getMessageReadAmount(chatThreadId: number, messageId: number): Promise<string>;
+    /**
      * Returns list of chat messages
      * @summary Returns list of chat messages
      * @param chatThreadId Chat thread

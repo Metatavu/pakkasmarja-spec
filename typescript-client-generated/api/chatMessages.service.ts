@@ -113,12 +113,12 @@ export class ChatMessagesService {
 
 
   /**
-   * Returns amount of users who have read message
-   * @summary Returns amount of users who have read message
+   * Returns amount of users who have read message as string
+   * @summary Returns amount of users who have read message as string
    * @param chatThreadId Chat thread
    * @param messageId Chat message id
   */
-  public getMessageReadAmount(chatThreadId: number, messageId: number, ):Promise<number> {
+  public getMessageReadAmount(chatThreadId: number, messageId: number, ):Promise<string> {
     const uri = new URI(`${this.basePath}/chatThreads/${encodeURIComponent(String(chatThreadId))}/messages/${encodeURIComponent(String(messageId))}/read/amount`);
     const options = {
       method: "get",
