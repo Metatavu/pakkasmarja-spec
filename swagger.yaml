@@ -5743,7 +5743,6 @@ components:
       required:
         - title
         - answerType
-        - permissionType
         - groupId
       properties:
         id:
