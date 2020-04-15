@@ -32,6 +32,8 @@ export * from './publicFiles.service';
 import { PublicFilesService } from './publicFiles.service';
 export * from './reports.service';
 import { ReportsService } from './reports.service';
+export * from './sharedFiles.service';
+import { SharedFilesService } from './sharedFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 export * from './unreads.service';
@@ -136,6 +138,10 @@ export default new class Api {
   
   public getReportsService(token: string): ReportsService {
     return new ReportsService(this.apiUrl, token);
+  }
+  
+  public getSharedFilesService(token: string): SharedFilesService {
+    return new SharedFilesService(this.apiUrl, token);
   }
   
   public getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService {

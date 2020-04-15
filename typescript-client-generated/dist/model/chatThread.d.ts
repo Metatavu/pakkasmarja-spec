@@ -16,7 +16,7 @@ export interface ChatThread {
     description?: string;
     imageUrl?: string;
     answerType: ChatThread.AnswerTypeEnum;
-    permissionType: ChatThread.PermissionTypeEnum;
+    permissionType?: ChatThread.PermissionTypeEnum;
     pollAllowOther?: boolean;
     pollPredefinedTexts?: Array<string>;
     expiresAt?: Date;
