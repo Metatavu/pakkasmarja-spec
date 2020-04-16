@@ -32,6 +32,8 @@ export * from './publicFiles.service';
 import { PublicFilesService } from './publicFiles.service';
 export * from './reports.service';
 import { ReportsService } from './reports.service';
+export * from './sharedFiles.service';
+import { SharedFilesService } from './sharedFiles.service';
 export * from './signAuthenticationServices.service';
 import { SignAuthenticationServicesService } from './signAuthenticationServices.service';
 export * from './unreads.service';
@@ -72,6 +74,7 @@ declare const _default: {
     getProductsService(token: string): ProductsService;
     getPublicFilesService(token: string): PublicFilesService;
     getReportsService(token: string): ReportsService;
+    getSharedFilesService(token: string): SharedFilesService;
     getSignAuthenticationServicesService(token: string): SignAuthenticationServicesService;
     getUnreadsService(token: string): UnreadsService;
     getUserGroupsService(token: string): UserGroupsService;

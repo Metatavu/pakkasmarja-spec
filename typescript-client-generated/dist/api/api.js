@@ -37,6 +37,8 @@ __export(require("./publicFiles.service"));
 var publicFiles_service_1 = require("./publicFiles.service");
 __export(require("./reports.service"));
 var reports_service_1 = require("./reports.service");
+__export(require("./sharedFiles.service"));
+var sharedFiles_service_1 = require("./sharedFiles.service");
 __export(require("./signAuthenticationServices.service"));
 var signAuthenticationServices_service_1 = require("./signAuthenticationServices.service");
 __export(require("./unreads.service"));
@@ -125,6 +127,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getReportsService = function (token) {
         return new reports_service_1.ReportsService(this.apiUrl, token);
+    };
+    Api.prototype.getSharedFilesService = function (token) {
+        return new sharedFiles_service_1.SharedFilesService(this.apiUrl, token);
     };
     Api.prototype.getSignAuthenticationServicesService = function (token) {
         return new signAuthenticationServices_service_1.SignAuthenticationServicesService(this.apiUrl, token);

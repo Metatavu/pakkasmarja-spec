@@ -11,6 +11,7 @@ __export(require("./contact"));
 __export(require("./contract"));
 __export(require("./deliveryLoanItem"));
 __export(require("./deliveryStatus"));
+__export(require("./fileType"));
 __export(require("./itemGroupCategory"));
 __export(require("./operationReportItem"));
 __export(require("./operationType"));

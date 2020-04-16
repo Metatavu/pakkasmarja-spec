@@ -111,12 +111,40 @@ export class SharedFilesService {
    * @param pathPrefix File path prefix
   */
   public uploadSharedFile(fileName: string, file?: string, pathPrefix?: string, ):Promise<SharedFile> {
-    const uri = new URI(`${this.basePath}/sharedFiles`);
+    const uri = new URI(`${this.basePath}/sharedFiles/upload/file`);
     if (pathPrefix !== undefined && pathPrefix !== null) {
         uri.addQuery('pathPrefix', <any>pathPrefix);
     }
     if (fileName !== undefined && fileName !== null) {
         uri.addQuery('fileName', <any>fileName);
+    }
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Uploads shared folder to Amazon S3
+   * @summary Upload shared folder to S3
+   * @param folderName Folder name
+   * @param pathPrefix Folder path prefix
+  */
+  public uploadSharedFolder(folderName: string, pathPrefix?: string, ):Promise<SharedFile> {
+    const uri = new URI(`${this.basePath}/sharedFiles/upload/folder`);
+    if (pathPrefix !== undefined && pathPrefix !== null) {
+        uri.addQuery('pathPrefix', <any>pathPrefix);
+    }
+    if (folderName !== undefined && folderName !== null) {
+        uri.addQuery('folderName', <any>folderName);
     }
     const options = {
       method: "post",
