@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contacts/{id}":
+  /contacts/{id}:
     get:
       operationId: findContact
       summary: Find contact
@@ -167,7 +167,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contacts/{id}/basic":
+  /contacts/{id}/basic:
     get:
       operationId: findBasicContact
       summary: Find basic contact
@@ -207,7 +207,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contacts/{id}/credentials":
+  /contacts/{id}/credentials:
     put:
       operationId: updateContactCredentials
       summary: Update contact credentials
@@ -365,7 +365,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{id}":
+  /contracts/{id}:
     get:
       operationId: findContract
       summary: Find contract
@@ -454,7 +454,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{contractId}/prices":
+  /contracts/{contractId}/prices:
     get:
       operationId: listContractPrices
       summary: List contract prices
@@ -518,7 +518,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{contractId}/documentTemplates":
+  /contracts/{contractId}/documentTemplates:
     get:
       operationId: listContractDocumentTemplates
       summary: List contract document templates
@@ -607,7 +607,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}":
+  /contracts/{contractId}/documentTemplates/{contractDocumentTemplateId}:
     get:
       operationId: findContractDocumentTemplate
       summary: Find contract document template
@@ -702,7 +702,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{id}/documents/{type}":
+  /contracts/{id}/documents/{type}:
     get:
       operationId: getContractDocument
       summary: Returns contract document
@@ -755,7 +755,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/contracts/{id}/documents/{type}/signRequests":
+  /contracts/{id}/documents/{type}/signRequests:
     post:
       operationId: createContractDocumentSignRequest
       summary: Requests contract document electronic signing
@@ -905,7 +905,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/itemGroups/{id}":
+  /itemGroups/{id}:
     get:
       operationId: findItemGroup
       summary: Find item group
@@ -945,7 +945,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/itemGroups/{itemGroupId}/prices":
+  /itemGroups/{itemGroupId}/prices:
     get:
       operationId: listItemGroupPrices
       summary: List item group prices
@@ -1050,7 +1050,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/itemGroups/{itemGroupId}/prices/{priceId}":
+  /itemGroups/{itemGroupId}/prices/{priceId}:
     get:
       operationId: findItemGroupPrice
       summary: Find item group price
@@ -1187,7 +1187,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/itemGroups/{itemGroupId}/documentTemplates":
+  /itemGroups/{itemGroupId}/documentTemplates:
     get:
       operationId: listItemGroupDocumentTemplates
       summary: List item group document templates
@@ -1229,7 +1229,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/itemGroups/{itemGroupId}/documentTemplates/{id}":
+  /itemGroups/{itemGroupId}/documentTemplates/{id}:
     get:
       operationId: findItemGroupDocumentTemplate
       summary: Find item group document template
@@ -1363,7 +1363,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveryPlaces/{id}":
+  /deliveryPlaces/{id}:
     get:
       operationId: findDeliveryPlace
       summary: Find delivery place
@@ -1504,7 +1504,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/operationReports/{id}":
+  /operationReports/{id}:
     get:
       operationId: findOperationReport
       summary: Find operation report
@@ -1544,7 +1544,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/operationReports/{id}/items":
+  /operationReports/{id}/items:
     get:
       operationId: listOperationReportItems
       summary: List operation report items
@@ -1620,7 +1620,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatGroups:
     get:
       operationId: listChatGroups
@@ -1820,7 +1819,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatGroups/{chatGroupId}/groupPermissions:
     get:
       operationId: listChatGroupGroupPermissions
@@ -1909,7 +1907,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatGroups/{chatGroupId}/groupPermissions/{permissionId}:
     get:
       operationId: findChatGroupGroupPermissions
@@ -2049,7 +2046,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads:
     get:
       operationId: listChatThreads
@@ -2262,7 +2258,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/messages:
     get:
       operationId: listChatMessages
@@ -2289,7 +2284,7 @@ paths:
           description: Messages created after given time
           schema:
             type: string
-            format: date-time        
+            format: date-time
         - name: userId
           in: query
           description: Messages created by given user
@@ -2380,7 +2375,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/messages/{messageId}:
     get:
       operationId: findChatMessage
@@ -2516,7 +2510,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/messages/{messageId}/read:
     get:
       operationId: getMessageRead
@@ -2564,7 +2557,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/messages/{messageId}/read/amount:
     get:
       operationId: getMessageReadAmount
@@ -2612,7 +2604,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/groupPermissions:
     get:
       operationId: listChatThreadGroupPermissions
@@ -2701,7 +2692,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/groupPermissions/{permissionId}:
     get:
       operationId: findChatThreadGroupPermission
@@ -2888,7 +2878,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /chatThreads/{chatThreadId}/userPermissions/{permissionId}:
     get:
       operationId: findChatThreadUserPermission
@@ -2987,8 +2976,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
-  "/chatThreads/{threadId}/reports/{type}":
+  /chatThreads/{threadId}/reports/{type}:
     get:
       operationId: getChatThreadReport
       summary: Returns chat thread report
@@ -3113,7 +3101,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/newsArticles/{newsArticleId}":
+  /newsArticles/{newsArticleId}:
     get:
       operationId: findNewsArticle
       summary: Find news article
@@ -3234,7 +3222,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /products:
     post:
       operationId: createProduct
@@ -3337,7 +3324,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/products/{productId}":
+  /products/{productId}:
     get:
       operationId: findProduct
       summary: Find product
@@ -3458,7 +3445,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/products/{productId}/prices":
+  /products/{productId}/prices:
     get:
       operationId: listProductPrices
       summary: List product prices
@@ -3574,7 +3561,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/products/{productId}/prices/{productPriceId}":
+  /products/{productId}/prices/{productPriceId}:
     get:
       operationId: findProductPrice
       summary: Find product price
@@ -3716,7 +3703,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveryQualities":
+  /deliveryQualities:
     get:
       operationId: listDeliveryQualities
       summary: Lists delivery qualities
@@ -3800,7 +3787,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveryQualities/{deliveryQualityId}":
+  /deliveryQualities/{deliveryQualityId}:
     get:
       operationId: findDeliveryQuality
       summary: Find delivery quality
@@ -3886,7 +3873,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveries":
+  /deliveries:
     post:
       operationId: createDelivery
       summary: Create delivery
@@ -4018,7 +4005,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveries/{deliveryId}":
+  /deliveries/{deliveryId}:
     get:
       operationId: findDelivery
       summary: Find delivery
@@ -4139,7 +4126,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/deliveries/{deliveryId}/notes":
+  /deliveries/{deliveryId}/notes:
     post:
       operationId: createDeliveryNote
       summary: Create delivery note
@@ -4227,8 +4214,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
-  "/deliveries/{deliveryId}/notes/{deliveryNoteId}":
+  /deliveries/{deliveryId}/notes/{deliveryNoteId}:
     get:
       operationId: findDeliveryNote
       summary: Find delivery note
@@ -4553,7 +4539,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/weekDeliveryPredictions/{weekDeliveryPredictionId}":
+  /weekDeliveryPredictions/{weekDeliveryPredictionId}:
     get:
       operationId: findWeekDeliveryPrediction
       summary: Find weekDeliveryPrediction
@@ -4674,7 +4660,239 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
+  /sharedFiles:
+    get:
+      operationId: listSharedFiles
+      summary: List shared files from S3
+      description: Lists shared files from Amazon S3
+      tags:
+        - SharedFiles
+      parameters:
+        - in: query
+          name: pathPrefix
+          description: Path prefix
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of SharedFiles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SharedFile"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteSharedFile
+      summary: Delete shared file from S3
+      description: Deletes shared file from Amazon S3
+      tags:
+        - SharedFiles
+      parameters:
+        - in: query
+          name: pathPrefix
+          description: File path prefix
+          schema:
+            type: string
+        - in: query
+          name: fileName
+          description: File name
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Successfully deleted shared file
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /sharedFiles/upload/file:
+    post:
+      operationId: uploadSharedFile
+      summary: Upload shared file to S3
+      description: Uploads shared file to Amazon S3
+      tags:
+        - SharedFiles
+      parameters:
+        - in: query
+          name: pathPrefix
+          description: File path prefix
+          schema:
+            type: string
+        - in: query
+          name: fileName
+          description: File name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Uploaded file as sharedFile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SharedFile"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"   
+  /sharedFiles/upload/folder:
+    post:
+      operationId: uploadSharedFolder
+      summary: Upload shared folder to S3
+      description: Uploads shared folder to Amazon S3
+      tags:
+        - SharedFiles
+      parameters:
+        - in: query
+          name: pathPrefix
+          description: Folder path prefix
+          schema:
+            type: string
+        - in: query
+          name: folderName
+          description: Folder name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Uploaded folder as sharedFile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SharedFile"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /sharedFiles/download:
+    get:
+      operationId: getSharedFile
+      summary: Get shared file from S3
+      description: Fetches shared file from Amazon S3
+      tags:
+        - SharedFiles
+      parameters:
+        - in: query
+          name: pathPrefix
+          description: Path prefix
+          schema:
+            type: string
+        - in: query
+          name: fileName
+          description: File name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: File
+          content:
+            application/*:
+              schema:
+                type: string
+                format: binary
+            image/*:
+              schema:
+                type: string
+                format: binary
+            text/*:
+              schema:
+                type: string
+                format: binary
+            video/*:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /publicFiles:
     post:
       operationId: createPublicFile
@@ -4760,7 +4978,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/publicFiles/{publicFileId}":
+  /publicFiles/{publicFileId}:
     get:
       operationId: findPublicFile
       summary: Find public file
@@ -4881,7 +5099,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /unreads:
     get:
       operationId: listUnreads
@@ -4964,7 +5181,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
   /dataSheets:
     post:
       operationId: createDataSheet
@@ -5043,7 +5259,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  "/dataSheets/{dataSheetId}":
+  /dataSheets/{dataSheetId}:
     get:
       operationId: findDataSheet
       summary: Find data sheet
@@ -5164,7 +5380,467 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-
+  /openingHours/{deliveryPlaceId}:
+    get:
+      operationId: listOpeningHours
+      summary: Lists opening hours
+      description: Lists opening hours
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: until
+          required: true
+          in: query
+          description: list hours until given time
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: Opening hours object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHours"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /openingHours/{deliveryPlaceId}/periods:
+    get:
+      operationId: listOpeningHourPeriods
+      summary: List opening hour periods
+      description: Lists opening hour periods
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of opening hour periods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OpeningHourPeriod"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createOpeningHourPeriod
+      summary: Create opening hour period
+      description: Creates opening hour period
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpeningHourPeriod"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created opening hour period
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHourPeriod"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /openingHours/{deliveryPlaceId}/periods/{periodId}:
+    get:
+      operationId: findOpeningHourPeriod
+      summary: Find opening hour period
+      description: Finds opening hour period
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: periodId
+          required: true
+          in: path
+          description: period id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Opening hour period
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHourPeriod"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateOpeningHourPeriod
+      summary: Update opening hour period
+      description: Updates opening hour period
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: periodId
+          required: true
+          in: path
+          description: period id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpeningHourPeriod"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated opening hour period
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHourPeriod"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteOpeningHourPeriod
+      summary: Delete opening hour period
+      description: Deletes opening hour period
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: periodId
+          required: true
+          in: path
+          description: period id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /openingHours/{deliveryPlaceId}/exceptions:
+    get:
+      operationId: listOpeningHourExceptions
+      summary: List opening hour exceptions
+      description: Lists opening hour exceptions
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of opening hour exceptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OpeningHourException"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createOpeningHourException
+      summary: Create opening hour exception
+      description: Creates opening hour exception
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpeningHourException"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created opening hour exception
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHourException"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /openingHours/{deliveryPlaceId}/exceptions/{exceptionId}:
+    put:
+      operationId: updateOpeningHourException
+      summary: Update opening hour exception
+      description: Updates opening hour exception
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: exceptionId
+          required: true
+          in: path
+          description: exception id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpeningHourException"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated opening hour exception
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningHourException"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteOpeningHourException
+      summary: Delete opening hour exception
+      description: Deletes opening hour exception
+      tags:
+        - OpeningHours
+      parameters:
+        - name: deliveryPlaceId
+          required: true
+          in: path
+          description: delivery place id
+          schema:
+            type: string
+            format: uuid
+        - name: exceptionId
+          required: true
+          in: path
+          description: exception id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No content to indicate successful delete
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
 components:
   requestBodies:
     ContractDocumentTemplate:
@@ -5200,10 +5876,10 @@ components:
         id:
           type: string
           format: uuid
-        displayName: 
+        displayName:
           type: string
           readOnly: true
-        avatarUrl: 
+        avatarUrl:
           type: string
           format: url
           readOnly: true
@@ -5246,10 +5922,10 @@ components:
         id:
           type: string
           format: uuid
-        displayName: 
+        displayName:
           type: string
           readOnly: true
-        avatarUrl: 
+        avatarUrl:
           type: string
           format: url
           readOnly: true
@@ -5333,7 +6009,6 @@ components:
             - REJECTED
         remarks:
           type: string
-          
     ItemGroupPrice:
       type: object
       required:
@@ -5354,7 +6029,6 @@ components:
           type: string
         price:
           type: string
-
     ItemGroupDocumentTemplate:
       type: object
       required:
@@ -5409,7 +6083,6 @@ components:
         image:
           type: string
           format: url
-          
     ItemGroup:
       type: object
       properties:
@@ -5429,13 +6102,11 @@ components:
           description: Require contract in specified item group before siging a contract
           type: string
           format: uuid
-
     ItemGroupCategory:
       type: string
       enum:
         - FRESH
         - FROZEN
-        
     DeliveryPlace:
       type: object
       properties:
@@ -5444,7 +6115,6 @@ components:
           format: uuid
         name:
           type: string
-          
     Product:
       type: object
       required:
@@ -5455,7 +6125,7 @@ components:
         - unitName
         - sapItemCode
         - active
-      properties: 
+      properties:
         id:
           type: string
           format: uuid
@@ -5476,7 +6146,6 @@ components:
           type: string
         active:
           type: boolean
-      
     Delivery:
       type: object
       required:
@@ -5486,7 +6155,7 @@ components:
         - status
         - amount
         - deliveryPlaceId
-      properties: 
+      properties:
         id:
           type: string
           format: uuid
@@ -5520,19 +6189,17 @@ components:
           description: Array of loans. Property is write only
           items:
             $ref: "#/components/schemas/DeliveryLoan"
-            
     DeliveryLoanItem:
       type: string
       enum:
         - GRAY_BOX
         - RED_BOX
-
     DeliveryLoan:
       required:
         - item
         - loaned
         - returned
-      properties: 
+      properties:
         item:
           $ref: "#/components/schemas/DeliveryLoanItem"
         loaned:
@@ -5541,7 +6208,6 @@ components:
         returned:
           type: integer
           format: int32
-        
     WeekDeliveryPrediction:
       required:
         - itemGroupId
@@ -5550,7 +6216,7 @@ components:
         - weekNumber
         - year
         - days
-      properties: 
+      properties:
         id:
           type: string
           format: uuid
@@ -5594,7 +6260,6 @@ components:
               type: boolean
             sunday:
               type: boolean
-
     DeliveryStatus:
       type: string
       enum:
@@ -5604,7 +6269,6 @@ components:
         - DONE
         - REJECTED
         - NOT_ACCEPTED
-
     DeliveryQuality:
       type: object
       required:
@@ -5637,7 +6301,7 @@ components:
     DeliveryNote:
       required:
         - deliveryId
-      properties: 
+      properties:
         id:
           type: string
           format: uuid
@@ -5646,7 +6310,6 @@ components:
         image:
           type: string
           format: url
-          
     Address:
       type: object
       properties:
@@ -5656,6 +6319,95 @@ components:
           type: string
         city:
           type: string
+    OpeningHours:
+      type: object
+      properties:
+        exceptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpeningHourException"
+        periods:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpeningHourPeriod"
+    OpeningHourPeriod:
+      type: object
+      required:
+        - beginDate
+        - endDate
+        - weekdays
+      properties:
+        id:
+          type: string
+          format: uuid
+        beginDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        weekdays:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpeningHourWeekday"
+          minItems: 7
+          maxItems: 7
+    OpeningHourWeekday:
+      type: object
+      required:
+        - dayType
+        - hours
+      properties:
+        id:
+          type: string
+          format: uuid
+        dayType:
+          $ref: "#/components/schemas/WeekdayType"
+        hours:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpeningHourInterval"
+    WeekdayType:
+      type: string
+      enum:
+        - MONDAY
+        - TUESDAY
+        - WEDNESDAY
+        - THURSDAY
+        - FRIDAY
+        - SATURDAY
+        - SUNDAY
+    OpeningHourException:
+      type: object
+      required:
+        - exceptionDate
+        - hours
+      properties:
+        id:
+          type: string
+          format: uuid
+        exceptionDate:
+          type: string
+          format: date
+        hours:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpeningHourInterval"
+    OpeningHourInterval:
+      type: object
+      required:
+        - opens
+        - closes
+      properties:
+        id:
+          type: string
+          format: uuid
+        opens:
+          type: string
+          format: date-time
+        closes:
+          type: string
+          format: date-time
     Operation:
       type: object
       properties:
@@ -5664,17 +6416,15 @@ components:
         operationReportId:
           type: string
           format: uuid
-
     OperationType:
       type: string
-      enum: 
+      enum:
         - SAP_CONTACT_SYNC
         - SAP_DELIVERY_PLACE_SYNC
         - SAP_ITEM_GROUP_SYNC
         - SAP_CONTRACT_SYNC
         - SAP_CONTRACT_SAPID_SYNC
         - ITEM_GROUP_DEFAULT_DOCUMENT_TEMPLATES
-
     OperationReport:
       type: object
       properties:
@@ -5719,7 +6469,6 @@ components:
         profitEstimation:
           type: number
           format: double
-
     ChatGroup:
       type: object
       required:
@@ -5737,7 +6486,6 @@ components:
         imageUrl:
           type: string
           format: url
-      
     ChatThread:
       type: object
       required:
@@ -5777,7 +6525,6 @@ components:
         expiresAt:
           type: string
           format: date-time
-
     UserGroup:
       type: object
       properties:
@@ -5786,19 +6533,16 @@ components:
           format: uuid
         name:
           type: string
-
     ChatGroupPermissionScope:
       type: string
       enum:
         - ACCESS
         - MANAGE
         - TRAVERSE
-
     ChatThreadPermissionScope:
       type: string
       enum:
         - ACCESS
-        
     ChatGroupGroupPermission:
       type: object
       required:
@@ -5816,7 +6560,6 @@ components:
           format: uuid
         scope:
           $ref: "#/components/schemas/ChatGroupPermissionScope"
-          
     ChatThreadUserPermission:
       type: object
       required:
@@ -5834,7 +6577,6 @@ components:
           format: uuid
         scope:
           $ref: "#/components/schemas/ChatThreadPermissionScope"
-        
     ChatThreadGroupPermission:
       type: object
       required:
@@ -5852,7 +6594,6 @@ components:
           format: uuid
         scope:
           $ref: "#/components/schemas/ChatThreadPermissionScope"
-
     ChatMessage:
       type: object
       required:
@@ -5880,13 +6621,11 @@ components:
           type: string
           format: date-time
           readOnly: true
-
     ChatGroupType:
       type: string
       enum:
         - CHAT
         - QUESTION
-
     NewsArticle:
       type: object
       required:
@@ -5910,7 +6649,25 @@ components:
           type: string
           format: date-time
           readOnly: true
-
+    SharedFile:
+      type: object
+      required:
+        - name
+        - fileType
+      properties:
+        name:
+          type: string
+        pathPrefix:
+          type: string
+        fileType:
+          $ref: "#/components/schemas/FileType"
+    FileType:
+      type: string
+      enum:
+        - IMAGE
+        - PDF
+        - OTHER
+        - FOLDER
     PublicFile:
       type: object
       required:
@@ -5922,7 +6679,6 @@ components:
         url:
           type: string
           format: url
-    
     ProductPrice:
       type: object
       required:
@@ -5949,7 +6705,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-          
     Unread:
       type: object
       required:
@@ -5968,25 +6723,23 @@ components:
           type: string
           format: date-time
           readOnly: true
-          
     DataSheet:
       type: object
       required:
         - name
         - data
       properties:
-        id: 
+        id:
           type: string
           readOnly: true
         name:
           type: string
-        data: 
+        data:
           type: array
           items:
             type: array
-            items: 
+            items:
               type: string
-          
     InternalServerError:
       type: object
       properties:
