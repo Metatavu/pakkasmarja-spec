@@ -5380,53 +5380,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  /openingHours/{deliveryPlaceId}:
-    get:
-      operationId: listOpeningHours
-      summary: Lists opening hours
-      description: Lists opening hours
-      tags:
-        - OpeningHours
-      parameters:
-        - name: deliveryPlaceId
-          required: true
-          in: path
-          description: delivery place id
-          schema:
-            type: string
-            format: uuid
-        - name: until
-          required: true
-          in: query
-          description: list hours until given time
-          schema:
-            type: string
-            format: date-time
-      responses:
-        "200":
-          description: Opening hours object
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/OpeningHours"
-        "400":
-          description: Invalid request was sent to the server
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BadRequest"
-        "403":
-          description: Attempted to make a call with unauthorized client
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Forbidden"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InternalServerError"
   /openingHours/{deliveryPlaceId}/periods:
     get:
       operationId: listOpeningHourPeriods
@@ -5442,6 +5395,32 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: rangeStart
+          required: false
+          in: query
+          description: list date range start
+          schema:
+            type: string
+            format: date-time
+        - name: rangeEnd
+          required: false
+          in: query
+          description: list date range end
+          schema:
+            type: string
+            format: date-time
+        - name: firstResult
+          in: query
+          description: Offset of first result. Defaults to 0
+          schema:
+            type: integer
+            format: int64
+        - name: maxResults
+          in: query
+          description: Max results. Defaults to unlimited
+          schema:
+            type: integer
+            format: int64
       responses:
         "200":
           description: List of opening hour periods
@@ -5493,46 +5472,6 @@ paths:
       responses:
         "200":
           description: Created opening hour period
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/OpeningHourPeriod"
-        "400":
-          description: Invalid request was sent to the server
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BadRequest"
-        "403":
-          description: Attempted to make a call with unauthorized client
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Forbidden"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InternalServerError"
-  /openingHours/{deliveryPlaceId}/lastPeriod:
-    get:
-      operationId: getLastPeriod
-      summary: Find last opening hour period
-      description: Finds last opening hour period
-      tags:
-        - OpeningHours
-      parameters:
-        - name: deliveryPlaceId
-          required: true
-          in: path
-          description: delivery place id
-          schema:
-            type: string
-            format: uuid
-      responses:
-        "200":
-          description: Opening hour period
           content:
             application/json:
               schema:
@@ -6359,17 +6298,6 @@ components:
           type: string
         city:
           type: string
-    OpeningHours:
-      type: object
-      properties:
-        exceptions:
-          type: array
-          items:
-            $ref: "#/components/schemas/OpeningHourException"
-        periods:
-          type: array
-          items:
-            $ref: "#/components/schemas/OpeningHourPeriod"
     OpeningHourPeriod:
       type: object
       required:
