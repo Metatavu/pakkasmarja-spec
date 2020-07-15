@@ -92,12 +92,37 @@ var SharedFilesService = /** @class */ (function () {
      * @param pathPrefix File path prefix
     */
     SharedFilesService.prototype.uploadSharedFile = function (fileName, file, pathPrefix) {
-        var uri = new URI(this.basePath + "/sharedFiles");
+        var uri = new URI(this.basePath + "/sharedFiles/upload/file");
         if (pathPrefix !== undefined && pathPrefix !== null) {
             uri.addQuery('pathPrefix', pathPrefix);
         }
         if (fileName !== undefined && fileName !== null) {
             uri.addQuery('fileName', fileName);
+        }
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
+     * Uploads shared folder to Amazon S3
+     * @summary Upload shared folder to S3
+     * @param folderName Folder name
+     * @param pathPrefix Folder path prefix
+    */
+    SharedFilesService.prototype.uploadSharedFolder = function (folderName, pathPrefix) {
+        var uri = new URI(this.basePath + "/sharedFiles/upload/folder");
+        if (pathPrefix !== undefined && pathPrefix !== null) {
+            uri.addQuery('pathPrefix', pathPrefix);
+        }
+        if (folderName !== undefined && folderName !== null) {
+            uri.addQuery('folderName', folderName);
         }
         var options = {
             method: "post",

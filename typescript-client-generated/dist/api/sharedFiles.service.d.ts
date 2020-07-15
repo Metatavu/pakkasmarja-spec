@@ -31,4 +31,11 @@ export declare class SharedFilesService {
      * @param pathPrefix File path prefix
     */
     uploadSharedFile(fileName: string, file?: string, pathPrefix?: string): Promise<SharedFile>;
+    /**
+     * Uploads shared folder to Amazon S3
+     * @summary Upload shared folder to S3
+     * @param folderName Folder name
+     * @param pathPrefix Folder path prefix
+    */
+    uploadSharedFolder(folderName: string, pathPrefix?: string): Promise<SharedFile>;
 }
