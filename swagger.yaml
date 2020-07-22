@@ -454,6 +454,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  /contracts/userContract:
+    get:
+      operationId: getUserContract
+      summary: Returns currently logged in user contract
+      description: Returns currently logged in user contract
+      tags:
+        - Contracts
+      responses:
+        "200":
+          description: user contract
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contract"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /contracts/{contractId}/prices:
     get:
       operationId: listContractPrices
