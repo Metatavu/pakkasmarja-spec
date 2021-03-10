@@ -365,6 +365,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  /contractPreviews:
+    post:
+      operationId: createContractPreviews
+      summary: create contract previews via XLSX file
+      description: Creates contract previews via XLSX file
+      tags:
+        - Contracts
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: List of contract preview data objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContractPreviewData"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /contracts/{id}:
     get:
       operationId: findContract
@@ -5979,14 +6022,72 @@ components:
         proposedDeliverAll:
           type: boolean
         status:
-          type: string
-          enum:
-            - APPROVED
-            - ON_HOLD
-            - DRAFT
-            - TERMINATED
-            - REJECTED
+          $ref: "#/components/schemas/ContractStatus"
         remarks:
+          type: string
+    ContractPreviewData:
+      type: object
+      required:
+        - contract
+        - importedValues
+        - errors
+      properties:
+        contract:
+          $ref: "#/components/schemas/Contract"
+        importedContract:
+          $ref: "#/components/schemas/ImportedContract"
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportedContractError"
+    ImportedContract:
+      type: object
+      required:
+        - sapId
+        - contactName
+        - deliveryPlaceName
+        - deliveryPlaceComment
+        - itemGroupName
+        - contractQuantity
+        - quantityComment
+        - deliverAll
+        - remarks
+      properties:
+        sapId:
+          type: string
+        contactName:
+          type: string
+        deliveryPlaceName:
+          type: string
+        deliveryPlaceComment:
+          type: string
+        itemGroupName:
+          type: string
+        contractQuantity:
+          type: string
+        quantityComment:
+          type: string
+        deliverAll:
+          type: string
+        remarks:
+          type: string
+    ContractStatus:
+      type: string
+      enum:
+        - APPROVED
+        - ON_HOLD
+        - DRAFT
+        - TERMINATED
+        - REJECTED
+    ImportedContractError:
+      type: object
+      required:
+        - key
+        - message
+      properties:
+        key:
+          type: string
+        message:
           type: string
     ItemGroupPrice:
       type: object
