@@ -365,11 +365,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-  /contracts/import:
+  /contractPreviews:
     post:
-      operationId: importContracts
-      summary: Import draft contracts via XLSX file
-      description: Imports draft contracts via XLSX file
+      operationId: createContractPreviews
+      summary: create contract previews via XLSX file
+      description: Creates contract previews via XLSX file
       tags:
         - Contracts
       requestBody:
