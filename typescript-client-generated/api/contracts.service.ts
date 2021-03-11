@@ -2,6 +2,7 @@ import { BadRequest } from '../model/badRequest';
 import { Contract } from '../model/contract';
 import { ContractDocumentSignRequest } from '../model/contractDocumentSignRequest';
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
+import { ContractPreviewData } from '../model/contractPreviewData';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { ItemGroupPrice } from '../model/itemGroupPrice';
@@ -99,6 +100,27 @@ export class ContractsService {
         "Authorization": `Bearer ${this.token}`
       },
       body: JSON.stringify(body)
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Creates contract previews via XLSX file
+   * @summary create contract previews via XLSX file
+   * @param file 
+  */
+  public createContractPreviews(file?: string, ):Promise<Array<ContractPreviewData>> {
+    const uri = new URI(`${this.basePath}/contractPreviews`);
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
     };
 
     return fetch(uri.toString(), options).then((response) => {

@@ -20,6 +20,8 @@ export * from './itemGroups.service';
 import { ItemGroupsService } from './itemGroups.service';
 export * from './newsArticles.service';
 import { NewsArticlesService } from './newsArticles.service';
+export * from './openingHours.service';
+import { OpeningHoursService } from './openingHours.service';
 export * from './operationReports.service';
 import { OperationReportsService } from './operationReports.service';
 export * from './operations.service';
@@ -114,6 +116,10 @@ export default new class Api {
   
   public getNewsArticlesService(token: string): NewsArticlesService {
     return new NewsArticlesService(this.apiUrl, token);
+  }
+  
+  public getOpeningHoursService(token: string): OpeningHoursService {
+    return new OpeningHoursService(this.apiUrl, token);
   }
   
   public getOperationReportsService(token: string): OperationReportsService {

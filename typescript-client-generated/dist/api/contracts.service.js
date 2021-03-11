@@ -86,6 +86,24 @@ var ContractsService = /** @class */ (function () {
         });
     };
     /**
+     * Creates contract previews via XLSX file
+     * @summary create contract previews via XLSX file
+     * @param file
+    */
+    ContractsService.prototype.createContractPreviews = function (file) {
+        var uri = new URI(this.basePath + "/contractPreviews");
+        var options = {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Finds contract by id
      * @summary Find contract
      * @param id contract id

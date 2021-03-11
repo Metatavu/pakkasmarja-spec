@@ -20,6 +20,8 @@ export * from './itemGroups.service';
 import { ItemGroupsService } from './itemGroups.service';
 export * from './newsArticles.service';
 import { NewsArticlesService } from './newsArticles.service';
+export * from './openingHours.service';
+import { OpeningHoursService } from './openingHours.service';
 export * from './operationReports.service';
 import { OperationReportsService } from './operationReports.service';
 export * from './operations.service';
@@ -68,6 +70,7 @@ declare const _default: {
     getDeliveryQualitiesService(token: string): DeliveryQualitiesService;
     getItemGroupsService(token: string): ItemGroupsService;
     getNewsArticlesService(token: string): NewsArticlesService;
+    getOpeningHoursService(token: string): OpeningHoursService;
     getOperationReportsService(token: string): OperationReportsService;
     getOperationsService(token: string): OperationsService;
     getProductPricesService(token: string): ProductPricesService;

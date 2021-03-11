@@ -25,6 +25,8 @@ __export(require("./itemGroups.service"));
 var itemGroups_service_1 = require("./itemGroups.service");
 __export(require("./newsArticles.service"));
 var newsArticles_service_1 = require("./newsArticles.service");
+__export(require("./openingHours.service"));
+var openingHours_service_1 = require("./openingHours.service");
 __export(require("./operationReports.service"));
 var operationReports_service_1 = require("./operationReports.service");
 __export(require("./operations.service"));
@@ -109,6 +111,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getNewsArticlesService = function (token) {
         return new newsArticles_service_1.NewsArticlesService(this.apiUrl, token);
+    };
+    Api.prototype.getOpeningHoursService = function (token) {
+        return new openingHours_service_1.OpeningHoursService(this.apiUrl, token);
     };
     Api.prototype.getOperationReportsService = function (token) {
         return new operationReports_service_1.OperationReportsService(this.apiUrl, token);
