@@ -1,6 +1,7 @@
 import { Contract } from '../model/contract';
 import { ContractDocumentSignRequest } from '../model/contractDocumentSignRequest';
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
+import { ContractPreviewData } from '../model/contractPreviewData';
 import { ItemGroupPrice } from '../model/itemGroupPrice';
 export declare class ContractsService {
     private token;
@@ -30,6 +31,12 @@ export declare class ContractsService {
      * @param contractId contract id
     */
     createContractDocumentTemplate(body: ContractDocumentTemplate, contractId: string): Promise<ContractDocumentTemplate>;
+    /**
+     * Creates contract previews via XLSX file
+     * @summary create contract previews via XLSX file
+     * @param file
+    */
+    createContractPreviews(file?: string): Promise<Array<ContractPreviewData>>;
     /**
      * Finds contract by id
      * @summary Find contract
