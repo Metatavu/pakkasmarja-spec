@@ -6043,7 +6043,6 @@ components:
     ImportedContract:
       type: object
       required:
-        - sapId
         - contactName
         - deliveryPlaceName
         - deliveryPlaceComment
@@ -6053,8 +6052,6 @@ components:
         - deliverAll
         - remarks
       properties:
-        sapId:
-          type: string
         contactName:
           type: string
         deliveryPlaceName:
