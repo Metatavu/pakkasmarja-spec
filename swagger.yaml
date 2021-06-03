@@ -6491,6 +6491,7 @@ components:
         - SAP_CONTRACT_SYNC
         - SAP_CONTRACT_SAPID_SYNC
         - ITEM_GROUP_DEFAULT_DOCUMENT_TEMPLATES
+        - UPDATE_CURRENT_YEAR_APPROVED_CONTRACTS_TO_SAP
     OperationReport:
       type: object
       properties:
