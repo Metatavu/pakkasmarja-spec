@@ -9,16 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { DeliveryLoan } from './deliveryLoan';
 
 
 export interface Body1 { 
-    contactId: string;
-    comment: string;
-    loans: Array<DeliveryLoan>;
+    file?: string;
 }
 export interface Body1Opt { 
-    contactId?: string;
-    comment?: string;
-    loans?: Array<DeliveryLoan>;
+    file?: string;
 }
