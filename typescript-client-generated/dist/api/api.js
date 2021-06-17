@@ -17,6 +17,8 @@ __export(require("./dataSheets.service"));
 var dataSheets_service_1 = require("./dataSheets.service");
 __export(require("./deliveries.service"));
 var deliveries_service_1 = require("./deliveries.service");
+__export(require("./deliveryLoans.service"));
+var deliveryLoans_service_1 = require("./deliveryLoans.service");
 __export(require("./deliveryPlaces.service"));
 var deliveryPlaces_service_1 = require("./deliveryPlaces.service");
 __export(require("./deliveryQualities.service"));
@@ -99,6 +101,9 @@ exports.default = new /** @class */ (function () {
     };
     Api.prototype.getDeliveriesService = function (token) {
         return new deliveries_service_1.DeliveriesService(this.apiUrl, token);
+    };
+    Api.prototype.getDeliveryLoansService = function (token) {
+        return new deliveryLoans_service_1.DeliveryLoansService(this.apiUrl, token);
     };
     Api.prototype.getDeliveryPlacesService = function (token) {
         return new deliveryPlaces_service_1.DeliveryPlacesService(this.apiUrl, token);
