@@ -12,6 +12,8 @@ export * from './dataSheets.service';
 import { DataSheetsService } from './dataSheets.service';
 export * from './deliveries.service';
 import { DeliveriesService } from './deliveries.service';
+export * from './deliveryLoans.service';
+import { DeliveryLoansService } from './deliveryLoans.service';
 export * from './deliveryPlaces.service';
 import { DeliveryPlacesService } from './deliveryPlaces.service';
 export * from './deliveryQualities.service';
@@ -100,6 +102,10 @@ export default new class Api {
   
   public getDeliveriesService(token: string): DeliveriesService {
     return new DeliveriesService(this.apiUrl, token);
+  }
+  
+  public getDeliveryLoansService(token: string): DeliveryLoansService {
+    return new DeliveryLoansService(this.apiUrl, token);
   }
   
   public getDeliveryPlacesService(token: string): DeliveryPlacesService {
