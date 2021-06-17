@@ -4,7 +4,6 @@ export * from './badRequest';
 export * from './basicContact';
 export * from './body';
 export * from './body1';
-export * from './body2';
 export * from './chatGroup';
 export * from './chatGroupGroupPermission';
 export * from './chatGroupPermissionScope';
