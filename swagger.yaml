@@ -4399,6 +4399,61 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  /deliveryLoans:
+    post:
+      operationId: createDeliveryLoan
+      summary: Create delivery loan
+      description: Creates delivery loan
+      tags:
+        - DeliveryLoans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - contactId
+                - comment
+                - loans
+              properties:
+                contactId:
+                  type: string
+                  format: uuid
+                comment:
+                  type: string
+                loans:
+                  type: array
+                  items:  
+                    $ref: "#/components/schemas/DeliveryLoan"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created delivery loans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryLoan"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /reports/{type}:
     get:
       operationId: getReport

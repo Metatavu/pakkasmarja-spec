@@ -10,6 +10,7 @@ import { ContactsService } from './api/contacts.service';
 import { ContractsService } from './api/contracts.service';
 import { DataSheetsService } from './api/dataSheets.service';
 import { DeliveriesService } from './api/deliveries.service';
+import { DeliveryLoansService } from './api/deliveryLoans.service';
 import { DeliveryPlacesService } from './api/deliveryPlaces.service';
 import { DeliveryQualitiesService } from './api/deliveryQualities.service';
 import { ItemGroupsService } from './api/itemGroups.service';
@@ -39,6 +40,7 @@ import { WeekDeliveryPredictionsService } from './api/weekDeliveryPredictions.se
     ContractsService,
     DataSheetsService,
     DeliveriesService,
+    DeliveryLoansService,
     DeliveryPlacesService,
     DeliveryQualitiesService,
     ItemGroupsService,
