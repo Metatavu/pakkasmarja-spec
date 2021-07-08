@@ -2,6 +2,7 @@ import { Contract } from '../model/contract';
 import { ContractDocumentSignRequest } from '../model/contractDocumentSignRequest';
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
 import { ContractPreviewData } from '../model/contractPreviewData';
+import { ContractQuantities } from '../model/contractQuantities';
 import { ItemGroupPrice } from '../model/itemGroupPrice';
 export declare class ContractsService {
     private token;
@@ -76,6 +77,13 @@ export declare class ContractsService {
      * @param maxResults Max results. Defaults to 5
     */
     listContractPrices(contractId: string, sortBy?: string, sortDir?: string, firstResult?: number, maxResults?: number): Promise<Array<ItemGroupPrice>>;
+    /**
+     * Lists contracts quantities
+     * @summary Lists contracts quantities
+     * @param itemGroupId Filters results by item group id.
+     * @param contactId Filters results by contact id.
+    */
+    listContractQuantities(itemGroupId: string, contactId: string): Promise<Array<ContractQuantities>>;
     /**
      * Lists contracts
      * @summary Lists contracts

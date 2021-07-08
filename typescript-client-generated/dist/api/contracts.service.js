@@ -222,6 +222,31 @@ var ContractsService = /** @class */ (function () {
         });
     };
     /**
+     * Lists contracts quantities
+     * @summary Lists contracts quantities
+     * @param itemGroupId Filters results by item group id.
+     * @param contactId Filters results by contact id.
+    */
+    ContractsService.prototype.listContractQuantities = function (itemGroupId, contactId) {
+        var uri = new URI(this.basePath + "/contractQuantities");
+        if (itemGroupId !== undefined && itemGroupId !== null) {
+            uri.addQuery('itemGroupId', itemGroupId);
+        }
+        if (contactId !== undefined && contactId !== null) {
+            uri.addQuery('contactId', contactId);
+        }
+        var options = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        };
+        return fetch(uri.toString(), options).then(function (response) {
+            return api_1.ApiUtils.handleResponse(response);
+        });
+    };
+    /**
      * Lists contracts
      * @summary Lists contracts
      * @param accept Expected response format. Accepted values application/json for JSON reponse (default) and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for Excel response
