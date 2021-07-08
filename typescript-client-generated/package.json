@@ -1,6 +1,6 @@
 {
   "name": "pakkasmarja-client",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "description": "swagger client for pakkasmarja-client",
   "author": "Swagger Codegen Contributors",
   "keywords": [
