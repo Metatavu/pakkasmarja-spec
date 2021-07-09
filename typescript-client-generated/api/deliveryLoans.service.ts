@@ -1,5 +1,4 @@
 import { BadRequest } from '../model/badRequest';
-import { Body1 } from '../model/body1';
 import { DeliveryLoan } from '../model/deliveryLoan';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
@@ -29,7 +28,7 @@ export class DeliveryLoansService {
    * @summary Create delivery loan
    * @param body Payload
   */
-  public createDeliveryLoan(body: Body1, ):Promise<Array<DeliveryLoan>> {
+  public createDeliveryLoan(body: DeliveryLoan, ):Promise<Array<DeliveryLoan>> {
     const uri = new URI(`${this.basePath}/deliveryLoans`);
     const options = {
       method: "post",

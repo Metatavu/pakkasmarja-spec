@@ -12,7 +12,7 @@
   "license": "Unlicense",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "scripts": {
+  "scripts" : {
     "build": "tsc --outDir dist/"
   },
   "dependencies": {
@@ -21,6 +21,6 @@
   "devDependencies": {
     "@types/node": "^8.0.9",
     "@types/urijs": "^1.15.38",
-    "typescript": "^2.9.2"
+    "typescript": "^2.0"
   }
 }

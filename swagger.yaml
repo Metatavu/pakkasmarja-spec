@@ -4457,6 +4457,7 @@ paths:
         content:
           application/json:
             schema:
+              $ref: "#/components/schemas/DeliveryLoan"
               type: object
               required:
                 - contactId
@@ -6461,6 +6462,7 @@ components:
         - DONE
         - REJECTED
         - NOT_ACCEPTED
+        - DELIVERYLOAN
     DeliveryQuality:
       type: object
       required:
