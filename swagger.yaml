@@ -4457,7 +4457,6 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DeliveryLoan"
               type: object
               required:
                 - contactId
