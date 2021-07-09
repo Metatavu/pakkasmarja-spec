@@ -19,6 +19,7 @@ export * from './contract';
 export * from './contractDocumentSignRequest';
 export * from './contractDocumentTemplate';
 export * from './contractPreviewData';
+export * from './contractQuantities';
 export * from './contractStatus';
 export * from './credentials';
 export * from './dataSheet';

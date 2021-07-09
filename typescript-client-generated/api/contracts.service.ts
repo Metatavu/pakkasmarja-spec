@@ -3,6 +3,7 @@ import { Contract } from '../model/contract';
 import { ContractDocumentSignRequest } from '../model/contractDocumentSignRequest';
 import { ContractDocumentTemplate } from '../model/contractDocumentTemplate';
 import { ContractPreviewData } from '../model/contractPreviewData';
+import { ContractQuantities } from '../model/contractQuantities';
 import { Forbidden } from '../model/forbidden';
 import { InternalServerError } from '../model/internalServerError';
 import { ItemGroupPrice } from '../model/itemGroupPrice';
@@ -247,6 +248,34 @@ export class ContractsService {
     }
     if (maxResults !== undefined && maxResults !== null) {
         uri.addQuery('maxResults', <any>maxResults);
+    }
+    const options = {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      }
+    };
+
+    return fetch(uri.toString(), options).then((response) => {
+      return ApiUtils.handleResponse(response);
+    });
+  }
+
+
+  /**
+   * Lists contracts quantities
+   * @summary Lists contracts quantities
+   * @param itemGroupId Filters results by item group id.
+   * @param contactId Filters results by contact id.
+  */
+  public listContractQuantities(itemGroupId: string, contactId: string, ):Promise<Array<ContractQuantities>> {
+    const uri = new URI(`${this.basePath}/contractQuantities`);
+    if (itemGroupId !== undefined && itemGroupId !== null) {
+        uri.addQuery('itemGroupId', <any>itemGroupId);
+    }
+    if (contactId !== undefined && contactId !== null) {
+        uri.addQuery('contactId', <any>contactId);
     }
     const options = {
       method: "get",
