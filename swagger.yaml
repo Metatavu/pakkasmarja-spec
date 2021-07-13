@@ -6461,6 +6461,7 @@ components:
         - DONE
         - REJECTED
         - NOT_ACCEPTED
+        - DELIVERYLOAN
     DeliveryQuality:
       type: object
       required:
