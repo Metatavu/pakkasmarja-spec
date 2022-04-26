@@ -15,6 +15,7 @@ export interface Contact {
     readonly displayName?: string;
     readonly avatarUrl?: string;
     sapId?: string;
+    sapBusinessPartnerCode?: string;
     firstName?: string;
     lastName?: string;
     companyName?: string;
@@ -32,6 +33,7 @@ export interface ContactOpt {
     readonly displayName?: string;
     readonly avatarUrl?: string;
     sapId?: string;
+    sapBusinessPartnerCode?: string;
     firstName?: string;
     lastName?: string;
     companyName?: string;

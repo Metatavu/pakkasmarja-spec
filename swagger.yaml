@@ -4470,7 +4470,7 @@ paths:
                   type: string
                 loans:
                   type: array
-                  items:  
+                  items:
                     $ref: "#/components/schemas/DeliveryLoan"
         description: Payload
         required: true
@@ -4936,7 +4936,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerError"   
+                $ref: "#/components/schemas/InternalServerError"
   /sharedFiles/upload/folder:
     post:
       operationId: uploadSharedFolder
@@ -6602,12 +6602,7 @@ components:
       type: string
       enum:
         - SAP_CONTACT_SYNC
-        - SAP_DELIVERY_PLACE_SYNC
-        - SAP_ITEM_GROUP_SYNC
-        - SAP_CONTRACT_SYNC
-        - SAP_CONTRACT_SAPID_SYNC
         - ITEM_GROUP_DEFAULT_DOCUMENT_TEMPLATES
-        - UPDATE_CURRENT_YEAR_APPROVED_CONTRACTS_TO_SAP
     OperationReport:
       type: object
       properties:
