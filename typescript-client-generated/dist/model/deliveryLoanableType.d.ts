@@ -11,6 +11,6 @@
  */
 export declare type DeliveryLoanableType = 'GRAY_BOX' | 'RED_BOX';
 export declare const DeliveryLoanableType: {
-    GRAYBOX: import("./deliveryLoanItem").DeliveryLoanItem;
-    REDBOX: import("./deliveryLoanItem").DeliveryLoanItem;
+    GRAYBOX: DeliveryLoanableType;
+    REDBOX: DeliveryLoanableType;
 };

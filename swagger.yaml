@@ -6386,6 +6386,7 @@ components:
       enum:
         - GRAY_BOX
         - RED_BOX
+        - ORANGE_BOX
     DeliveryLoan:
       required:
         - item

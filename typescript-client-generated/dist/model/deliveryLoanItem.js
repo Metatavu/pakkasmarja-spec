@@ -13,5 +13,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeliveryLoanItem = {
     GRAYBOX: 'GRAY_BOX',
-    REDBOX: 'RED_BOX'
+    REDBOX: 'RED_BOX',
+    ORANGEBOX: 'ORANGE_BOX'
 };
