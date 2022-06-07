@@ -12,23 +12,25 @@
 import { ItemGroupCategory } from './itemGroupCategory';
 export interface ItemGroup {
     id?: string;
+    readonly sapId?: string;
     name?: string;
     displayName?: string;
     category?: ItemGroupCategory;
     minimumProfitEstimation?: number;
     /**
-     * Require contract in specified item group before siging a contract
+     * Require contract in specified item group before signing a contract
      */
     prerequisiteContractItemGroupId?: string;
 }
 export interface ItemGroupOpt {
     id?: string;
+    readonly sapId?: string;
     name?: string;
     displayName?: string;
     category?: ItemGroupCategory;
     minimumProfitEstimation?: number;
     /**
-     * Require contract in specified item group before siging a contract
+     * Require contract in specified item group before signing a contract
      */
     prerequisiteContractItemGroupId?: string;
 }
