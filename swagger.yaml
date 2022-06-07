@@ -6281,6 +6281,9 @@ components:
         id:
           type: string
           format: uuid
+        sapId:
+          type: string
+          readOnly: true
         name:
           type: string
         displayName:
@@ -6291,7 +6294,7 @@ components:
           type: number
           format: double
         prerequisiteContractItemGroupId:
-          description: Require contract in specified item group before siging a contract
+          description: Require contract in specified item group before signing a contract
           type: string
           format: uuid
     ItemGroupCategory:
