@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemGroupsService = void 0;
 var URI = require("urijs");
 var api_1 = require("./api");
 var COLLECTION_FORMATS = {

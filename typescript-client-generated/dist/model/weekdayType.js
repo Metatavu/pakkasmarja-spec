@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.WeekdayType = void 0;
 exports.WeekdayType = {
     MONDAY: 'MONDAY',
     TUESDAY: 'TUESDAY',

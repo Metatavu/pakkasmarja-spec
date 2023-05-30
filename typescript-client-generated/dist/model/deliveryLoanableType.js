@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeliveryLoanableType = void 0;
 exports.DeliveryLoanableType = {
     GRAYBOX: 'GRAY_BOX',
     REDBOX: 'RED_BOX'

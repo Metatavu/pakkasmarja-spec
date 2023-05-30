@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OperationType = void 0;
 exports.OperationType = {
     SAPCONTACTSYNC: 'SAP_CONTACT_SYNC',
     ITEMGROUPDEFAULTDOCUMENTTEMPLATES: 'ITEM_GROUP_DEFAULT_DOCUMENT_TEMPLATES'
