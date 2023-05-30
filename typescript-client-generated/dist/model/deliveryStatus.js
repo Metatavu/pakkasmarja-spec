@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeliveryStatus = void 0;
 exports.DeliveryStatus = {
     PROPOSAL: 'PROPOSAL',
     PLANNED: 'PLANNED',

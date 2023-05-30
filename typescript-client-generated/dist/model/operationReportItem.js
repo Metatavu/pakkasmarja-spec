@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OperationReportItem = void 0;
 var OperationReportItem;
 (function (OperationReportItem) {
     OperationReportItem.StatusEnum = {

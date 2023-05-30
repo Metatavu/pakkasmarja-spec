@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ChatThreadPermissionScope = void 0;
 exports.ChatThreadPermissionScope = {
     ACCESS: 'ACCESS'
 };

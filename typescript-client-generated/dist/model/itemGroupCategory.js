@@ -11,6 +11,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemGroupCategory = void 0;
 exports.ItemGroupCategory = {
     FRESH: 'FRESH',
     FROZEN: 'FROZEN'
