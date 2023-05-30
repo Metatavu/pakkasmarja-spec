@@ -6009,6 +6009,8 @@ components:
           readOnly: true
         sapId:
           type: string
+        equipmentInspected:
+          type: boolean
         firstName:
           type: string
         lastName:
