@@ -6,7 +6,7 @@ const rimraf = require("rimraf");
 
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
-  
+
   const SWAGGER_VERSION = "3.0.4";
   const SWAGGER_JAR = `swagger-codegen-cli-${SWAGGER_VERSION}.jar`;
   const SWAGGER_URL = `https://search.maven.org/remotecontent?filepath=io/swagger/codegen/v3/swagger-codegen-cli/${SWAGGER_VERSION}/${SWAGGER_JAR}`;
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       const rootFolder = process.env.PAKKASMARJA_FOLDER;
       const apiFolder = `${rootFolder}/api`;
       const modelFolder = `${rootFolder}/model`;
-      
+
       if (fs.existsSync(apiFolder)) {
         rimraf.sync(apiFolder);
       }
@@ -110,5 +110,4 @@ module.exports = function(grunt) {
   grunt.registerTask('typescript-client-gen', [ 'shell:typescript-client-generate', 'clean:typescript-client']);
   grunt.registerTask('typescript-client', [ 'typescript-client-gen', "shell:typescript-client-bump-version", "shell:typescript-client-push", "shell:typescript-client-publish" ]);
   // grunt.registerTask('typescript-api-gen', [ 'shell:typescript-client-generate', 'typescript-api-post-process:api' ])
-  
 };
