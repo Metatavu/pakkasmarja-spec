@@ -11,7 +11,6 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatThread = void 0;
 var ChatThread;
 (function (ChatThread) {
     ChatThread.AnswerTypeEnum = {

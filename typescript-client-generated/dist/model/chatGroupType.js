@@ -11,7 +11,6 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatGroupType = void 0;
 exports.ChatGroupType = {
     CHAT: 'CHAT',
     QUESTION: 'QUESTION'

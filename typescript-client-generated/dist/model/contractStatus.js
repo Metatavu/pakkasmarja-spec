@@ -11,7 +11,6 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContractStatus = void 0;
 exports.ContractStatus = {
     APPROVED: 'APPROVED',
     ONHOLD: 'ON_HOLD',

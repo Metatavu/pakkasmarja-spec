@@ -11,7 +11,6 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeliveryLoanItem = void 0;
 exports.DeliveryLoanItem = {
     GRAYBOX: 'GRAY_BOX',
     REDBOX: 'RED_BOX',

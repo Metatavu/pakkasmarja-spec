@@ -11,7 +11,6 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatGroupPermissionScope = void 0;
 exports.ChatGroupPermissionScope = {
     ACCESS: 'ACCESS',
     MANAGE: 'MANAGE',
