@@ -1,6 +1,6 @@
 {
   "name": "pakkasmarja-client",
-  "version": "0.0.103",
+  "version": "0.0.104",
   "description": "swagger client for pakkasmarja-client",
   "author": "Swagger Codegen Contributors",
   "keywords": [
@@ -19,7 +19,7 @@
     "urijs": "^1.19.1"
   },
   "devDependencies": {
-    "@types/node": "10.18.1",
+    "@types/node": "10.17.60",
     "@types/urijs": "^1.15.38",
     "typescript": "3.9.10"
   }
