@@ -15,5 +15,6 @@ exports.DeliveryLoanItem = void 0;
 exports.DeliveryLoanItem = {
     GRAYBOX: 'GRAY_BOX',
     REDBOX: 'RED_BOX',
-    ORANGEBOX: 'ORANGE_BOX'
+    ORANGEBOX: 'ORANGE_BOX',
+    GREENBOX: 'GREEN_BOX'
 };

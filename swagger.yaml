@@ -6392,6 +6392,7 @@ components:
         - GRAY_BOX
         - RED_BOX
         - ORANGE_BOX
+        - GREEN_BOX
     DeliveryLoan:
       required:
         - item
